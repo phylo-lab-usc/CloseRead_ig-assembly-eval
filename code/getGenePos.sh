@@ -19,7 +19,7 @@ rm -rf temp*.txt
 # remove the headers
 sed -i '1d' gene_IGH_pos.txt
 # re-order file to convert into bed format
-awk -F'\t' '{print $1 "\t" $2 "\t" $4 "\t" "." "\t" "0" "\t" $3 }' gene_IGH_pos.txt > gene_IGH_pos.bed
+awk -F'\t' '{print $1 "\t" $2 "\t" $4 "\t" NR "\t" "0" "\t" $3 }' gene_IGH_pos.txt > gene_IGH_pos.bed
 
 ## Extract reads from BAM file
 samtools view -b -L gene_position/mCanLor1/gene_IGH_pos.bed aligned_bam/mCanLor1/m64016_200910_161534_mapping.bam > extracted_bam/mCanLor1/m64016_200910_161534_extracted.bam
@@ -30,5 +30,8 @@ bedtools bamtobed -i extracted_bam/mCanLor1/m64016_200910_161534_extracted.bam >
 # sort the bed files for comparison
 sort -k1,1 -k2,2n -k3,3n extracted_bam/mCanLor1/m64016_200910_161534_extracted.bed > extracted_bam/mCanLor1/m64016_200910_161534_extracted_sorted.bed
 sort -k1,1 -k2,2n -k3,3n gene_position/mCanLor1/gene_IGH_pos.bed > gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-# comparison to make sure correct reads
+#### comparison to make sure correct reads
 # figure out how to view the bam files
+# sort bam files and generate .bai index files
+samtools sort m64016_200910_161534_mapping.bam > m64016_200910_161534_mapping_sorted.bam
+samtools index m64016_200910_161534_mapping_sorted.bam
