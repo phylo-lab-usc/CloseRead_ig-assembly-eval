@@ -1,7 +1,10 @@
 #!/bin/bash
 
+#Select only the productive gene
+awk -F$'\t' '$6 == "True"' ../../mammalian_igdetective_v2.0/mCanLor1_igdetective/combined_genes_IGH.txt > mCanLor1genes_IGH_productive.txt
 #Count each gene's length
-awk -F$'\t' '{print $5}' ../../mammalian_igdetective_v2.0/mCanLor1_igdetective/combined_genes_IGH.txt | awk -v FS="" '{print NF;}' > mCanLor1genes_IGH_length.txt 
+#awk -F$'\t' '{print $5}' ../../mammalian_igdetective_v2.0/mCanLor1_igdetective/combined_genes_IGH.txt | awk -v FS="" '{print NF;}' > mCanLor1genes_IGH_length.txt 
+awk -F$'\t' '{print $5}' mCanLor1genes_IGH_productive.txt | awk -v FS="" '{print NF;}' > mCanLor1genes_IGH_productive_length.txt 
 #add a header "Length"
 sed -i  "1s/.*/Length/" mCanLor1genes_IGH_length.txt 
 #get Chromosome, start, strand infomation

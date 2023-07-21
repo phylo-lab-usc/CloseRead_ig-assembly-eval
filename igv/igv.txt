@@ -5,7 +5,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:93919-94215
+goto SUPER_8:99205-99501
 snapshot mCanLor1_merged_1.png
 2
 new
@@ -14,7 +14,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:99205-99501
+goto SUPER_8:119378-119674
 snapshot mCanLor1_merged_2.png
 3
 new
@@ -23,7 +23,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:119378-119674
+goto SUPER_8:160639-160936
 snapshot mCanLor1_merged_3.png
 4
 new
@@ -32,7 +32,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:130927-131223
+goto SUPER_8:253607-253903
 snapshot mCanLor1_merged_4.png
 5
 new
@@ -41,7 +41,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:146365-146647
+goto SUPER_8:265347-265643
 snapshot mCanLor1_merged_5.png
 6
 new
@@ -50,7 +50,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:160639-160936
+goto SUPER_8:281182-281478
 snapshot mCanLor1_merged_6.png
 7
 new
@@ -59,7 +59,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:224830-225124
+goto SUPER_8:376116-376412
 snapshot mCanLor1_merged_7.png
 8
 new
@@ -68,7 +68,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:231633-231929
+goto SUPER_8:446159-446456
 snapshot mCanLor1_merged_8.png
 9
 new
@@ -77,7 +77,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:253607-253903
+goto SUPER_8:494590-494886
 snapshot mCanLor1_merged_9.png
 10
 new
@@ -86,7 +86,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:265347-265643
+goto SUPER_8:578316-578609
 snapshot mCanLor1_merged_10.png
 11
 new
@@ -95,7 +95,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:275917-276212
+goto SUPER_8:585333-585630
 snapshot mCanLor1_merged_11.png
 12
 new
@@ -104,7 +104,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:281182-281478
+goto SUPER_8:600043-600339
 snapshot mCanLor1_merged_12.png
 13
 new
@@ -113,7 +113,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:288266-288557
+goto SUPER_8:643635-643931
 snapshot mCanLor1_merged_13.png
 14
 new
@@ -122,7 +122,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:305629-305920
+goto SUPER_8:674520-674816
 snapshot mCanLor1_merged_14.png
 15
 new
@@ -131,7 +131,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:321049-321344
+goto SUPER_8:690452-690748
 snapshot mCanLor1_merged_15.png
 16
 new
@@ -140,7 +140,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:339488-339780
+goto SUPER_8:709975-710272
 snapshot mCanLor1_merged_16.png
 17
 new
@@ -149,7 +149,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:364313-364607
+goto SUPER_8:734065-734361
 snapshot mCanLor1_merged_17.png
 18
 new
@@ -158,7 +158,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:376116-376412
+goto SUPER_8:750387-750681
 snapshot mCanLor1_merged_18.png
 19
 new
@@ -167,7 +167,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:389117-389412
+goto SUPER_8:753840-754136
 snapshot mCanLor1_merged_19.png
 20
 new
@@ -176,7 +176,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:392802-393055
+goto SUPER_8:764687-764983
 snapshot mCanLor1_merged_20.png
 21
 new
@@ -185,7 +185,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:426714-427009
+goto SUPER_8:772282-772576
 snapshot mCanLor1_merged_21.png
 22
 new
@@ -194,7 +194,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:446159-446456
+goto SUPER_8:843277-843573
 snapshot mCanLor1_merged_22.png
 23
 new
@@ -203,7 +203,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:466430-466725
+goto SUPER_8:852265-852561
 snapshot mCanLor1_merged_23.png
 24
 new
@@ -212,7 +212,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:481427-481723
+goto SUPER_8:863804-864100
 snapshot mCanLor1_merged_24.png
 25
 new
@@ -221,7 +221,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:486883-487178
+goto SUPER_8:937104-937400
 snapshot mCanLor1_merged_25.png
 26
 new
@@ -230,7 +230,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:494590-494886
+goto SUPER_8:946871-947164
 snapshot mCanLor1_merged_26.png
 27
 new
@@ -239,7 +239,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:502564-502858
+goto SUPER_8:957009-957302
 snapshot mCanLor1_merged_27.png
 28
 new
@@ -248,7 +248,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:517795-518090
+goto SUPER_8:973838-974135
 snapshot mCanLor1_merged_28.png
 29
 new
@@ -257,7 +257,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:555205-555502
+goto SUPER_8:1058010-1058306
 snapshot mCanLor1_merged_29.png
 30
 new
@@ -266,7 +266,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:578316-578609
+goto SUPER_8:1139246-1139543
 snapshot mCanLor1_merged_30.png
 31
 new
@@ -275,7 +275,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:585333-585630
+goto SUPER_8:1193896-1194193
 snapshot mCanLor1_merged_31.png
 32
 new
@@ -284,7 +284,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:600043-600339
+goto SUPER_8:1210913-1211210
 snapshot mCanLor1_merged_32.png
 33
 new
@@ -293,7 +293,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:616223-616519
+goto SUPER_8:1314615-1314912
 snapshot mCanLor1_merged_33.png
 34
 new
@@ -302,7 +302,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:627001-627298
+goto SUPER_8:1366199-1366495
 snapshot mCanLor1_merged_34.png
 35
 new
@@ -311,7 +311,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:643635-643931
+goto SUPER_8:1443954-1444247
 snapshot mCanLor1_merged_35.png
 36
 new
@@ -320,7 +320,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:666324-666630
+goto SUPER_8:1467879-1468176
 snapshot mCanLor1_merged_36.png
 37
 new
@@ -329,7 +329,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:674520-674816
+goto SUPER_8:1513718-1514015
 snapshot mCanLor1_merged_37.png
 38
 new
@@ -338,7 +338,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:690452-690748
+goto SUPER_8:1536855-1537151
 snapshot mCanLor1_merged_38.png
 39
 new
@@ -347,7 +347,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:709975-710272
+goto SUPER_8:1545440-1545736
 snapshot mCanLor1_merged_39.png
 40
 new
@@ -356,7 +356,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:734065-734361
+goto SUPER_8:1588924-1589220
 snapshot mCanLor1_merged_40.png
 41
 new
@@ -365,7 +365,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:743321-743617
+goto SUPER_8:1594452-1594745
 snapshot mCanLor1_merged_41.png
 42
 new
@@ -374,7 +374,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:750387-750681
+goto SUPER_8:1610411-1610707
 snapshot mCanLor1_merged_42.png
 43
 new
@@ -383,7 +383,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:753840-754136
+goto SUPER_8:1629492-1629788
 snapshot mCanLor1_merged_43.png
 44
 new
@@ -392,7 +392,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:764687-764983
+goto SUPER_8:1645693-1645986
 snapshot mCanLor1_merged_44.png
 45
 new
@@ -401,7 +401,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:772282-772576
+goto SUPER_8:1665619-1665912
 snapshot mCanLor1_merged_45.png
 46
 new
@@ -410,7 +410,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:782666-782969
+goto SUPER_8:1681436-1681729
 snapshot mCanLor1_merged_46.png
 47
 new
@@ -419,7 +419,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:796487-796783
+goto SUPER_8:1718279-1718575
 snapshot mCanLor1_merged_47.png
 48
 new
@@ -428,7 +428,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:809785-810085
+goto SUPER_8:1728417-1728710
 snapshot mCanLor1_merged_48.png
 49
 new
@@ -437,7 +437,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:821029-821325
+goto SUPER_8:1745255-1745552
 snapshot mCanLor1_merged_49.png
 50
 new
@@ -446,7 +446,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:843277-843573
+goto SUPER_8:1911118-1911414
 snapshot mCanLor1_merged_50.png
 51
 new
@@ -455,7 +455,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:852265-852561
+goto SUPER_8:1929656-1929952
 snapshot mCanLor1_merged_51.png
 52
 new
@@ -464,7 +464,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:863804-864100
+goto SUPER_8:1949313-1949610
 snapshot mCanLor1_merged_52.png
 53
 new
@@ -473,7 +473,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:879630-879922
+goto SUPER_8:1964703-1964999
 snapshot mCanLor1_merged_53.png
 54
 new
@@ -482,7 +482,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:899529-899825
+goto SUPER_8:1985465-1985761
 snapshot mCanLor1_merged_54.png
 55
 new
@@ -491,7 +491,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:919548-919843
+goto SUPER_8:1989714-1990010
 snapshot mCanLor1_merged_55.png
 56
 new
@@ -500,7 +500,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:937104-937400
+goto SUPER_8:1995413-1995709
 snapshot mCanLor1_merged_56.png
 57
 new
@@ -509,7 +509,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:946871-947164
+goto SUPER_8:2014568-2014864
 snapshot mCanLor1_merged_57.png
 58
 new
@@ -518,7 +518,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:957009-957302
+goto SUPER_8:2022010-2022304
 snapshot mCanLor1_merged_58.png
 59
 new
@@ -527,7 +527,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:973838-974135
+goto SUPER_8:2040516-2040812
 snapshot mCanLor1_merged_59.png
 60
 new
@@ -536,7 +536,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1017241-1017537
+goto SUPER_8:2080469-2080765
 snapshot mCanLor1_merged_60.png
 61
 new
@@ -545,7 +545,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1025919-1026214
+goto SUPER_8:2113066-2113362
 snapshot mCanLor1_merged_61.png
 62
 new
@@ -554,7 +554,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1040661-1040957
+goto SUPER_8:2121626-2121922
 snapshot mCanLor1_merged_62.png
 63
 new
@@ -563,7 +563,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1058010-1058306
+goto SUPER_8:2143592-2143888
 snapshot mCanLor1_merged_63.png
 64
 new
@@ -572,7 +572,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1079701-1079997
+goto SUPER_8:2165795-2166091
 snapshot mCanLor1_merged_64.png
 65
 new
@@ -581,7 +581,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1099721-1100013
+goto SUPER_8:2204113-2204409
 snapshot mCanLor1_merged_65.png
 66
 new
@@ -590,7 +590,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1113420-1113716
+goto SUPER_8:2228761-2229057
 snapshot mCanLor1_merged_66.png
 67
 new
@@ -599,7 +599,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1134268-1134563
+goto SUPER_8:2260821-2261117
 snapshot mCanLor1_merged_67.png
 68
 new
@@ -608,7 +608,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1139246-1139543
+goto SUPER_8:2277600-2277896
 snapshot mCanLor1_merged_68.png
 69
 new
@@ -617,7 +617,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1156665-1156957
+goto SUPER_8:2308611-2308908
 snapshot mCanLor1_merged_69.png
 70
 new
@@ -626,7 +626,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1170584-1170879
+goto SUPER_8:2357424-2357720
 snapshot mCanLor1_merged_70.png
 71
 new
@@ -635,7 +635,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1193896-1194193
+goto SUPER_8:2407166-2407462
 snapshot mCanLor1_merged_71.png
 72
 new
@@ -644,7 +644,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1210913-1211210
+goto SUPER_8:2413239-2413535
 snapshot mCanLor1_merged_72.png
 73
 new
@@ -653,7 +653,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1225562-1225857
+goto SUPER_8:2429671-2429966
 snapshot mCanLor1_merged_73.png
 74
 new
@@ -662,7 +662,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1239222-1239516
+goto SUPER_8:2450080-2450377
 snapshot mCanLor1_merged_74.png
 75
 new
@@ -671,7 +671,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1251035-1251331
+goto SUPER_8:2463528-2463824
 snapshot mCanLor1_merged_75.png
 76
 new
@@ -680,7 +680,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1263856-1264151
+goto SUPER_8:2522222-2522518
 snapshot mCanLor1_merged_76.png
 77
 new
@@ -689,7 +689,7 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1267537-1267832
+goto SUPER_8:2540351-2540647
 snapshot mCanLor1_merged_77.png
 78
 new
@@ -698,788 +698,5 @@ genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
 snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
 load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
 load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1295160-1295455
-snapshot mCanLor1_merged_78.png
-79
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1314615-1314912
-snapshot mCanLor1_merged_79.png
-80
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1334826-1335121
-snapshot mCanLor1_merged_80.png
-81
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1353035-1353331
-snapshot mCanLor1_merged_81.png
-82
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1358488-1358783
-snapshot mCanLor1_merged_82.png
-83
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1366199-1366495
-snapshot mCanLor1_merged_83.png
-84
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1374775-1375069
-snapshot mCanLor1_merged_84.png
-85
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1389728-1390023
-snapshot mCanLor1_merged_85.png
-86
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1420553-1420850
-snapshot mCanLor1_merged_86.png
-87
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1443954-1444247
-snapshot mCanLor1_merged_87.png
-88
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1450983-1451278
-snapshot mCanLor1_merged_88.png
-89
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1467879-1468176
-snapshot mCanLor1_merged_89.png
-90
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1496634-1496929
-snapshot mCanLor1_merged_90.png
-91
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1513718-1514015
-snapshot mCanLor1_merged_91.png
-92
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1536855-1537151
-snapshot mCanLor1_merged_92.png
-93
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1545440-1545736
-snapshot mCanLor1_merged_93.png
-94
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1553082-1553366
-snapshot mCanLor1_merged_94.png
-95
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1564282-1564577
-snapshot mCanLor1_merged_95.png
-96
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1588924-1589220
-snapshot mCanLor1_merged_96.png
-97
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1594452-1594745
-snapshot mCanLor1_merged_97.png
-98
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1610411-1610707
-snapshot mCanLor1_merged_98.png
-99
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1621340-1621646
-snapshot mCanLor1_merged_99.png
-100
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1629492-1629788
-snapshot mCanLor1_merged_100.png
-101
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1645693-1645986
-snapshot mCanLor1_merged_101.png
-102
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1665619-1665912
-snapshot mCanLor1_merged_102.png
-103
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1681436-1681729
-snapshot mCanLor1_merged_103.png
-104
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1695708-1696002
-snapshot mCanLor1_merged_104.png
-105
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1718279-1718575
-snapshot mCanLor1_merged_105.png
-106
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1728417-1728710
-snapshot mCanLor1_merged_106.png
-107
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1745255-1745552
-snapshot mCanLor1_merged_107.png
-108
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1768491-1768782
-snapshot mCanLor1_merged_108.png
-109
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1788586-1788882
-snapshot mCanLor1_merged_109.png
-110
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1797264-1797559
-snapshot mCanLor1_merged_110.png
-111
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1812046-1812342
-snapshot mCanLor1_merged_111.png
-112
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1847026-1847322
-snapshot mCanLor1_merged_112.png
-113
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1867090-1867382
-snapshot mCanLor1_merged_113.png
-114
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1878743-1879040
-snapshot mCanLor1_merged_114.png
-115
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1899689-1899984
-snapshot mCanLor1_merged_115.png
-116
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1911118-1911414
-snapshot mCanLor1_merged_116.png
-117
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1923933-1924228
-snapshot mCanLor1_merged_117.png
-118
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1929656-1929952
-snapshot mCanLor1_merged_118.png
-119
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1949313-1949610
-snapshot mCanLor1_merged_119.png
-120
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1964703-1964999
-snapshot mCanLor1_merged_120.png
-121
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1985465-1985761
-snapshot mCanLor1_merged_121.png
-122
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1989714-1990010
-snapshot mCanLor1_merged_122.png
-123
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:1995413-1995709
-snapshot mCanLor1_merged_123.png
-124
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2006275-2006597
-snapshot mCanLor1_merged_124.png
-125
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2014568-2014864
-snapshot mCanLor1_merged_125.png
-126
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2022010-2022304
-snapshot mCanLor1_merged_126.png
-127
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2030048-2030344
-snapshot mCanLor1_merged_127.png
-128
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2040516-2040812
-snapshot mCanLor1_merged_128.png
-129
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2054512-2054807
-snapshot mCanLor1_merged_129.png
-130
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2080469-2080765
-snapshot mCanLor1_merged_130.png
-131
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2105420-2105704
-snapshot mCanLor1_merged_131.png
-132
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2113066-2113362
-snapshot mCanLor1_merged_132.png
-133
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2121626-2121922
-snapshot mCanLor1_merged_133.png
-134
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2143592-2143888
-snapshot mCanLor1_merged_134.png
-135
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2165795-2166091
-snapshot mCanLor1_merged_135.png
-136
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2204113-2204409
-snapshot mCanLor1_merged_136.png
-137
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2228761-2229057
-snapshot mCanLor1_merged_137.png
-138
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2239250-2239544
-snapshot mCanLor1_merged_138.png
-139
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2260821-2261117
-snapshot mCanLor1_merged_139.png
-140
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2272093-2272389
-snapshot mCanLor1_merged_140.png
-141
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2277600-2277896
-snapshot mCanLor1_merged_141.png
-142
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2308611-2308908
-snapshot mCanLor1_merged_142.png
-143
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2333202-2333493
-snapshot mCanLor1_merged_143.png
-144
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2357424-2357720
-snapshot mCanLor1_merged_144.png
-145
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2373732-2374027
-snapshot mCanLor1_merged_145.png
-146
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2382985-2383280
-snapshot mCanLor1_merged_146.png
-147
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2407166-2407462
-snapshot mCanLor1_merged_147.png
-148
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2413239-2413535
-snapshot mCanLor1_merged_148.png
-149
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2429671-2429966
-snapshot mCanLor1_merged_149.png
-150
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2450080-2450377
-snapshot mCanLor1_merged_150.png
-151
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2463528-2463824
-snapshot mCanLor1_merged_151.png
-152
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2479055-2479377
-snapshot mCanLor1_merged_152.png
-153
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2509461-2509758
-snapshot mCanLor1_merged_153.png
-154
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2522222-2522518
-snapshot mCanLor1_merged_154.png
-155
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2540351-2540647
-snapshot mCanLor1_merged_155.png
-156
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
 goto SUPER_8:2550154-2550444
-snapshot mCanLor1_merged_156.png
-157
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2554935-2554954
-snapshot mCanLor1_merged_157.png
-158
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2554935-2554954
-snapshot mCanLor1_merged_158.png
-159
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2558000-2558019
-snapshot mCanLor1_merged_159.png
-160
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2558000-2558019
-snapshot mCanLor1_merged_160.png
-161
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2558271-2558290
-snapshot mCanLor1_merged_161.png
-162
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2558271-2558290
-snapshot mCanLor1_merged_162.png
-163
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2588046-2588057
-snapshot mCanLor1_merged_163.png
-164
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2589096-2589149
-snapshot mCanLor1_merged_164.png
-165
-new
-preference SAM.SHOW_ALL_BASES 0
-genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta
-snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam
-load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed
-goto SUPER_8:2589448-2589496
-snapshot mCanLor1_merged_165.png
+snapshot mCanLor1_merged_78.png
