@@ -12,13 +12,14 @@
 #source /spack/apps/anaconda3/2021.05/etc/profile.d/conda.sh
 #conda activate igortest
 
-cd /home1/zhuyixin/sc1/ImmAssm/hifi_fastq/mCerEla1/
+mkdir /home1/zhuyixin/sc1/ImmAssm/hifi_fastq/mMelMel3
+cd /home1/zhuyixin/sc1/ImmAssm/hifi_fastq/mMelMel3
 
-wget https://genomeark.s3.amazonaws.com/species/Cervus_elaphus/mCerEla1/genomic_data/pacbio_hifi/m64016_200911_163100.ccs.bc1020_BAK8B_OA--bc1020_BAK8B_OA.bam
-wget https://genomeark.s3.amazonaws.com/species/Cervus_elaphus/mCerEla1/genomic_data/pacbio_hifi/m64089_200918_152723.ccs.bc1020_BAK8B_OA--bc1020_BAK8B_OA.bam
-wget https://genomeark.s3.amazonaws.com/species/Cervus_elaphus/mCerEla1/genomic_data/pacbio_hifi/m64089_200919_155532.ccs.bc1020_BAK8B_OA--bc1020_BAK8B_OA.bam
-wget https://genomeark.s3.amazonaws.com/species/Cervus_elaphus/mCerEla1/genomic_data/pacbio_hifi/m64125_201008_110302.ccs.bc1020_BAK8B_OA--bc1020_BAK8B_OA.bam
-#wget https://genomeark.s3.amazonaws.com/species/Canis_lupus_orion/mCanLor1/genomic_data/pacbio_hifi/m64094_201014_175437.ccs.bc1001_BAK8A_OA--bc1001_BAK8A_OA.bam
+wget https://genomeark.s3.amazonaws.com/species/Meles_meles/mMelMel3/genomic_data/pacbio_hifi/m64094_200910_173211.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.bam
+wget https://genomeark.s3.amazonaws.com/species/Meles_meles/mMelMel3/genomic_data/pacbio_hifi/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.bam
+wget https://genomeark.s3.amazonaws.com/species/Meles_meles/mMelMel3/genomic_data/pacbio_hifi/m64125_200903_154937.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.bam
+wget https://genomeark.s3.amazonaws.com/species/Meles_meles/mMelMel3/genomic_data/pacbio_hifi/m64125_201113_134826.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.bam
+wget https://genomeark.s3.amazonaws.com/species/Meles_meles/mMelMel3/genomic_data/pacbio_hifi/m64125_201114_141552.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.bam
 #wget https://genomeark.s3.amazonaws.com/species/Canis_lupus_orion/mCanLor1/genomic_data/pacbio_hifi/m64094_201015_180930.ccs.bc1001_BAK8A_OA--bc1001_BAK8A_OA.bam
 #wget https://genomeark.s3.amazonaws.com/species/Canis_lupus_orion/mCanLor1/genomic_data/pacbio_hifi/m64016_200910_161534.ccs.bc1001_BAK8A_OA--bc1001_BAK8A_OA.bam.pbi
 #wget https://genomeark.s3.amazonaws.com/species/Canis_lupus_orion/mCanLor1/genomic_data/pacbio_hifi/m64089_200917_151241.ccs.bc1001_BAK8A_OA--bc1001_BAK8A_OA.bam.pbi
