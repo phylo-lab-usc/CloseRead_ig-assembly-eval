@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=20                    # Run on a single CPU 
 #SBATCH --time=24:00:00               # Time limit hrs:min:sec
-#SBATCH --output=serial_test_%j.log   # Standard output and error log
+#SBATCH --output=dataPrep.log   # Standard output and error log
 
 
 

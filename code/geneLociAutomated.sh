@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=20                    # Run on a single CPU 
 #SBATCH --time=24:00:00               # Time limit hrs:min:sec
-#SBATCH --output=serial_test_%j.log   # Standard output and error log
+#SBATCH --output=gene_automated.log   # Standard output and error log
 
 
 
@@ -21,16 +21,18 @@ HOME=/home1/zhuyixin/sc1/ImmAssm
 
 cat ${HOME}/code/name.txt | while read line
 do 
+    #create output directories
+    mkdir /home1/zhuyixin/sc1/ImmAssm/gene_position/${line}
     #Select only the productive gene
     awk -F$'\t' '$6 == "True"' ${HOME}/mammalian_igdetective_v2.0/${line}_igdetective/combined_genes_IGH.txt > ${HOME}/gene_position/${line}/${line}_genes_IGH_productive.txt
     #Count each gene's length
     awk -F$'\t' '{print $5}' ${HOME}/gene_position/${line}/${line}_genes_IGH_productive.txt | awk -v FS="" '{print NF;}' > ${HOME}/gene_position/${line}/${line}_genes_IGH_productive_length.txt
     #add a header "Length"
-    sed -i  "1s/.*/Length/" ${HOME}/gene_position/${line}/${line}_genes_IGH_length.txt 
+    sed -i  "1s/.*/Length/" ${HOME}/gene_position/${line}/${line}_genes_IGH_productive_length.txt 
     #get Chromosome, start, strand infomation
-    awk -F$'\t' '{print $2 "\t" $3 "\t" $4}' ${HOME}/mammalian_igdetective_v2.0/${line}_igdetective/combined_genes_IGH.txt > ${HOME}/gene_position/${line}/gene_IGH_start.txt
+    awk -F$'\t' '{print $2 "\t" $3 "\t" $4}' ${HOME}/gene_position/${line}/${line}_genes_IGH_productive.txt > ${HOME}/gene_position/${line}/gene_IGH_start.txt
     #merge length with the chromosome information
-    paste -d"\t" ${HOME}/gene_position/${line}/${line}_genes_IGH_length.txt ${HOME}/gene_position/${line}/gene_IGH_start.txt > ${HOME}/gene_position/${line}/temp1.txt 
+    paste -d"\t" ${HOME}/gene_position/${line}/${line}_genes_IGH_productive_length.txt ${HOME}/gene_position/${line}/gene_IGH_start.txt > ${HOME}/gene_position/${line}/temp1.txt 
     #add start and length to get gene end position
     awk -F"\t" 'NR==1 {val = "End"} NR > 1 {val = $1+$3} {$(++NF) = val; print}' OFS='\t' ${HOME}/gene_position/${line}/temp1.txt > ${HOME}/gene_position/${line}/temp2.txt
     #remove the Length column
