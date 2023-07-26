@@ -1,19 +1,39 @@
+#!/bin/bash
+#SBATCH --job-name=igv    # Job name
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=20                    # Run on a single CPU 
+#SBATCH --time=24:00:00               # Time limit hrs:min:sec
+#SBATCH --output=igv.log   # Standard output and error log
+
+source /etc/profile.d/modules.sh
+module load conda
+module load gcc/11.3.0
+module load samtools/1.17
+conda init
+source /spack/conda/miniconda3/4.12.0/etc/profile.d/conda.sh
+conda activate /home1/zhuyixin/.conda/envs/assembly
+
 function igv {
-    mkdir /home1/zhuyixin/sc1/ImmAssm/igv
-    cat /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed | while read chrom start end sv score strand
+    mkdir ${HOME}/igv/${1}
+    cat ${HOME}/gene_position/${1}/gene_IGH_pos_sorted.bed | while read chrom start end sv score strand
     do
     echo $sv
-    mkdir /home1/zhuyixin/sc1/ImmAssm/igv/snapshot
-    bam="/home1/zhuyixin/sc1/ImmAssm/aligned_bam/mCanLor1/mCanLor1_merged.bam"
+    mkdir ${HOME}/igv/${1}/snapshot
+    bam="${HOME}/aligned_bam/${1}/${1}_merged_sorted.bam"
     echo "new"
     echo "preference SAM.SHOW_ALL_BASES 0"
-    echo "genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mCanLor1.pri.cur.20210315.fasta"
-    echo "snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/snapshot"
+    echo "genome ${HOME}/assemblies/${1}*fasta"
+    echo "snapshotDirectory ${HOME}/igv/${1}/snapshot"
     echo "load ${bam}"
-    echo "load /home1/zhuyixin/sc1/ImmAssm/gene_position/mCanLor1/gene_IGH_pos_sorted.bed"
+    echo "load ${HOME}/gene_position/${1}/gene_IGH_pos_sorted.bed"
     echo "goto ${chrom}:${start}-${end}"
-    echo "snapshot mCanLor1_merged_${sv}.png"
-    done    > /home1/zhuyixin/sc1/ImmAssm/igv/igv.txt
+    echo "snapshot ${1}_merged_${sv}.png"
+    done    > /home1/zhuyixin/sc1/ImmAssm/igv/${1}/igv.txt
 }
 
-igv
+HOME=/home1/zhuyixin/sc1/ImmAssm
+
+cat ${HOME}/igv_name.txt | while read line
+do 
+    igv $line
+done
