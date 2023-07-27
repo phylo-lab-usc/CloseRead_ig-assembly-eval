@@ -1,0 +1,198 @@
+1
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:319235957-319236253
+snapshot mMacEug1_merged_1.png
+2
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:319252575-319252871
+snapshot mMacEug1_merged_2.png
+3
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:319269597-319269893
+snapshot mMacEug1_merged_3.png
+4
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:319286177-319286473
+snapshot mMacEug1_merged_4.png
+5
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:319303174-319303470
+snapshot mMacEug1_merged_5.png
+6
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:319319752-319320048
+snapshot mMacEug1_merged_6.png
+7
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:319407063-319407356
+snapshot mMacEug1_merged_7.png
+8
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:319450358-319450654
+snapshot mMacEug1_merged_8.png
+9
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:319536392-319536685
+snapshot mMacEug1_merged_9.png
+10
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:319671358-319671657
+snapshot mMacEug1_merged_10.png
+11
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:319909254-319909550
+snapshot mMacEug1_merged_11.png
+12
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:320078623-320078919
+snapshot mMacEug1_merged_12.png
+13
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:320299355-320299654
+snapshot mMacEug1_merged_13.png
+14
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:320414954-320415253
+snapshot mMacEug1_merged_14.png
+15
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:320694366-320694656
+snapshot mMacEug1_merged_15.png
+16
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:320855910-320856206
+snapshot mMacEug1_merged_16.png
+17
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:320978499-320978795
+snapshot mMacEug1_merged_17.png
+18
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:321107420-321107716
+snapshot mMacEug1_merged_18.png
+19
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:321863303-321863596
+snapshot mMacEug1_merged_19.png
+20
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:321872105-321872395
+snapshot mMacEug1_merged_20.png
+21
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:322018446-322018742
+snapshot mMacEug1_merged_21.png
+22
+new
+preference SAM.SHOW_ALL_BASES 0
+genome /home1/zhuyixin/sc1/ImmAssm/assemblies/mMacEug1.fasta
+snapshotDirectory /home1/zhuyixin/sc1/ImmAssm/igv/mMacEug1/snapshot
+load /home1/zhuyixin/sc1/ImmAssm/aligned_bam/mMacEug1/mMacEug1_merged_sorted.bam
+load /home1/zhuyixin/sc1/ImmAssm/gene_position/mMacEug1/gene_IGH_pos_sorted.bed
+goto SUPER_1:322147798-322148094
+snapshot mMacEug1_merged_22.png
