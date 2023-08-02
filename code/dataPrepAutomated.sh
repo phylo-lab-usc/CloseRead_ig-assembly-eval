@@ -2,7 +2,7 @@
 #SBATCH --job-name=automated    # Job name
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=20                    # Run on a single CPU 
-#SBATCH --time=24:00:00               # Time limit hrs:min:sec
+#SBATCH --time=48:00:00               # Time limit hrs:min:sec
 #SBATCH --output=dataPrep.log   # Standard output and error log
 
 

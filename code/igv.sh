@@ -23,7 +23,7 @@ function igv {
     echo "new"
     echo "preference SAM.SHOW_ALL_BASES 0"
     echo "genome ${HOME}/assemblies/${1}.fasta"
-    echo "snapshotDirectory ${HOME}/igv/${1}/snapshot"
+    echo "snapshotDirectory ${HOME}/igv/${function}/${1}/snapshot"
     echo "load ${bam}"
     echo "load ${HOME}/gene_position/${function}/${1}/gene_IGH_pos_sorted.bed"
     echo "goto ${chrom}:${start}-${end}"
