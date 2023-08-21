@@ -6,28 +6,19 @@
 #SBATCH --output=gene_automated.log   # Standard output and error log
 
 
-
-
-source /etc/profile.d/modules.sh
-module load conda
-module load gcc/11.3.0
-module load samtools/1.17
-conda init
-source /spack/conda/miniconda3/4.12.0/etc/profile.d/conda.sh
-conda activate /home1/zhuyixin/.conda/envs/assembly
-
-
-HOME=/home1/zhuyixin/sc1/ImmAssm
-while getopts f: flag
+#HOME=/home1/zhuyixin/sc1/ImmAssm
+while getopts 'f:p:' option
 do
-    case "${flag}" in
+    case "$option" in
         f) function=${OPTARG};;
+        p) HOME=${OPTARG};;
     esac
 done
+mkdir ${HOME}/gene_position/${function}
 cat ${HOME}/igv_name.txt | while read line
 do 
     #create output directories
-    mkdir /home1/zhuyixin/sc1/ImmAssm/gene_position/${function}/${line}
+    mkdir ${HOME}/gene_position/${function}/${line}
     #Select only the productive gene
     awk -F$'\t' '$6 == "True"' ${HOME}/mammalian_igdetective_v2.0/${line}_igdetective/combined_genes_IGH.txt > ${HOME}/gene_position/${function}/${line}/${line}_genes_IGH_productive.txt
     #Select only the non-productive gene
