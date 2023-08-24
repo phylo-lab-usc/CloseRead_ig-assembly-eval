@@ -1,9 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=automated    # Job name
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=20                    # Run on a single CPU 
+#SBATCH --cpus-per-task=40                    # Run on a single CPU 
 #SBATCH --time=48:00:00               # Time limit hrs:min:sec
-#SBATCH --output=dataPrep.log   # Standard output and error log
+#SBATCH --output=log/dataPrep%j.log   # Standard output and error log
+#SBATCH --mem=60G
 
 
 
@@ -22,10 +23,10 @@ do
         g) genome=${OPTARG};;
     esac
 done
-echo $genome
 HOME=/home1/zhuyixin/sc1/ImmAssm
 cat ${HOME}/code/name.txt | while read line
 do 
+    echo $line
     #check if this species' data is in bam or not, convert to fastq if yes
     count=`ls -1 ${HOME}/hifi_fastq/${line}/*.bam 2>/dev/null | wc -l`
     merged=`ls -1 ${HOME}/hifi_fastq/${line}/*_merged.fastq 2>/dev/null | wc -l`
@@ -51,7 +52,7 @@ do
     mkdir ${HOME}/aligned_sam/${genome}/${line}
     mkdir ${HOME}/aligned_bam/${genome}/${line}
     #map the merged fastq file to the coresponding assembly
-    minimap2 -t 20 -a ${HOME}/assemblies/${line}*merged.fasta ${HOME}/hifi_fastq/${line}/${line}_merged.fastq > ${HOME}/aligned_sam/${genome}/${line}/${line}_merged.sam
+    minimap2 -t 40 -a ${HOME}/assemblies/${line}*merged.fasta ${HOME}/hifi_fastq/${line}/${line}_merged.fastq > ${HOME}/aligned_sam/${genome}/${line}/${line}_merged.sam
     #convert the SAM result to sorted BAM format
     samtools sort ${HOME}/aligned_sam/${genome}/${line}/${line}_merged.sam -o ${HOME}/aligned_bam/${genome}/${line}/${line}_merged_sorted.bam
     #index the sorted BAM file

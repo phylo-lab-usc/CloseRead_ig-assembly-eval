@@ -15,8 +15,10 @@ do
         g) genome=${OPTARG};;
     esac
 done
+mkdir ${HOME}/gene_position/
+mkdir ${HOME}/gene_position/${genome}/
 mkdir ${HOME}/gene_position/${genome}/${function}
-cat ${HOME}/igv_name.txt | while read line
+cat ${HOME}/code/name.txt | while read line
 do 
     #create output directories
     mkdir ${HOME}/gene_position/${genome}/${function}/${line}

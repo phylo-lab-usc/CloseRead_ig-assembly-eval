@@ -22,6 +22,7 @@ function igv {
     bam="${HOME}/aligned_bam/${1}/${1}_merged_sorted.bam"
     echo "new"
     echo "preference SAM.SHOW_ALL_BASES 0"
+    echo "preference SAM.SHOW_SOFT_CLIPPED true"
     echo "genome ${HOME}/assemblies/${1}.fasta"
     echo "snapshotDirectory ${HOME}/igv/${function}/${1}/snapshot"
     echo "load ${bam}"
