@@ -54,7 +54,7 @@ do
     #map the merged fastq file to the coresponding assembly
     minimap2 -t 40 -a ${HOME}/assemblies/${line}*merged.fasta ${HOME}/hifi_fastq/${line}/${line}_merged.fastq > ${HOME}/aligned_sam/${genome}/${line}/${line}_merged.sam
     #convert the SAM result to sorted BAM format
-    samtools sort ${HOME}/aligned_sam/${genome}/${line}/${line}_merged.sam -o ${HOME}/aligned_bam/${genome}/${line}/${line}_merged_sorted.bam
+    samtools sort -@ 40 ${HOME}/aligned_sam/${genome}/${line}/${line}_merged.sam -o ${HOME}/aligned_bam/${genome}/${line}/${line}_merged_sorted.bam
     #index the sorted BAM file
     samtools index ${HOME}/aligned_bam/${genome}/${line}/${line}_merged_sorted.bam
 done

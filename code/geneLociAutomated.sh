@@ -22,10 +22,17 @@ cat ${HOME}/code/name.txt | while read line
 do 
     #create output directories
     mkdir ${HOME}/gene_position/${genome}/${function}/${line}
-    #Select only the productive gene
-    awk -F$'\t' '$6 == "True"' ${HOME}/mammalian_igdetective_v2.0/${line}_igdetective/combined_genes_IGH.txt > ${HOME}/gene_position/${genome}/${function}/${line}/${line}_genes_IGH_productive.txt
-    #Select only the non-productive gene
-    awk -F$'\t' '$6 == "False"' ${HOME}/mammalian_igdetective_v2.0/${line}_igdetective/combined_genes_IGH.txt > ${HOME}/gene_position/${genome}/${function}/${line}/${line}_genes_IGH_nonproductive.txt
+    if [ "$genome" = "alt" ]; then
+        #Select only the productive gene
+        awk -F$'\t' '$6 == "True"' ${HOME}/IgDetective_alt/${line}/combined_genes_IGH.txt > ${HOME}/gene_position/${genome}/${function}/${line}/${line}_genes_IGH_productive.txt
+        #Select only the non-productive gene
+        awk -F$'\t' '$6 == "False"' ${HOME}/IgDetective_alt/${line}/combined_genes_IGH.txt > ${HOME}/gene_position/${genome}/${function}/${line}/${line}_genes_IGH_nonproductive.txt
+    else
+        #Select only the productive gene
+        awk -F$'\t' '$6 == "True"' ${HOME}/mammalian_igdetective_v2.0/${line}_igdetective/combined_genes_IGH.txt > ${HOME}/gene_position/${genome}/${function}/${line}/${line}_genes_IGH_productive.txt
+        #Select only the non-productive gene
+        awk -F$'\t' '$6 == "False"' ${HOME}/mammalian_igdetective_v2.0/${line}_igdetective/combined_genes_IGH.txt > ${HOME}/gene_position/${genome}/${function}/${line}/${line}_genes_IGH_nonproductive.txt
+    fi
     #save as variable
     if [ "$function" = "functional" ]; then
         IGHloci=${line}_genes_IGH_productive.txt
