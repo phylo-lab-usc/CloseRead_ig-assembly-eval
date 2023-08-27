@@ -59,7 +59,6 @@ do
     samtools index ${HOME}/aligned_bam/${genome}/${line}/${line}_merged_sorted.bam
 done
 
- 
 
 
 
