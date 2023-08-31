@@ -19,4 +19,6 @@ mkdir ${HOME}/gene_position/${extended}/combined/${function}
 cat ${HOME}/code/name.txt | while read line
 do 
     cat ${HOME}/gene_position/${extended}/primary/${function}/${line}/gene_IGH_pos_sorted.bed ${HOME}/gene_position/${extended}/alt/${function}/${line}/gene_IGH_pos_sorted.bed > ${HOME}/gene_position/${extended}/combined/${function}/${line}_${function}.bed
+    awk -F'\t' '{print $1 "\t" $2 "\t" $3 "\t" NR "\t" "0" "\t" $6 }' ${HOME}/gene_position/${extended}/combined/${function}/${line}_${function}.bed > ${HOME}/gene_position/${extended}/combined/${function}/${line}_temp.bed
+    mv ${HOME}/gene_position/${extended}/combined/${function}/${line}_temp.bed ${HOME}/gene_position/${extended}/combined/${function}/${line}_${function}.bed
 done

@@ -47,29 +47,29 @@ do
     #sed -i  "1s/.*/Length/" ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/${line}_genes_IGH_length.txt 
     #get Chromosome, start, strand infomation
     awk -F$'\t' '{print $2 "\t" $3 "\t" $4}' ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/${IGHloci} > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_start.txt
-    #merge length with the chromosome information
-    #paste -d"\t" ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/${line}_genes_IGH_length.txt ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_start.txt > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/temp1.txt 
-    #add start and length to get gene end position
-    #awk -F"\t" 'NR >= 1 {val = $1+$3} {$(++NF) = val; print}' OFS='\t' ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/temp1.txt > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_pos.txt
     #expand start to get gene position
     if [ "$extended" = "extended" ]; then
         awk -F"\t" 'NR >= 1 {val = $2+20000} {$(++NF) = val; print}' OFS='\t' ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_start.txt > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/temp.txt
         awk -F"\t" 'NR >= 1 {val = $2-20000} {$(++NF) = val; print}' OFS='\t' ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/temp.txt > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/temp1.txt
+        cut -f1,3,4,5 ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/temp1.txt > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_pos.txt
+        # re-order file to convert into bed format
+        awk -F'\t' '{print $1 "\t" $4 "\t" $3 "\t" NR "\t" "0" "\t" $2 }' ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_pos.txt > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_pos.bed
     else
-        awk -F"\t" 'NR >= 1 {val = $2+2000} {$(++NF) = val; print}' OFS='\t' ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_start.txt > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/temp.txt
-        awk -F"\t" 'NR >= 1 {val = $2-200} {$(++NF) = val; print}' OFS='\t' ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/temp.txt > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/temp1.txt
+        #merge length with the chromosome information
+        paste -d"\t" ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/${line}_genes_IGH_length.txt ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_start.txt > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/temp.txt 
+        #add start and length to get gene end position
+        awk -F"\t" 'NR >= 1 {val = $1+$3} {$(++NF) = val; print}' OFS='\t' ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/temp.txt > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/temp1.txt
+        cut -f2,3,4,5 ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/temp1.txt > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_pos.txt
+        # re-order file to convert into bed format
+        awk -F'\t' '{print $1 "\t" $2 "\t" $4 "\t" NR "\t" "0" "\t" $3 }' ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_pos.txt > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_pos.bed
     fi
-    #remove the start column
-    cut -f1,3,4,5 ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/temp1.txt > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_pos.txt
-    #remove the Length column
     #cut -f2- ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/temp2.txt > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_pos.txt 
     #remove temporary files
     #rm -rf ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/temp*.txt 
     ## Next we want to convert gene_IGH_pos.txt into a bed file
     # remove the headers
     #sed -i '1d' ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_pos.txt
-    # re-order file to convert into bed format
-    awk -F'\t' '{print $1 "\t" $4 "\t" $3 "\t" NR "\t" "0" "\t" $2 }' ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_pos.txt > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_pos.bed
+
     #sort the bed file
     sort -k1,1 -k2,2n -k3,3n ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_pos.bed > ${HOME}/gene_position/${extended}/${genome}/${function}/${line}/gene_IGH_pos_sorted.bed
     #replace negative corrdinates with 0
