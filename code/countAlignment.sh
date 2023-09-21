@@ -29,22 +29,26 @@ HOME=/home1/zhuyixin/sc1/ImmAssm
 cat ${HOME}/code/name.txt | while read line
 do 
     echo ${line}
-    awk -v OFS='\t' {'print $1,$2'} assemblies/${line}.merged.fasta.fai > assemblies/${line}.genome
+    #awk -v OFS='\t' {'print $1,$2'} assemblies/${line}.merged.fasta.fai > assemblies/${line}.genome
     echo "finished genome prep"
     #extract secondary alignment
-    samtools view -b -f 256 -@ 40 aligned_bam/${genome}/${line}/${line}_merged*.bam > split_bam/${genome}/${line}_merged_secondary.bam
+    #samtools view -b -f 256 -@ 40 aligned_bam/${genome}/${line}/${line}_merged*.bam > split_bam/${genome}/${line}_merged_secondary.bam
     echo "finished secondary alignment"
     #extract primary alignment 
-    samtools view -b -F 0x800 -F 0x100 -@ 40 aligned_bam/${genome}/${line}/${line}_merged*.bam > split_bam/${genome}/${line}_merged_primary.bam
+    #samtools view -b -F 0x800 -F 0x100 -@ 40 aligned_bam/${genome}/${line}/${line}_merged*.bam > split_bam/${genome}/${line}_merged_primary.bam
     echo "finished primary alignment"
     #bedtools to generate stats
-    coverageBed -counts -sorted -nobuf -g assemblies/${line}.genome -a gene_position/${extended}/${genome}/functional/${line}/gene_IGH_pos_sorted.bed -b split_bam/${genome}/${line}_merged_primary.bam > alignment_count/${extended}/${genome}/${line}_funcional_primary_count.txt
+    #coverageBed -counts -sorted -nobuf -g assemblies/${line}.genome -a gene_position/${extended}/${genome}/functional/${line}/gene_IGH_pos_sorted.bed -b split_bam/${genome}/${line}_merged_primary.bam > alignment_count/${extended}/${genome}/${line}_funcional_primary_count.txt
+    coverageBed -counts -sorted -nobuf -g assemblies/${line}.genome -a gene_position/${extended}/${genome}/functional/${line}_functional.bed -b split_bam/${genome}/${line}_merged_primary.bam > alignment_count/${extended}/${genome}/${line}_funcional_primary_count.txt
     echo "1"
-    coverageBed -counts -sorted -nobuf -g assemblies/${line}.genome -a gene_position/${extended}/${genome}/functional/${line}/gene_IGH_pos_sorted.bed -b split_bam/${genome}/${line}_merged_secondary.bam > alignment_count/${extended}/${genome}/${line}_funcional_secondary_count.txt 
+    #coverageBed -counts -sorted -nobuf -g assemblies/${line}.genome -a gene_position/${extended}/${genome}/functional/${line}/gene_IGH_pos_sorted.bed -b split_bam/${genome}/${line}_merged_secondary.bam > alignment_count/${extended}/${genome}/${line}_funcional_secondary_count.txt 
+    coverageBed -counts -sorted -nobuf -g assemblies/${line}.genome -a gene_position/${extended}/${genome}/functional/${line}_functional.bed -b split_bam/${genome}/${line}_merged_secondary.bam > alignment_count/${extended}/${genome}/${line}_funcional_secondary_count.txt
     echo "2"
-    coverageBed -counts -sorted -nobuf -g assemblies/${line}.genome -a gene_position/${extended}/${genome}/nonfunctional/${line}/gene_IGH_pos_sorted.bed -b split_bam/${genome}/${line}_merged_primary.bam > alignment_count/${extended}/${genome}/${line}_nonfuncional_primary_count.txt
+    #coverageBed -counts -sorted -nobuf -g assemblies/${line}.genome -a gene_position/${extended}/${genome}/nonfunctional/${line}/gene_IGH_pos_sorted.bed -b split_bam/${genome}/${line}_merged_primary.bam > alignment_count/${extended}/${genome}/${line}_nonfuncional_primary_count.txt
+    coverageBed -counts -sorted -nobuf -g assemblies/${line}.genome -a gene_position/${extended}/${genome}/nonfunctional/${line}_nonfunctional.bed -b split_bam/${genome}/${line}_merged_primary.bam > alignment_count/${extended}/${genome}/${line}_nonfuncional_primary_count.txt
     echo "3"
-    coverageBed -counts -sorted -nobuf -g assemblies/${line}.genome -a gene_position/${extended}/${genome}/nonfunctional/${line}/gene_IGH_pos_sorted.bed -b split_bam/${genome}/${line}_merged_secondary.bam > alignment_count/${extended}/${genome}/${line}_nonfuncional_secondary_count.txt 
+    #coverageBed -counts -sorted -nobuf -g assemblies/${line}.genome -a gene_position/${extended}/${genome}/nonfunctional/${line}/gene_IGH_pos_sorted.bed -b split_bam/${genome}/${line}_merged_secondary.bam > alignment_count/${extended}/${genome}/${line}_nonfuncional_secondary_count.txt
+    coverageBed -counts -sorted -nobuf -g assemblies/${line}.genome -a gene_position/${extended}/${genome}/nonfunctional/${line}_nonfunctional.bed -b split_bam/${genome}/${line}_merged_secondary.bam > alignment_count/${extended}/${genome}/${line}_nonfuncional_secondary_count.txt  
     echo "4"
 done
 

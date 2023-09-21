@@ -17,11 +17,22 @@ function igv {
     mkdir ${HOME}/igv/${genome}_${extended}
     mkdir ${HOME}/igv/${genome}_${extended}/${function}
     mkdir ${HOME}/igv/${genome}_${extended}/${function}/${1}
-    cat ${HOME}/gene_position/${extended}/${genome}/${function}/${1}_${function}.bed | while read chrom start end sv score strand
+    if [ $genome == 'combined' ]
+    then
+        BED=${HOME}/gene_position/${extended}/${genome}/${function}/${1}_${function}.bed
+    else
+        BED=${HOME}/gene_position/${extended}/${genome}/${function}/${1}/gene_IGH_pos_sorted.bed
+    fi
+    cat $BED | while read chrom start end sv score strand
     do
     echo $sv
     mkdir ${HOME}/igv/${genome}_${extended}/${function}/${1}/snapshot
-    bam="${HOME}/aligned_bam/${genome}/${1}/${1}_merged_sorted.bam"
+    if [ $genome == 'combined' ]
+    then
+        bam="${HOME}/aligned_bam/${genome}/${1}/${1}_merged_sorted.bam"
+    else   
+        bam="${HOME}/aligned_bam/${genome}/${1}/${1}_merged.bam"
+    fi
     echo "new"
     echo "preference SAM.SHOW_ALL_BASES 0"
     echo "preference SAM.SHOW_SOFT_CLIPPED true"
@@ -34,7 +45,7 @@ function igv {
     fi
     echo "snapshotDirectory ${HOME}/igv/${genome}_${extended}/${function}/${1}/snapshot"
     echo "load ${bam}"
-    echo "load ${HOME}/gene_position/${extended}/${genome}/${function}/${1}_${function}.bed"
+    echo "load $BED"
     echo "goto ${chrom}:${start}-${end}"
     echo "snapshot ${1}_merged_${sv}.png"
     done    > /home1/zhuyixin/sc1/ImmAssm/igv/${genome}_${extended}/${function}/${1}/igv.txt
