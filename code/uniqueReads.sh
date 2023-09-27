@@ -29,10 +29,11 @@ do
     echo $name
     if [ "$genome" = "combined" ]; then
         samtools view -b -F 256 -q 60 -@ 40 $f > ~/sc1/ImmAssm/split_bam/combined/${name}_unique60_primary.bam
-        coverageBed -counts -sorted -nobuf -g assemblies/${name}.genome -a gene_position/${extended}/${genome}/functional/${name}_functional.bed -b split_bam/${genome}/${name}_unique60_primary.bam > alignment_count/${extended}/${genome}/${line}_funcional_unique60_primary_count.txt
-        coverageBed -counts -sorted -nobuf -g assemblies/${name}.genome -a gene_position/${extended}/${genome}/nonfunctional/${name}_nonfunctional.bed -b split_bam/${genome}/${name}_unique60_primary.bam > alignment_count/${extended}/${genome}/${line}_nonfuncional_unique60_primary_count.txt
+        coverageBed -counts -sorted -nobuf -g ~/sc1/ImmAssm/assemblies/${name}.genome -a ~/sc1/ImmAssm/gene_position/${extended}/${genome}/functional/${name}_functional.bed -b ~/sc1/ImmAssm/split_bam/${genome}/${name}_unique60_primary.bam > ~/sc1/ImmAssm/alignment_count/${extended}/${genome}/${name}_funcional_unique60_primary_count.txt
+        coverageBed -counts -sorted -nobuf -g ~/sc1/ImmAssm/assemblies/${name}.genome -a ~/sc1/ImmAssm/gene_position/${extended}/${genome}/nonfunctional/${name}_nonfunctional.bed -b ~/sc1/ImmAssm/split_bam/${genome}/${name}_unique60_primary.bam > ~/sc1/ImmAssm/alignment_count/${extended}/${genome}/${name}_nonfuncional_unique60_primary_count.txt
     else
-        coverageBed -counts -sorted -nobuf -g assemblies/${line}.genome -a gene_position/${extended}/${genome}/functional/${line}/gene_IGH_pos_sorted.bed -b split_bam/${genome}/${name}_unique60_primary.bam > alignment_count/${extended}/${genome}/${line}_funcional_unique60_primary_count.txt
-        coverageBed -counts -sorted -nobuf -g assemblies/${line}.genome -a gene_position/${extended}/${genome}/nonfunctional/${line}/gene_IGH_pos_sorted.bed -b split_bam/${genome}/${name}_unique60_primary.bam > alignment_count/${extended}/${genome}/${line}_nonfuncional_unique60_primary_count.txt
+        samtools view -b -F 256 -q 60 -@ 40 $f > ~/sc1/ImmAssm/split_bam/primary/${name}_unique60_primary.bam
+        coverageBed -counts -sorted -nobuf -g ~/sc1/ImmAssm/assemblies/${name}.genome -a ~/sc1/ImmAssm/gene_position/${extended}/${genome}/functional/${name}/gene_IGH_pos_sorted.bed -b ~/sc1/ImmAssm/split_bam/${genome}/${name}_unique60_primary.bam > ~/sc1/ImmAssm/alignment_count/${extended}/${genome}/${name}_funcional_unique60_primary_count.txt
+        coverageBed -counts -sorted -nobuf -g ~/sc1/ImmAssm/assemblies/${name}.genome -a ~/sc1/ImmAssm/gene_position/${extended}/${genome}/nonfunctional/${name}/gene_IGH_pos_sorted.bed -b ~/sc1/ImmAssm/split_bam/${genome}/${name}_unique60_primary.bam > ~/sc1/ImmAssm/alignment_count/${extended}/${genome}/${name}_nonfuncional_unique60_primary_count.txt
     fi
 done
