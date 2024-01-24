@@ -16,14 +16,7 @@ def calculate_mismatches(read):
     ambiguous = sum(length for op, length in read.cigartuples if op == 3)  # Sum of 'N'
 
     mismatches = nm_tag - insertions - deletions - ambiguous
-    indels = 0
-    total_indel_length = 0
-    for operation, length in read.cigartuples:
-        # Insertion or Deletion longer than 2
-        if (operation == 1 or operation == 2) and length > 2:
-            indels += 1
-            total_indel_length += length
-    return mismatches, indels, total_indel_length
+    return mismatches
 
 def process_bam_file(bam_file_path, output_file_path):
     """ Process a BAM file to estimate mismatches for each read. """
@@ -31,15 +24,14 @@ def process_bam_file(bam_file_path, output_file_path):
     with open(output_file_path, 'w') as file:
         for read in bamfile.fetch():
             if not read.is_unmapped:
-                mismatches, indels, total_indel_length = calculate_mismatches(read)
+                mismatches = calculate_mismatches(read)
                 read_length = read.query_length
                 mismatch_rate = mismatches / read_length
                 read_name = read.query_name
                 chromosome = bamfile.get_reference_name(read.reference_id)
                 position = read.reference_start
                 mapping_quality = read.mapping_quality
-                indel_rate = total_indel_length / read_length
-                file.write(f"{read_name}\t{chromosome}\t{position}\t{mapping_quality}\t{read_length}\t{mismatches}\t{mismatch_rate}\t{indels}\t{total_indel_length}\t{indel_rate}\n")
+                file.write(f"{read_name}\t{chromosome}\t{position}\t{mapping_quality}\t{read_length}\t{mismatches}\t{mismatch_rate}\n")
     bamfile.close()
 
 def process_sam_file(sam_file_path, output_file_path):
@@ -48,20 +40,19 @@ def process_sam_file(sam_file_path, output_file_path):
     with open(output_file_path, 'w') as file:
         for read in samfile.fetch():
             if not read.is_unmapped:
-                mismatches, indels, total_indel_length = calculate_mismatches(read)
+                mismatches = calculate_mismatches(read)
                 read_length = read.query_length
                 mismatch_rate = mismatches / read_length
                 read_name = read.query_name
                 chromosome = samfile.get_reference_name(read.reference_id)
                 position = read.reference_start
                 mapping_quality = read.mapping_quality
-                indel_rate = total_indel_length / read_length
-                file.write(f"{read_name}\t{chromosome}\t{position}\t{mapping_quality}\t{read_length}\t{mismatches}\t{mismatch_rate}\t{indels}\t{total_indel_length}\t{indel_rate}\n")
+                file.write(f"{read_name}\t{chromosome}\t{position}\t{mapping_quality}\t{read_length}\t{mismatches}\t{mismatch_rate}\n")
     samfile.close()
 
 def plot_histograms(file_path, output_file):
         fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(15, 6))
-        sns.set(style="white")
+        sns.set(style="whitegrid")
         colors = ["#87CEEB", "#FDA50F", "#228B22", "#708090"]
         mismatch = np.loadtxt(file_path, usecols=[5])
         mismatch_rate = np.loadtxt(file_path, usecols=[6])
@@ -83,7 +74,7 @@ def plot_histograms(file_path, output_file):
         axes[1].tick_params(axis='both', which='major', labelsize=12)
      
         plt.tight_layout(rect=[0, 0.03, 1, 0.95])
-        plt.savefig(output_file, format='svg', dpi=300)
+        plt.savefig(output_file, format='png', dpi=300)
 
 def count_mismatches(file_path):
     # Read the data
@@ -101,20 +92,20 @@ def plot_mismatch_bar(more_than_001, less_or_equal_001, output_file):
     counts = [more_than_001, less_or_equal_001]
 
     # Create the bar plot
-    sns.set_style("white")
+    sns.set_style("whitegrid")
     colors = ["#87CEEB", "#FDA50F", "#228B22", "#708090"]
 
     plt.figure(figsize=(8, 6))
     sns.barplot(x=categories, y=counts, palette=colors)
     plt.title('Mismatches Rate', fontsize=18, fontweight='bold')
     plt.xlabel('Mismatches Rate', fontsize=14, fontweight='bold')
-    plt.ylabel('# of reads', fontsize=14, fontweight='bold')
+    plt.ylabel('Frequency', fontsize=14, fontweight='bold')
 
     # Set bold font for the tick labels
     plt.xticks(fontweight='bold')
     plt.yticks(fontweight='bold')
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
-    plt.savefig(output_file, format='svg', dpi=300)
+    plt.savefig(output_file, format='png', dpi=300)
 
 def main():
     if len(sys.argv) != 5:
