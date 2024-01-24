@@ -5,7 +5,11 @@ rule all:
         expand("aligned_bam/{species}/{species}_merged_sorted.bam.bai", species = SPECIES),
         expand("/home1/zhuyixin/sc1/AssmQuality/igGene/{species}.pri.igdetective/combined_genes_IGL.txt", species = SPECIES),
         expand("/home1/zhuyixin/sc1/AssmQuality/igGene/{species}.alt.igdetective/combined_genes_IGL.txt", species = SPECIES),  
-        expand("gene_position/{species}/combined/{species}_IGL_pos.sorted.bed", species = SPECIES)
+        expand("gene_position/{species}/combined/{species}_IGL_pos.sorted.bed", species = SPECIES),
+        expand("errorStats/{species}/IGH.txt", species = SPECIES),
+        expand("errorStats/{species}/IGK.txt", species = SPECIES),
+        expand("errorStats/{species}/IGL.txt", species = SPECIES),
+        expand("errorStats/{species}/nonIG.txt", species = SPECIES)
 
 rule dataPrepAutomate:
     input:
@@ -64,8 +68,39 @@ rule mergeLoci:
         {input.script} -s {params.species}
         """
 
+rule convertPrimaryBam:
+    input:
+        bam = expand("aligned_bam/{species}/{species}_merged_sorted.bam", species = SPECIES)
+    output:
+        outputbam = expand("aligned_bam/{species}/{species}_merged_sorted_primary.bam", species = SPECIES)
+    shell:
+        """
+        source /etc/profile.d/modules.sh
+        module load gcc/11.3.0
+        module load samtools/1.17
+        samtools view -b -F 0x800 -F 0x100 -@ 60 {input.bam} > {output.outputbam}
+        """
+
+rule cigarProcessing:
+    input:
+        script = "code/cigar_processing.py",
+        bam = expand("aligned_bam/{species}/{species}_merged_sorted_primary.bam", species = SPECIES),
+        IGHbed = expand("gene_position/{species}/combined/{species}_IGH_pos.sorted.bed", species = SPECIES),
+        IGKbed = expand("gene_position/{species}/combined/{species}_IGK_pos.sorted.bed", species = SPECIES),
+        IGLbed = expand("gene_position/{species}/combined/{species}_IGL_pos.sorted.bed", species = SPECIES)
+    output:
+        expand("errorStats/{species}/IGH.txt", species = SPECIES),
+        expand("errorStats/{species}/IGK.txt", species = SPECIES),
+        expand("errorStats/{species}/IGL.txt", species = SPECIES),
+        expand("errorStats/{species}/nonIG.txt", species = SPECIES)
+    params:
+        species = expand("{species}", species = SPECIES)
+    shell:
+        """
+        python {input.script} {input.bam} {input.IGHbed} {input.IGKbed} {input.IGLbed} {params.species}
+        """
+
 #####TODOs
 
-#rule mismatch:
-
+#rule stats analysis:
 #rule qv0:
