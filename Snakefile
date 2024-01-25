@@ -1,11 +1,9 @@
-SPECIES = "mCanLor2"
+SPECIES = ["mCanLor1", "mCanLor2"]
 
 rule all:
     input:
+        expand("aligned_bam/{species}/{species}_merged_sorted.bam", species = SPECIES),
         expand("aligned_bam/{species}/{species}_merged_sorted.bam.bai", species = SPECIES),
-        expand("/home1/zhuyixin/sc1/AssmQuality/igGene/{species}.pri.igdetective/combined_genes_IGL.txt", species = SPECIES),
-        expand("/home1/zhuyixin/sc1/AssmQuality/igGene/{species}.alt.igdetective/combined_genes_IGL.txt", species = SPECIES),  
-        expand("gene_position/{species}/combined/{species}_IGL_pos.sorted.bed", species = SPECIES),
         expand("errorStats/{species}/IGH.txt", species = SPECIES),
         expand("errorStats/{species}/IGK.txt", species = SPECIES),
         expand("errorStats/{species}/IGL.txt", species = SPECIES),
@@ -15,9 +13,10 @@ rule dataPrepAutomate:
     input:
         script = "code/dataPrepAutomated.sh"
     output:
-        expand("aligned_bam/{species}/{species}_merged_sorted.bam.bai", species = SPECIES)
+        "aligned_bam/{species}/{species}_merged_sorted.bam.bai",
+        "aligned_bam/{species}/{species}_merged_sorted.bam"
     params:
-        species = expand("{species}", species = SPECIES)
+        species = "{species}"
     shell:
         """
         sbatch --partition=qcb {input.script} -s {params.species}
@@ -26,14 +25,14 @@ rule dataPrepAutomate:
 rule runIGdetective:
     input:
         script = "code/igDetective.sh",
-        pri_genome = expand("/home1/zhuyixin/sc1/AssmQuality/assemblies/{species}.pri.fasta", species = SPECIES),
-        alt_genome = expand("/home1/zhuyixin/sc1/AssmQuality/assemblies/{species}.alt.fasta", species = SPECIES)
+        pri_genome = "/home1/zhuyixin/sc1/AssmQuality/assemblies/{species}.pri.fasta",
+        alt_genome = "/home1/zhuyixin/sc1/AssmQuality/assemblies/{species}.alt.fasta"
     output:
-        pri_out = expand("/home1/zhuyixin/sc1/AssmQuality/igGene/{species}.pri.igdetective/combined_genes_IGL.txt", species = SPECIES),
-        alt_our = expand("/home1/zhuyixin/sc1/AssmQuality/igGene/{species}.alt.igdetective/combined_genes_IGL.txt", species = SPECIES)
+        pri_out = "/home1/zhuyixin/sc1/AssmQuality/igGene/{species}.pri.igdetective/combined_genes_IGL.txt",
+        alt_our = "/home1/zhuyixin/sc1/AssmQuality/igGene/{species}.alt.igdetective/combined_genes_IGL.txt"
     params:
-        pri_outdir = expand("/home1/zhuyixin/sc1/AssmQuality/igGene/{species}.pri.igdetective/", species = SPECIES),
-        alt_ourdir = expand("/home1/zhuyixin/sc1/AssmQuality/igGene/{species}.alt.igdetective/", species = SPECIES)
+        pri_outdir = "/home1/zhuyixin/sc1/AssmQuality/igGene/{species}.pri.igdetective/",
+        alt_ourdir = "/home1/zhuyixin/sc1/AssmQuality/igGene/{species}.alt.igdetective/"
     shell:
         """
         sbatch --partition=qcb {input.script} {input.pri_genome} {params.pri_outdir}
@@ -42,12 +41,14 @@ rule runIGdetective:
        
 rule geneLociAutomate:
     input:
-        script = "code/geneLociAutomated.sh",
+        "/home1/zhuyixin/sc1/AssmQuality/igGene/{species}.pri.igdetective/combined_genes_IGL.txt",
+        "/home1/zhuyixin/sc1/AssmQuality/igGene/{species}.alt.igdetective/combined_genes_IGL.txt",
+        script = "code/geneLociAutomated.sh"
     output:
-        expand("gene_position/{species}/alt/{species}_IGL_pos.sorted.bed", species = SPECIES),  
-        expand("gene_position/{species}/pri/{species}_IGL_pos.sorted.bed", species = SPECIES)
+        "gene_position/{species}/alt/{species}_IGL_pos.sorted.bed",  
+        "gene_position/{species}/pri/{species}_IGL_pos.sorted.bed"
     params:
-        species = expand("{species}", species = SPECIES)
+        species = "{species}"
     shell:
         """
         {input.script} -s {params.species} -g pri
@@ -56,13 +57,15 @@ rule geneLociAutomate:
 
 rule mergeLoci:
     input:
-        pri = expand("gene_position/{species}/pri/{species}_IGL_pos.sorted.bed", species = SPECIES),
-        alt = expand("gene_position/{species}/alt/{species}_IGL_pos.sorted.bed", species = SPECIES),
+        pri = "gene_position/{species}/pri/{species}_IGL_pos.sorted.bed",
+        alt = "gene_position/{species}/alt/{species}_IGL_pos.sorted.bed",
         script = "code/mergePriAlt.sh"
     output:
-        expand("gene_position/{species}/combined/{species}_IGL_pos.sorted.bed", species = SPECIES)
+        "gene_position/{species}/combined/{species}_IGL_pos.sorted.bed",
+        "gene_position/{species}/combined/{species}_IGH_pos.sorted.bed",
+        "gene_position/{species}/combined/{species}_IGK_pos.sorted.bed"
     params:
-        species = expand("{species}", species = SPECIES)
+        species = "{species}"
     shell:
         """
         {input.script} -s {params.species}
@@ -70,31 +73,31 @@ rule mergeLoci:
 
 rule convertPrimaryBam:
     input:
-        bam = expand("aligned_bam/{species}/{species}_merged_sorted.bam", species = SPECIES)
+        bam = "aligned_bam/{species}/{species}_merged_sorted.bam"
     output:
-        outputbam = expand("aligned_bam/{species}/{species}_merged_sorted_primary.bam", species = SPECIES)
+        outputbam = "aligned_bam/{species}/{species}_merged_sorted_primary.bam"
     shell:
         """
         source /etc/profile.d/modules.sh
         module load gcc/11.3.0
         module load samtools/1.17
-        samtools view -b -F 0x800 -F 0x100 -@ 60 {input.bam} > {output.outputbam}
+        samtools view -b -F 0x800 -F 0x100 -@ 30 {input.bam} > {output.outputbam}
         """
 
 rule cigarProcessing:
     input:
         script = "code/cigar_processing.py",
-        bam = expand("aligned_bam/{species}/{species}_merged_sorted_primary.bam", species = SPECIES),
-        IGHbed = expand("gene_position/{species}/combined/{species}_IGH_pos.sorted.bed", species = SPECIES),
-        IGKbed = expand("gene_position/{species}/combined/{species}_IGK_pos.sorted.bed", species = SPECIES),
-        IGLbed = expand("gene_position/{species}/combined/{species}_IGL_pos.sorted.bed", species = SPECIES)
+        bam = "aligned_bam/{species}/{species}_merged_sorted_primary.bam", 
+        IGHbed = "gene_position/{species}/combined/{species}_IGH_pos.sorted.bed",
+        IGKbed = "gene_position/{species}/combined/{species}_IGK_pos.sorted.bed", 
+        IGLbed = "gene_position/{species}/combined/{species}_IGL_pos.sorted.bed"
     output:
-        expand("errorStats/{species}/IGH.txt", species = SPECIES),
-        expand("errorStats/{species}/IGK.txt", species = SPECIES),
-        expand("errorStats/{species}/IGL.txt", species = SPECIES),
-        expand("errorStats/{species}/nonIG.txt", species = SPECIES)
+        "errorStats/{species}/IGH.txt",
+        "errorStats/{species}/IGK.txt",
+        "errorStats/{species}/IGL.txt",
+        "errorStats/{species}/nonIG.txt"
     params:
-        species = expand("{species}", species = SPECIES)
+        species = "{species}"
     shell:
         """
         python {input.script} {input.bam} {input.IGHbed} {input.IGKbed} {input.IGLbed} {params.species}
