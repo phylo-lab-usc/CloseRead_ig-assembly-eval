@@ -14,10 +14,11 @@ conda init
 source /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
 conda activate /home1/zhuyixin/.conda/envs/assembly
 
-while getopts s: flag
+while getopts s:c: flag
 do
     case "${flag}" in
         s) species=${OPTARG};;
+        c) correction=${OPTARG};;
     esac
 done
 HOME=/home1/zhuyixin/sc1/AssmQuality
@@ -50,17 +51,33 @@ fi
 #create output directories
 mkdir ${HOME}/aligned_sam/
 mkdir ${HOME}/aligned_bam/
-mkdir ${HOME}/aligned_sam/${species}
-mkdir ${HOME}/aligned_bam/${species}
-#map the merged fastq file to the coresponding assembly
-echo "mapping fastq to assembly"
-minimap2 -t 60 -a ${HOME}/assemblies/${species}.merged.fasta ${HOME}/hifi_fastq/${species}/${species}_merged.fastq > ${HOME}/aligned_sam/${species}/${species}_merged.sam
-#convert the SAM result to sorted BAM format
-echo "converting SAM to sorted BAM"
-samtools sort -@ 60 ${HOME}/aligned_sam/${species}/${species}_merged.sam -o ${HOME}/aligned_bam/${species}/${species}_merged_sorted.bam
-#index the sorted BAM file
-echo "indexing sorted BAM"
-samtools index ${HOME}/aligned_bam/${species}/${species}_merged_sorted.bam
+if [ $correction == "True" ]
+then
+    mkdir ${HOME}/aligned_sam/${species}.corrected
+    mkdir ${HOME}/aligned_bam/${species}.corrected
+    #map the merged fastq file to the coresponding assembly
+    echo "mapping fastq to assembly"
+    minimap2 -t 60 -a ${HOME}/assemblies/${species}.ljacorr.merged.fasta ${HOME}/hifi_fastq/${species}/${species}_merged.fastq > ${HOME}/aligned_sam/${species}.corrected/${species}_merged.sam
+    #convert the SAM result to sorted BAM format
+    echo "converting SAM to sorted BAM"
+    samtools sort -@ 60 ${HOME}/aligned_sam/${species}.corrected/${species}_merged.sam -o ${HOME}/aligned_bam/${species}.corrected/${species}_merged_sorted.bam
+    #index the sorted BAM file
+    echo "indexing sorted BAM"
+    samtools index ${HOME}/aligned_bam/${species}.corrected/${species}_merged_sorted.bam
+else
+    mkdir ${HOME}/aligned_sam/${species}
+    mkdir ${HOME}/aligned_bam/${species}
+    #map the merged fastq file to the coresponding assembly
+    echo "mapping fastq to assembly"
+    minimap2 -t 60 -a ${HOME}/assemblies/${species}.merged.fasta ${HOME}/hifi_fastq/${species}/${species}_merged.fastq > ${HOME}/aligned_sam/${species}/${species}_merged.sam
+    #convert the SAM result to sorted BAM format
+    echo "converting SAM to sorted BAM"
+    samtools sort -@ 60 ${HOME}/aligned_sam/${species}/${species}_merged.sam -o ${HOME}/aligned_bam/${species}/${species}_merged_sorted.bam
+    #index the sorted BAM file
+    echo "indexing sorted BAM"
+    samtools index ${HOME}/aligned_bam/${species}/${species}_merged_sorted.bam
+fi
+
 
 
 
