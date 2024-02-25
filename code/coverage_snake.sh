@@ -37,6 +37,6 @@ for gene in IGH IGK IGL ; do
     echo $priloc $altloc
     samtools mpileup -Q 0 -q 0 -aa -f ${assemblies} -r $priloc ${bam} > ${HOME}/errorStats/${species}/${gene}_pri_pileup.txt
     samtools mpileup -Q 0 -q 0 -aa -f ${assemblies} -r $altloc ${bam} > ${HOME}/errorStats/${species}/${gene}_alt_pileup.txt
-    /home1/zhuyixin/.conda/envs/assembly/bin/python ${HOME}/code/coverageAnalysis.py ${HOME}/errorStats/${species}/${gene}_pri_pileup.txt ${HOME}/errorStats/${species}/${gene}_pri_coverage.txt ${species} ${gene}_pri
-    /home1/zhuyixin/.conda/envs/assembly/bin/python ${HOME}/code/coverageAnalysis.py ${HOME}/errorStats/${species}/${gene}_alt_pileup.txt ${HOME}/errorStats/${species}/${gene}_alt_coverage.txt ${species} ${gene}_alt
+    #/home1/zhuyixin/.conda/envs/assembly/bin/python ${HOME}/code/coverageAnalysis.py ${HOME}/errorStats/${species}/${gene}_pri_pileup.txt ${HOME}/errorStats/${species}/${gene}_pri_coverage.txt ${species} ${gene}_pri
+    #/home1/zhuyixin/.conda/envs/assembly/bin/python ${HOME}/code/coverageAnalysis.py ${HOME}/errorStats/${species}/${gene}_alt_pileup.txt ${HOME}/errorStats/${species}/${gene}_alt_coverage.txt ${species} ${gene}_alt
 done

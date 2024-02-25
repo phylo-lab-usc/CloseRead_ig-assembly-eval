@@ -57,7 +57,10 @@ def process_bam_file(bam_file_path, region_list, output_dir):
         elif i < 4:
             if chrom not in treesIGK:
                 treesIGK[chrom] = IntervalTree()
-                treesIGK[chrom].addi(int(start), int(end))
+                if chrom != '':
+                    treesIGK[chrom].addi(int(start), int(end))
+                else:
+                    treesIGK[chrom].addi(0, 1)
         else:
             if chrom not in treesIGL:
                 treesIGL[chrom] = IntervalTree()
