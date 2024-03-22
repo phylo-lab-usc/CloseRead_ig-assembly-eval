@@ -53,7 +53,10 @@ def process_bam_file(bam_file_path, region_list, output_dir):
         if i < 2:
             if chrom not in treesIGH:
                 treesIGH[chrom] = IntervalTree()
-                treesIGH[chrom].addi(int(start), int(end))
+                if chrom != '':
+                    treesIGH[chrom].addi(int(start), int(end))
+                else:
+                    treesIGH[chrom].addi(0, 1)
         elif i < 4:
             if chrom not in treesIGK:
                 treesIGK[chrom] = IntervalTree()
@@ -64,7 +67,10 @@ def process_bam_file(bam_file_path, region_list, output_dir):
         else:
             if chrom not in treesIGL:
                 treesIGL[chrom] = IntervalTree()
-                treesIGL[chrom].addi(int(start), int(end))
+                if chrom != '':
+                    treesIGL[chrom].addi(int(start), int(end))
+                else:
+                    treesIGL[chrom].addi(0, 1)
     trees = [treesIGH, treesIGK, treesIGL]
     print(trees)
     bamfile = pysam.AlignmentFile(bam_file_path, "rb")

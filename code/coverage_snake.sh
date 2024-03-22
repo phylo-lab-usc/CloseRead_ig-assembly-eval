@@ -2,7 +2,7 @@
 #SBATCH --job-name=coverage    # Job name
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=30                    # Run on a single CPU 
-#SBATCH --time=48:00:00               # Time limit hrs:min:sec
+#SBATCH --time=6:00:00               # Time limit hrs:min:sec
 #SBATCH --output=log/coverage%j.log   # Standard output and error log
 #SBATCH --mem=100G
 

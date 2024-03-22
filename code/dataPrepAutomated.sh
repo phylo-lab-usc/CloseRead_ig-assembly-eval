@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=automated    # Job name
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=60                    # Run on a single CPU 
-#SBATCH --time=48:00:00               # Time limit hrs:min:sec
+#SBATCH --cpus-per-task=32                    # Run on a single CPU 
+#SBATCH --time=24:00:00               # Time limit hrs:min:sec
 #SBATCH --output=log/dataPrep%j.log   # Standard output and error log
-#SBATCH --mem=100G
+#SBATCH --mem=60G
 
 source /etc/profile.d/modules.sh
 module load conda
@@ -35,7 +35,7 @@ then
         name=${f%.ccs*};
         echo $f;
         echo $name;
-        bam2fastq -o $name -j 60 $f ;
+        bam2fastq -o $name -j 32 $f ;
     )&
     done ; wait
     echo "bam to fastq conversion done"
@@ -44,7 +44,7 @@ if [ $merged == 0 ]
 then
     #unzip fastq gz file
     echo "gunziping fastq files"
-    gunzip ${HOME}/${source}/${species}/*.gz
+    gunzip -f ${HOME}/${source}/${species}/*.gz
     #merge all the fastq file into a single file
     echo "merging fastq files"
     cat ${HOME}/${source}/${species}/*.fastq > ${HOME}/${source}/${species}/${species}_merged.fastq
@@ -65,19 +65,21 @@ then
     samtools sort -@ 60 ${HOME}/aligned_sam/${species}.corrected/${species}_merged.sam -o ${HOME}/aligned_bam/${species}.corrected/${species}_merged_sorted.bam
     #index the sorted BAM file
     echo "indexing sorted BAM"
-    samtools index ${HOME}/aligned_bam/${species}.corrected/${species}_merged_sorted.bam
+    samtools index -c -@ 32 ${HOME}/aligned_bam/${species}.corrected/${species}_merged_sorted.bam
+    rm -rf ${HOME}/aligned_sam/${species}.corrected/${species}_merged.sam
 else
     mkdir ${HOME}/aligned_sam/${species}
     mkdir ${HOME}/aligned_bam/${species}
     #map the merged fastq file to the coresponding assembly
     echo "mapping fastq to assembly"
-    minimap2 -t 60 -a ${HOME}/assemblies/${species}.merged.fasta ${HOME}/${source}/${species}/${species}_merged.fastq > ${HOME}/aligned_sam/${species}/${species}_merged.sam
+    minimap2 -t 32 -a ${HOME}/assemblies/${species}.merged.fasta ${HOME}/${source}/${species}/${species}_merged.fastq > ${HOME}/aligned_sam/${species}/${species}_merged.sam
     #convert the SAM result to sorted BAM format
     echo "converting SAM to sorted BAM"
-    samtools sort -@ 60 ${HOME}/aligned_sam/${species}/${species}_merged.sam -o ${HOME}/aligned_bam/${species}/${species}_merged_sorted.bam
+    samtools sort -@ 32 ${HOME}/aligned_sam/${species}/${species}_merged.sam -o ${HOME}/aligned_bam/${species}/${species}_merged_sorted.bam
     #index the sorted BAM file
     echo "indexing sorted BAM"
-    samtools index ${HOME}/aligned_bam/${species}/${species}_merged_sorted.bam
+    samtools index -c -@ 32 ${HOME}/aligned_bam/${species}/${species}_merged_sorted.bam
+    rm -rf ${HOME}/aligned_sam/${species}/${species}_merged.sam
 fi
 
 

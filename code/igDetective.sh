@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=igDetect    # Job name
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=20                    # Run on a single CPU 
+#SBATCH --cpus-per-task=10                    # Run on a single CPU 
 #SBATCH --time=48:00:00               # Time limit hrs:min:sec
 #SBATCH --output=log/igDetective%j.log   # Standard output and error log
-#SBATCH --mem=60G
+#SBATCH --mem=30G
 
 
 
