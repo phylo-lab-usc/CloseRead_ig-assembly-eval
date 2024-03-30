@@ -17,26 +17,40 @@ conda activate /home1/zhuyixin/.conda/envs/assembly
 
 
 
-while getopts s:a:b: flag
+while getopts s:a:b:f: flag
 do
     case "${flag}" in
         s) species=${OPTARG};;
         a) assemblies=${OPTARG};;
         b) bam=${OPTARG};;
+        f) loci=${OPTARG};;
     esac
 done
-HOME=/home1/zhuyixin/sc1/AssmQuality
+HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality
 
 echo ${bam}
-for gene in IGH IGK IGL ; do
-    echo $gene
-    most_freq_chr_pri=$(awk '{print $1}' ${HOME}/gene_position/${species}/pri/${species}_${gene}_pos.sorted.bed | sort | uniq -c | sort -nr | head -n 1 | awk '{print $2}')
-    most_freq_chr_alt=$(awk '{print $1}' ${HOME}/gene_position/${species}/alt/${species}_${gene}_pos.sorted.bed | sort | uniq -c | sort -nr | head -n 1 | awk '{print $2}')
-    priloc=$(awk -v chr="$most_freq_chr_pri" 'BEGIN{min=""; max=0} $1 == chr {if (min=="" || $2<min) min=$2; if ($3>max) max=$3} END {print chr":"min"-"max}' ${HOME}/gene_position/${species}/pri/${species}_${gene}_pos.sorted.bed)
-    altloc=$(awk -v chr="$most_freq_chr_alt" 'BEGIN{min=""; max=0} $1 == chr {if (min=="" || $2<min) min=$2; if ($3>max) max=$3} END {print chr":"min"-"max}' ${HOME}/gene_position/${species}/alt/${species}_${gene}_pos.sorted.bed)
-    echo $priloc $altloc
-    samtools mpileup -Q 0 -q 0 -aa -f ${assemblies} -r $priloc ${bam} > ${HOME}/errorStats/${species}/${gene}_pri_pileup.txt
-    samtools mpileup -Q 0 -q 0 -aa -f ${assemblies} -r $altloc ${bam} > ${HOME}/errorStats/${species}/${gene}_alt_pileup.txt
-    #/home1/zhuyixin/.conda/envs/assembly/bin/python ${HOME}/code/coverageAnalysis.py ${HOME}/errorStats/${species}/${gene}_pri_pileup.txt ${HOME}/errorStats/${species}/${gene}_pri_coverage.txt ${species} ${gene}_pri
-    #/home1/zhuyixin/.conda/envs/assembly/bin/python ${HOME}/code/coverageAnalysis.py ${HOME}/errorStats/${species}/${gene}_alt_pileup.txt ${HOME}/errorStats/${species}/${gene}_alt_coverage.txt ${species} ${gene}_alt
-done
+
+# Loop through each line of the file
+while IFS= read -r line; do
+    # Split the line into fields
+    read -ra arr <<< "$line"
+    # Extract information
+    species=${arr[0]}
+    haplotype=${arr[1]}
+    gene=${arr[2]}
+    loc=${arr[3]}:${arr[4]}-${arr[5]}
+
+    # Check if the haplotype is primary
+    if [ "$haplotype" = "primary" ]; then
+        # Construct the output file path
+        output_file="${HOME}/errorStats/${species}/${gene}_pri_pileup.txt"
+        # Ensure output directory exists
+        mkdir -p "$(dirname "$output_file")"
+    else
+        output_file="${HOME}/errorStats/${species}/${gene}_alt_pileup.txt"
+        # Ensure output directory exists
+        mkdir -p "$(dirname "$output_file")"
+    fi
+    samtools mpileup -Q 0 -q 0 -aa -f "${assemblies}" -r "$loc" "${bam}" >> "$output_file"
+done < "$loci"
+

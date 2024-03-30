@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Base directory where subdirectories will be created for each sample
-BASE_DIR="/home1/zhuyixin/zhuyixin_proj/AssmQuality/hifi_fastq"
+BASE_DIR="/home1/zhuyixin/sc1/AssmQuality/hifi_fastq2"
 
 export BASE_DIR
 

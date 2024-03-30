@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality
+HOME=/home1/zhuyixin/sc1/AssmQuality
 while getopts 's:' option
 do
     case "$option" in

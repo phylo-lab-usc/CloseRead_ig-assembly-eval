@@ -32,7 +32,7 @@ def calculate_mismatches(read):
             total_indel_length += length
     return mismatches, longindels, total_indel_length, soft_clipping, hard_clipping
 
-def process_bam_file(bam_file_path, region_list_IGH, region_list_IGK, region_list_IGL, output_dir):
+def process_bam_file(bam_file_path, region_list, output_dir):
     """ Process a BAM file to estimate mismatches for each read. """
     # Output file names
     output_file_names = [os.path.join(output_dir, "IGH.txt"), os.path.join(output_dir, "IGK.txt"), os.path.join(output_dir, "IGL.txt")]
@@ -45,39 +45,32 @@ def process_bam_file(bam_file_path, region_list_IGH, region_list_IGK, region_lis
     treesIGH = {}
     treesIGK = {}
     treesIGL = {}
-    for i, region in enumerate(region_list_IGH):
+    for i, region in enumerate(region_list):
         # Split the string into chromosome and the 'start-end' part
         chrom, positions = region.split(':')
         # Further split the 'start-end' part into start and end positions
         start, end = positions.split('-')
-        if chrom not in treesIGH:
-            treesIGH[chrom] = IntervalTree()
-            if chrom != '':
-                treesIGH[chrom].addi(int(start), int(end))
-            else:
-                treesIGH[chrom].addi(0, 1)
-    for i, region in enumerate(region_list_IGK):
-        # Split the string into chromosome and the 'start-end' part
-        chrom, positions = region.split(':')
-        # Further split the 'start-end' part into start and end positions
-        start, end = positions.split('-')
-        if chrom not in treesIGK:
-            treesIGK[chrom] = IntervalTree()
-            if chrom != '':
-                treesIGK[chrom].addi(int(start), int(end))
-            else:
-                treesIGK[chrom].addi(0, 1)
-    for i, region in enumerate(region_list_IGL):
-        # Split the string into chromosome and the 'start-end' part
-        chrom, positions = region.split(':')
-        # Further split the 'start-end' part into start and end positions
-        start, end = positions.split('-')
-        if chrom not in treesIGL:
-            treesIGL[chrom] = IntervalTree()
-            if chrom != '':
-                treesIGL[chrom].addi(int(start), int(end))
-            else:
-                treesIGL[chrom].addi(0, 1)
+        if i < 2:
+            if chrom not in treesIGH:
+                treesIGH[chrom] = IntervalTree()
+                if chrom != '':
+                    treesIGH[chrom].addi(int(start), int(end))
+                else:
+                    treesIGH[chrom].addi(0, 1)
+        elif i < 4:
+            if chrom not in treesIGK:
+                treesIGK[chrom] = IntervalTree()
+                if chrom != '':
+                    treesIGK[chrom].addi(int(start), int(end))
+                else:
+                    treesIGK[chrom].addi(0, 1)
+        else:
+            if chrom not in treesIGL:
+                treesIGL[chrom] = IntervalTree()
+                if chrom != '':
+                    treesIGL[chrom].addi(int(start), int(end))
+                else:
+                    treesIGL[chrom].addi(0, 1)
     trees = [treesIGH, treesIGK, treesIGL]
     print(trees)
     bamfile = pysam.AlignmentFile(bam_file_path, "rb")
@@ -117,7 +110,12 @@ def main():
 
     # Required arguments
     parser.add_argument('input_file', help='Input SAM or BAM file.')
-    parser.add_argument('IG_region', help='IG position file')
+    parser.add_argument('IGH_region_pri', help='IGH primary assembly region: chr:start-end.')
+    parser.add_argument('IGH_region_alt', help='IGH alternate assembly region: chr:start-end.')
+    parser.add_argument('IGK_region_pri', help='IGK primary assembly region: chr:start-end.')
+    parser.add_argument('IGK_region_alt', help='IGK alternate assembly region: chr:start-end.')
+    parser.add_argument('IGL_region_pri', help='IGL primary assembly region: chr:start-end.')
+    parser.add_argument('IGL_region_alt', help='IGL alternate assembly region: chr:start-end.')
     parser.add_argument('species', help='Species name.')
 
     # Optional arguments
@@ -127,7 +125,7 @@ def main():
     args = parser.parse_args()
 
     if args.output is None:
-        args.output = f"/home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/{args.species}/"
+        args.output = f"/home1/zhuyixin/sc1/AssmQuality/errorStats/{args.species}/"
         warnings.warn("No output dir specified. Using default output dir path: " + args.output)
 
 
@@ -137,38 +135,12 @@ def main():
     if file_extension not in valid_extensions:
         parser.error("Input file must be a SAM or BAM file.")
 
-    # Initialize the lists for each gene type
-    region_list_IGH = []
-    region_list_IGK = []
-    region_list_IGL = []
-
-    # Open the file and read line by line
-    with open(args.IG_region, 'r') as file:
-        for line in file:
-            # Split each line into its components
-            parts = line.split()
-            # Extract relevant data
-            gene_type = parts[2]
-            chr_name = parts[3]
-            start = parts[4]
-            end = parts[5]
-            region = f"{chr_name}:{start}-{end}"
-            # Append the region to the corresponding list based on gene type
-            if gene_type == 'IGH':
-                region_list_IGH.append(region)
-            elif gene_type == 'IGK':
-                region_list_IGK.append(region)
-            elif gene_type == 'IGL':
-                region_list_IGL.append(region)
-
-    # Output the lists to check
-    print("IGH regions:", region_list_IGH)
-    print("IGK regions:", region_list_IGK)
-    print("IGL regions:", region_list_IGL)
+    region_list = [args.IGH_region_pri, args.IGH_region_alt, args.IGK_region_pri, args.IGK_region_alt, args.IGL_region_pri, args.IGL_region_alt]
 
     if args.input_file.endswith('.bam'):
-        process_bam_file(args.input_file, region_list_IGH, region_list_IGK, region_list_IGL, args.output)
-
+        process_bam_file(args.input_file, region_list, args.output)
+        #tree = load_bed_to_interval_tree(args.IGK_bed_file)
+        #assert tree['scaffold_15'].overlaps(26968008, 26970008)
 
 if __name__ == "__main__":
     main()

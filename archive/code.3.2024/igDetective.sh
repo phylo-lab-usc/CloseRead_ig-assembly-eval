@@ -18,6 +18,4 @@ source /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
 conda activate /home1/zhuyixin/.conda/envs/IGdetective
 conda env list
 
-
 /home1/zhuyixin/.conda/envs/IGdetective/bin/python /home1/zhuyixin/IgDetective/run_iterative_igdetective.py $1 $2
-touch /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/${3}.${4}.txt

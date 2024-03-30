@@ -14,17 +14,17 @@ conda init
 source /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
 conda activate /home1/zhuyixin/.conda/envs/assembly
 
-while getopts s:c:w: flag
+while getopts s:w:h flag
 do
     case "${flag}" in
         s) species=${OPTARG};;
-        c) correction=${OPTARG};;
         w) source=${OPTARG};;
+        h) haploid=${OPTARG};;
     esac
 done
-HOME=/home1/zhuyixin/sc1/AssmQuality
+HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality
 
-#check if this species' data is in bam or not, convert to fastq if yes
+#check if this species' raw data has .bam format or not, convert to fastq if yes
 count=`ls -1 ${HOME}/${source}/${species}/*.bam 2>/dev/null | wc -l`
 merged=`ls -1 ${HOME}/${source}/${species}/*_merged.fastq 2>/dev/null | wc -l`
 if [ $count != 0 ] && [ $merged == 0 ]
@@ -40,6 +40,9 @@ then
     done ; wait
     echo "bam to fastq conversion done"
 fi
+
+
+#If .merged.fastq exists, skip. Otherwise, gunzip fastq files and concatenate to .merged.fastq
 if [ $merged == 0 ]
 then
     #unzip fastq gz file
@@ -50,39 +53,34 @@ then
     cat ${HOME}/${source}/${species}/*.fastq > ${HOME}/${source}/${species}/${species}_merged.fastq
     cat ${HOME}/${source}/${species}/*.fq >> ${HOME}/${source}/${species}/${species}_merged.fastq
 fi
+
+
+#define output and input
+outdir=${species}
+if [ $haploid == "True" ]
+then
+    ref=${HOME}/assemblies/${species}.pri.fasta
+else
+    ref=${HOME}/assemblies/${species}.merged.fasta
+fi
+
 #create output directories
 mkdir ${HOME}/aligned_sam/
 mkdir ${HOME}/aligned_bam/
-if [ $correction == "True" ]
-then
-    mkdir ${HOME}/aligned_sam/${species}.corrected
-    mkdir ${HOME}/aligned_bam/${species}.corrected
-    #map the merged fastq file to the coresponding assembly
-    echo "mapping fastq to assembly"
-    minimap2 -t 60 -a ${HOME}/assemblies/${species}.ljacorr.merged.fasta ${HOME}/${source}/${species}/${species}_merged.fastq > ${HOME}/aligned_sam/${species}.corrected/${species}_merged.sam
-    #convert the SAM result to sorted BAM format
-    echo "converting SAM to sorted BAM"
-    samtools sort -@ 60 ${HOME}/aligned_sam/${species}.corrected/${species}_merged.sam -o ${HOME}/aligned_bam/${species}.corrected/${species}_merged_sorted.bam
-    #index the sorted BAM file
-    echo "indexing sorted BAM"
-    samtools index -c -@ 32 ${HOME}/aligned_bam/${species}.corrected/${species}_merged_sorted.bam
-    rm -rf ${HOME}/aligned_sam/${species}.corrected/${species}_merged.sam
-else
-    mkdir ${HOME}/aligned_sam/${species}
-    mkdir ${HOME}/aligned_bam/${species}
-    #map the merged fastq file to the coresponding assembly
-    echo "mapping fastq to assembly"
-    minimap2 -t 32 -a ${HOME}/assemblies/${species}.merged.fasta ${HOME}/${source}/${species}/${species}_merged.fastq > ${HOME}/aligned_sam/${species}/${species}_merged.sam
-    #convert the SAM result to sorted BAM format
-    echo "converting SAM to sorted BAM"
-    samtools sort -@ 32 ${HOME}/aligned_sam/${species}/${species}_merged.sam -o ${HOME}/aligned_bam/${species}/${species}_merged_sorted.bam
-    #index the sorted BAM file
-    echo "indexing sorted BAM"
-    samtools index -c -@ 32 ${HOME}/aligned_bam/${species}/${species}_merged_sorted.bam
-    rm -rf ${HOME}/aligned_sam/${species}/${species}_merged.sam
-fi
+mkdir ${HOME}/aligned_sam/${outdir}
+mkdir ${HOME}/aligned_bam/${outdir}
+fastq=${HOME}/${source}/${species}/${species}_merged.fastq
 
-
+#map the merged fastq file to the coresponding assembly
+echo "mapping fastq to assembly"
+minimap2 -t 32 -a $ref $fastq > ${HOME}/aligned_sam/${outdir}/${species}_merged.sam
+#convert the SAM result to sorted BAM format
+echo "converting SAM to sorted BAM"
+samtools sort -@ 32 ${HOME}/aligned_sam/${outdir}/${species}_merged.sam -o ${HOME}/aligned_bam/${outdir}/${species}_merged_sorted.bam
+#index the sorted BAM file
+echo "indexing sorted BAM"
+samtools index -c -@ 32 ${HOME}/aligned_bam/${outdir}/${species}_merged_sorted.bam
+rm -rf ${HOME}/aligned_sam/${outdir}/${species}_merged.sam
 
 
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Base directory where subdirectories will be created for each sample
-BASE_DIR="/home1/zhuyixin/zhuyixin_proj/AssmQuality/hifi_fastq"
+BASE_DIR="/home1/zhuyixin/sc1/AssmQuality/t2tpri_fastq"
 
 export BASE_DIR
 
@@ -18,5 +18,5 @@ download_file() {
 
 export -f download_file
 
-cat /home1/zhuyixin/sc1/AssmQuality/transformed_urls.txt | parallel -j 40 --colsep ' ' download_file {1} {2}
+cat /home1/zhuyixin/sc1/AssmQuality/t2tpri.url.txt | parallel -j 20 --colsep ' ' download_file {1} {2}
 
