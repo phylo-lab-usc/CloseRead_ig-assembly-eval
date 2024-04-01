@@ -1,4 +1,4 @@
-SPECIES = ["mUrsAme1", "mLynRuf1", "mPerMan1", "mDipMer1"]
+SPECIES = ["mUrsArc2", "mPerMan1", "mThoBot1"]
 SOURCE = ["hifi_fastq"]
 HAPLOID = ["True"]
 
@@ -78,7 +78,17 @@ rule lociLocation:
         species = "{species}"
     shell:
         """
-        {input.lociScript} -s {params.species} -h {params.haploid} -p {params.pri_outdir} -a {params.alt_outdir}
+        read primary_result alternate_result <<< $({input.lociScript} -s {params.species} -h {params.haploid} -p {params.pri_outdir} -a {params.alt_outdir})
+        if [ $alternate_result == "false" ] && [ {params.haploid} == "False" ]
+        then
+            sbatch --partition=qcb code/igDetective.sh {input.alt_genome} {params.alt_outdir} {params.species} alt
+        elif [ $primary_result == "false" ]
+        then
+            sbatch --partition=qcb code/igDetective.sh {input.pri_genome} {params.pri_outdir} {params.species} pri
+        else
+            echo "exist, skip IGdetective"
+        fi
+        code/finalGene.sh -s {params.species} -h {params.haploid} -p $primary_result -a $alternate_result
         """
 
 
@@ -89,15 +99,19 @@ rule cigarProcessing:
         csi = files['priRead.csi'], 
         finalout = files['final.genePos_IG']
     output:
-        files['read_IGH.out'],
-        files['read_IGK.out'],
-        files['read_IGL.out'],
-        files['read_nonIG.out']
+        IGH_out = files['read_IGH.out'],
+        IGK_out = files['read_IGK.out'],
+        IGL_out = files['read_IGL.out'],
+        nonIG_out = files['read_nonIG.out']
     params:
         species = "{species}",
     shell:
         """
         mkdir -p errorStats/{params.species}
+        rm -rf {output.IGH_out}
+        rm -rf {output.IGK_out}
+        rm -rf {output.IGL_out}
+        rm -rf {output.nonIG_out}
         python {input.script} {input.bam} {input.finalout} {params.species}
         """
 
@@ -107,14 +121,17 @@ rule coverageAnalysis:
         bam = files['priRead.bam'],
         csi = files['priRead.csi'],
     output:
-        files['pileup_IGH.out'],
-        files['pileup_IGK.out'],
-        files['pileup_IGL.out']
+        IGH_out = files['pileup_IGH.out'],
+        IGK_out = files['pileup_IGK.out'],
+        IGL_out = files['pileup_IGL.out']
     params:
         species = "{species}",
         assemblies = files['merged.genome'],
         script = "code/coverage_snake.sh"
     shell:
         """
-        sbatch --partition=gpu {params.script} -s {params.species} -a {params.assemblies} -b {input.bam} -f {input.finalout}
+        rm -rf {output.IGH_out}
+        rm -rf {output.IGK_out}
+        rm -rf {output.IGL_out}
+        sbatch --partition=qcbr {params.script} -s {params.species} -a {params.assemblies} -b {input.bam} -f {input.finalout}
         """

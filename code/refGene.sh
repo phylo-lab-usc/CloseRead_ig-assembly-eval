@@ -1,15 +1,5 @@
 #!/bin/bash
 
-source /etc/profile.d/modules.sh
-module load conda
-module load gcc/11.3.0
-module load samtools/1.17
-conda init
-source /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
-conda activate /home1/zhuyixin/.conda/envs/IGdetective
-conda env list
-
-
 HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality
 file_path="${HOME}/mammalianIG.txt"
 while getopts 's:h:p:a:' option
@@ -71,101 +61,7 @@ then
     save_loci_details "${species}" "alternate"
 fi
 save_loci_details "${species}" "primary"
-echo "ref finished"
-
+echo "$primary_result"
+echo "$alternate_result"
 rm -rf ${IggenePos_IG}
-if [ $alternate_result == "false" ] && [ $haploid == "False" ]
-then
-    sbatch --partition=gpu code/igDetective.sh ${altgenome} $alt_ourdir ${species} alt
-elif [ $primary_result == "false" ]
-then
-    sbatch --partition=gpu code/igDetective.sh ${prigenome} $pri_outdir ${species} pri
-else
-    echo "exist, skip IGdetective"
-fi
 
-genes=("IGH" "IGK" "IGL")
-if [ $alternate_result == "false" ] && [ $haploid == "False" ]
-then
-    while [ ! -f "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/${species}.alt.txt" ]; do
-        #echo "Waiting for file $FILE_PATH to appear..."
-        sleep 120  # Wait for 120 seconds before checking again
-    done
-    code/geneLociAutomated.sh -s ${species} -g alt
-    for gene in "${genes[@]}"; do
-        bed="gene_position/${species}/alt/${species}_${gene}_pos.sorted.bed"
-        awk -v s="$species" -v p="altrnate" -v g="$gene" '{
-            # Increment the count for this chromosome
-            count[$1]++
-            # Update the start and end positions for this chromosome
-            if (!start[$1] || $2 < start[$1]) {
-                start[$1] = $2
-            }
-            if (!end[$1] || $3 > end[$1]) {
-                end[$1] = $3
-            }
-        } END {
-            # Iterate over the chromosomes and print the ones with at least 2 appearances
-            for (chr in count) {
-                if (count[chr] >= 2) {
-                    print s, p, g, chr, start[chr], end[chr]
-                }
-            }
-        }' "$bed" >> ${IggenePos_IG}
-    done
-elif [ $primary_result == "false" ]
-then
-    while [ ! -f "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/${species}.pri.txt" ]; do
-        #echo "Waiting for file $FILE_PATH to appear..."
-        sleep 120  # Wait for 120 seconds before checking again
-    done
-    code/geneLociAutomated.sh -s ${species} -g pri
-    for gene in "${genes[@]}"; do
-        bed="gene_position/${species}/pri/${species}_${gene}_pos.sorted.bed"
-        awk -v s="$species" -v p="primary" -v g="$gene" '{
-            # Increment the count for this chromosome
-            count[$1]++
-            # Update the start and end positions for this chromosome
-            if (!start[$1] || $2 < start[$1]) {
-                start[$1] = $2
-            }
-            if (!end[$1] || $3 > end[$1]) {
-                end[$1] = $3
-            }
-        } END {
-            # Iterate over the chromosomes and print the ones with at least 2 appearances
-            for (chr in count) {
-                if (count[chr] >= 2) {
-                    print s, p, g, chr, start[chr], end[chr]
-                }
-            }
-        }' "$bed" >> ${IggenePos_IG}
-    done 
-fi
-touch ${IggenePos_IG}
-echo "Igdetective finished"
-
-final="${HOME}/gene_position/${species}/final.Ig_loci.txt"
-rm -rf $final
-if [ $haploid == "False" ]
-then
-    haplotypes=("primary" "alternate")
-else
-    haplotypes=("primary")
-fi
-for gene in "${genes[@]}"; do
-    # Iterate through each haplotype
-    for hap in "${haplotypes[@]}"; do
-        # Check if the haplotype has an entry in refout
-        found_in_ref=$(awk -v gene="$gene" -v hap="$hap" '$2 == hap && $3 == gene' "$output_file")
-        if [ ! -z "$found_in_ref" ]; then
-            # If found in refout, output those entries
-            echo "$found_in_ref" >> "$final"
-        else
-            # If not found in refout, find and output from Igout
-            awk -v gene="$gene" -v hap="$hap" '$2 == hap && $3 == gene' "${IggenePos_IG}" >> "$final"
-        fi
-    done
-done
-touch $final
-echo "all finished"
