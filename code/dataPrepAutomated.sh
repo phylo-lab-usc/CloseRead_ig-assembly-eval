@@ -14,7 +14,7 @@ conda init
 source /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
 conda activate /home1/zhuyixin/.conda/envs/assembly
 
-while getopts s:w:h flag
+while getopts s:w:h: flag
 do
     case "${flag}" in
         s) species=${OPTARG};;
@@ -57,7 +57,7 @@ fi
 
 #define output and input
 outdir=${species}
-if [ $haploid == "True" ]
+if [ "$haploid" == "True" ]
 then
     ref=${HOME}/assemblies/${species}.pri.fasta
 else

@@ -1,6 +1,6 @@
-SPECIES = ["mPumCon1"]
+SPECIES = ["mUrsAme1", "mLynRuf1", "mPerMan1", "mDipMer1"]
 SOURCE = ["hifi_fastq"]
-HAPLOID = ["False"]
+HAPLOID = ["True"]
 
 files = dict()
 files["merged.bam"] = "aligned_bam/{species}/{species}_merged_sorted.bam"
@@ -73,7 +73,7 @@ rule lociLocation:
         finalout = files['final.genePos_IG']
     params:
         pri_outdir = "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/{species}.pri.igdetective/",
-        alt_ourdir = "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/{species}.alt.igdetective/",
+        alt_outdir = "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/{species}.alt.igdetective/",
         haploid = HAPLOID[0],
         species = "{species}"
     shell:
@@ -98,7 +98,7 @@ rule cigarProcessing:
     shell:
         """
         mkdir -p errorStats/{params.species}
-        python {input.script} {params.bam} {input.finalout} {params.species}
+        python {input.script} {input.bam} {input.finalout} {params.species}
         """
 
 rule coverageAnalysis:
@@ -116,5 +116,5 @@ rule coverageAnalysis:
         script = "code/coverage_snake.sh"
     shell:
         """
-        sbatch --partition=gpu {params.script} -s {params.species} -a {params.assemblies} -b {params.bam} -f {input.finalout}
+        sbatch --partition=gpu {params.script} -s {params.species} -a {params.assemblies} -b {input.bam} -f {input.finalout}
         """

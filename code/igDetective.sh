@@ -6,18 +6,15 @@
 #SBATCH --output=log/igDetective%j.log   # Standard output and error log
 #SBATCH --mem=30G
 
-
-
-
 source /etc/profile.d/modules.sh
-module load conda
 module load gcc/11.3.0
 module load samtools/1.17
-conda init
 source /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
+conda config --append envs_dirs /home1/zhuyixin/.conda/envs/
 conda activate /home1/zhuyixin/.conda/envs/IGdetective
 conda env list
+conda info --envs
 
 
-/home1/zhuyixin/.conda/envs/IGdetective/bin/python /home1/zhuyixin/IgDetective/run_iterative_igdetective.py $1 $2
+/home1/zhuyixin/.conda/envs/IGdetective/bin/python3 /home1/zhuyixin/IgDetective/run_iterative_igdetective.py $1 $2
 touch /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/${3}.${4}.txt

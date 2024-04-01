@@ -1,5 +1,15 @@
 #!/bin/bash
 
+source /etc/profile.d/modules.sh
+module load conda
+module load gcc/11.3.0
+module load samtools/1.17
+conda init
+source /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
+conda activate /home1/zhuyixin/.conda/envs/IGdetective
+conda env list
+
+
 HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality
 file_path="${HOME}/mammalianIG.txt"
 while getopts 's:h:p:a:' option
@@ -67,16 +77,19 @@ rm -rf ${IggenePos_IG}
 if [ $alternate_result == "false" ] && [ $haploid == "False" ]
 then
     sbatch --partition=gpu code/igDetective.sh ${altgenome} $alt_ourdir ${species} alt
-elif [ $primary_result == "false"]
+elif [ $primary_result == "false" ]
 then
     sbatch --partition=gpu code/igDetective.sh ${prigenome} $pri_outdir ${species} pri
-fi 
+else
+    echo "exist, skip IGdetective"
+fi
+
 genes=("IGH" "IGK" "IGL")
 if [ $alternate_result == "false" ] && [ $haploid == "False" ]
 then
     while [ ! -f "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/${species}.alt.txt" ]; do
-        echo "Waiting for file $FILE_PATH to appear..."
-        sleep 30  # Wait for 30 seconds before checking again
+        #echo "Waiting for file $FILE_PATH to appear..."
+        sleep 120  # Wait for 120 seconds before checking again
     done
     code/geneLociAutomated.sh -s ${species} -g alt
     for gene in "${genes[@]}"; do
@@ -100,11 +113,11 @@ then
             }
         }' "$bed" >> ${IggenePos_IG}
     done
-elif [ $primary_result == "false"]
+elif [ $primary_result == "false" ]
 then
-    while [ ! -f "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/${species}.pri.txt"]; do
-        echo "Waiting for file $FILE_PATH to appear..."
-        sleep 30  # Wait for 30 seconds before checking again
+    while [ ! -f "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/${species}.pri.txt" ]; do
+        #echo "Waiting for file $FILE_PATH to appear..."
+        sleep 120  # Wait for 120 seconds before checking again
     done
     code/geneLociAutomated.sh -s ${species} -g pri
     for gene in "${genes[@]}"; do
@@ -155,3 +168,4 @@ for gene in "${genes[@]}"; do
     done
 done
 touch $final
+echo "all finished"
