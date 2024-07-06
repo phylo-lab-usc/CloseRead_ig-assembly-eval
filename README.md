@@ -1,6 +1,7 @@
 # IG Assembly Evaluation
 
 **Brief description:** This project aims to evaluate the assembly of immunoglobulin (IG) sequences. The evaluation process includes various scripts and workflows to analyze, compare, and validate IG sequence assemblies.
+
 ![pipeline overview](plots/overview.png)
 
 ## Table of Contents
@@ -28,7 +29,7 @@ conda activate ig-assembly-eval
 ## Usage
 ### Running the Pipeline
 
-![snakefile overview](plots/dag_snake.pdf)
+![snakefile overview](plots/dag_snake.png)
 
 Use the Snakefile to run all the code located in the `code` folder. Above is an example pipeline overview for 1 species.
 Required input files:
@@ -72,7 +73,8 @@ After running the Snakefile, execute the evaluation notebook `code/evaluate.ipyn
 
 A brief example overview of the project's structure and directories:
 
-#HOME/
+```plaintext
+$HOME/
 ├── assemblies/          # Input assembly files
 │   ├── mEubGla1.merged.fasta       # Example merged assembly
 │   ├── mEubGla1.merged.fasta.fai   # Example merged assembly index
@@ -86,15 +88,15 @@ A brief example overview of the project's structure and directories:
 │   ├── mEubGla1              # Example dir containing output stats files for mEubGla1
 ├── errorPlots/          # Final visualizations
 │   ├── mEubGla1              # Example dir containing output visualization files for mEubGla1
-
+```
 
 ## Project Structure
 
+```plaintext
 ig-assembly-eval/
 ├── README.md          # Project documentation
 ├── Snakefile          # Main workflow file
 ├── assembly.yml       # Conda environment file
 ├── code/              # Source code and scripts
 ├── plots/             # Directory for plots and figures
-
-
+```
