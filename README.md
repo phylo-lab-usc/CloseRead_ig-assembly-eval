@@ -37,7 +37,7 @@ conda activate ig-assembly-eval
 
 Use the Snakefile to run all the code located in the `code` folder. Above is an example pipeline overview for 1 species.
 
-Required input files:
+#### Required input files:
 
 - HiFi fastq/BAM files of species of interest at `$HOME/$fastqdir/$species_name/`
 - Merged diploid assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.merged.fasta`
@@ -45,17 +45,17 @@ Required input files:
 - Alternate/Haplotype2/Paternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.alt.fasta`
 - Above assembly files' index file `.fai`
 
-Optional input file:
+#### Optional input file:
 - `species_metainfo.csv` containing meta information of the species of interest
 
-Please make sure you modify the header lines of `Snakefile` to reflect your directory organization:
+#### Please make sure you modify the header lines of `Snakefile` to reflect your directory organization:
 
 - `SPECIES = ["mEubGla1"]`, list of species name
 - `fastqdir = ["hifi_fastq"]`,  sub-directory of your home directory where your fastq files are located
 - `HAPLOID = ["False"]`,  if the list of species are halpid or not
 - `HOME = "/home1/zhuyixin/zhuyixin_proj/AssmQuality"`,  your home directory
 
-The output stats files will be in the `errorStats/` directory and should include the following 11 files:
+#### The output stats files will be in the `errorStats/` directory and should include the following 11 files:
 
 - `IGH.txt`, read-oriented stats for both primary and alternate assembly at IGH locus
 - `IGH_alt_pileup.txt`, mpileup file, basepair-oriented stats for alternate assembly at IGH locus
