@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=coverage    # Job name
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=30                    # Run on a single CPU 
+#SBATCH --cpus-per-task=10                    # Run on a single CPU 
 #SBATCH --time=6:00:00               # Time limit hrs:min:sec
 #SBATCH --output=log/coverage%j.log   # Standard output and error log
 #SBATCH --mem=100G
@@ -17,16 +17,16 @@ conda activate /home1/zhuyixin/.conda/envs/assembly
 
 
 
-while getopts s:a:b:f: flag
+while getopts s:a:b:f:d: flag
 do
     case "${flag}" in
         s) species=${OPTARG};;
         a) assemblies=${OPTARG};;
         b) bam=${OPTARG};;
         f) loci=${OPTARG};;
+        d) HOME=${OPTARG};;
     esac
 done
-HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality
 
 echo ${bam}
 
@@ -53,4 +53,7 @@ while IFS= read -r line; do
     fi
     samtools mpileup -Q 0 -q 0 -aa -f "${assemblies}" -r "$loc" "${bam}" >> "$output_file"
 done < "$loci"
+
+
+touch "${HOME}/errorStats/${species}/pileup.end"
 

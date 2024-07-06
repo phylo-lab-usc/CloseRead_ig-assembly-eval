@@ -14,15 +14,15 @@ conda init
 source /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
 conda activate /home1/zhuyixin/.conda/envs/assembly
 
-while getopts s:w:h: flag
+while getopts s:w:h:d: flag
 do
     case "${flag}" in
         s) species=${OPTARG};;
         w) source=${OPTARG};;
         h) haploid=${OPTARG};;
+        d) HOME=${OPTARG};;
     esac
 done
-HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality
 
 #check if this species' raw data has .bam format or not, convert to fastq if yes
 count=`ls -1 ${HOME}/${source}/${species}/*.bam 2>/dev/null | wc -l`
@@ -61,6 +61,7 @@ if [ "$haploid" == "True" ]
 then
     ref=${HOME}/assemblies/${species}.pri.fasta
 else
+    #ref=${HOME}/assemblies/${species}.merged.fasta
     ref=${HOME}/assemblies/${species}.merged.fasta
 fi
 
@@ -73,14 +74,14 @@ fastq=${HOME}/${source}/${species}/${species}_merged.fastq
 
 #map the merged fastq file to the coresponding assembly
 echo "mapping fastq to assembly"
-minimap2 -t 32 -a $ref $fastq > ${HOME}/aligned_sam/${outdir}/${species}_merged.sam
+minimap2 -t 32 -ax map-hifi $ref $fastq > ${HOME}/aligned_sam/${outdir}/${species}_merged.sam
 #convert the SAM result to sorted BAM format
 echo "converting SAM to sorted BAM"
 samtools sort -@ 32 ${HOME}/aligned_sam/${outdir}/${species}_merged.sam -o ${HOME}/aligned_bam/${outdir}/${species}_merged_sorted.bam
 #index the sorted BAM file
 echo "indexing sorted BAM"
 samtools index -c -@ 32 ${HOME}/aligned_bam/${outdir}/${species}_merged_sorted.bam
-rm -rf ${HOME}/aligned_sam/${outdir}/${species}_merged.sam
+#rm -rf ${HOME}/aligned_sam/${outdir}/${species}_merged.sam
 
 
 

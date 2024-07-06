@@ -14,7 +14,8 @@ conda config --append envs_dirs /home1/zhuyixin/.conda/envs/
 conda activate /home1/zhuyixin/.conda/envs/IGdetective
 conda env list
 conda info --envs
-
+echo "PATH: $PATH"
+which python
 
 /home1/zhuyixin/.conda/envs/IGdetective/bin/python3 /home1/zhuyixin/IgDetective/run_iterative_igdetective.py $1 $2
-touch /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/${3}.${4}.txt
+touch ${5}/igGene/${3}.${4}.txt
