@@ -1,0 +1,75 @@
+﻿IndividualID,LatinName,CommonName,Source,SourceLink,Haplotype Resolved
+rAllMis2,Alligator mississippiensis,American alligator,VGP,https://42basepairs.com/browse/s3/genomeark/species/Alligator_mississippiensis/rAllMis2,Yes
+rCarCar2,Caretta caretta,Loggerhead turtle,VGP,https://www.genomeark.org/vgp-all/Caretta_caretta.html,Yes
+rEmyOrb1,Emys orbicularis,European pond turtle,VGP,https://www.genomeark.org/vgp-all/Emys_orbicularis.html,Yes
+rEryReg1,Erythrolamprus reginae,royal ground snake,VGP,https://www.genomeark.org/vgp-all/Erythrolamprus_reginae.html,No
+rLiaOli1,Liasis olivaceus,olive python,VGP,https://www.genomeark.org/vgp-all/Liasis_olivaceus.html,Yes
+rLiaOli2,Liasis olivaceus,olive python,VGP,https://www.genomeark.org/vgp-all/Liasis_olivaceus.html,Yes
+rMalTer1,Malaclemys terrapin,diamondback terrapin,VGP,https://www.genomeark.org/vgp-all/Malaclemys_terrapin.html,Yes
+rPodCre2,Podarcis cretensis,cretan wall lizard,VGP,https://www.genomeark.org/vgp-all/Podarcis_cretensis.html,No
+rPodRaf1,Podarcis raffonei,Aeolian wall lizard,VGP,https://www.genomeark.org/vgp-all/Podarcis_raffonei.html,No
+rRhiFlo1,Rhineura floridana,Florida worm lizard,VGP,https://www.genomeark.org/vgp-all/Rhineura_floridana.html,Yes
+rVipLat1,Vipera latastei,snub-nosed viper,VGP,https://www.genomeark.org/vgp-all/Vipera_latastei.html,No
+rVipUrs1,Vipera ursinii,Hungarian meadow viper,VGP,https://www.genomeark.org/vgp-all/Vipera_ursinii.html,No
+rZooViv1,Zootoca vivipara,common lizard,VGP,https://www.genomeark.org/vgp-all/Zootoca_vivipara.html,No
+mCanLor2,Canis_lupus,Greenland Wolf,VGP,https://42basepairs.com/browse/s3/genomeark/species/Canis_lupus/mCanLup2,Yes
+mMonDom1,Monodelphis_domestica,gray short-tailed opossum,VGP,https://42basepairs.com/browse/s3/genomeark/species/Monodelphis_domestica/mMonDom1,No
+mMusAve1,Muscardinus avellanarius,hazel dormouse,VGP,https://www.genomeark.org/vgp-all/Muscardinus_avellanarius.html,No
+mNeoNeb1,Neofelis_nebulosa,Clouded Leopard,VGP,https://42basepairs.com/browse/s3/genomeark/species/Neofelis_nebulosa/mNeoNeb1,No
+mOryCun1,Oryctolagus cuniculus,rabbit,VGP,https://www.genomeark.org/vgp-all/Oryctolagus_cuniculus.html,No
+mTalEur1,Talpa europaea,European mole,VGP,https://www.genomeark.org/vgp-all/Talpa_europaea.html,No
+mVesMur1,Vespertilio murinus,particolored bat,VGP,https://www.genomeark.org/vgp-all/Vespertilio_murinus.html,No
+mMusNiv1,Mustela nivalis,Least weasel,VGP,https://www.genomeark.org/genomeark-all/Mustela_nivalis.html,Yes
+mEptNil1,Eptesicus nilssonii,northern bat,VGP,https://www.genomeark.org/vgp-all/Eptesicus_nilssonii.html,No
+mHipAmp2,Hippopotamus amphibius kiboko,hippopotamus,VGP,https://www.genomeark.org/genomeark-curated-assembly/Hippopotamus_amphibius.html,Yes
+mMyoDau2,Myotis daubentonii,Daubenton's bat,VGP,https://www.genomeark.org/vgp-all/Myotis_daubentonii.html,No
+mPleAur1,Plecotus auritus,brown big-eared bat,VGP,https://www.genomeark.org/vgp-all/Plecotus_auritus.html,No
+mCerEla1,Cervus_elaphus,Red Deer,VGP,https://42basepairs.com/browse/s3/genomeark/species/Cervus_elaphus/mCerEla1,No
+mChiNiv1,Chionomys nivalis,European snow vole,VGP,https://genomeark.github.io/genomeark-all/Chionomys_nivalis.html,No
+mCynVol1,Cynocephalus volans,Philiphine flying lemur,VGP,https://42basepairs.com/browse/s3/genomeark/species/Cynocephalus_volans/mCynVol1,No
+mDicBic1,Diceros bicornis,black rhinoceros,VGP,https://genomeark.github.io/genomeark-all/Diceros_bicornis.html,Yes
+mEleMax1,Elephas maximus,Asiatic Elephant,VGP,https://42basepairs.com/browse/s3/genomeark/species/Elephas_maximus/mEleMax1,No
+mMacEug1,Macropus eugenii,tammar wallaby,VGP,https://genomeark.github.io/genomeark-all/Macropus_eugenii.html,No
+mMarMar1,Martes martes,European pine marten,VGP,https://www.genomeark.org/vgp-all/Martes_martes.html,No
+mMelMel3,Meles meles,European badger,VGP,https://genomeark.github.io/genomeark-all/Meles_meles.html,Yes
+mMicMin1,Micromys minutus,European harvest mouse,VGP,https://www.genomeark.org/vgp-all/Micromys_minutus.html,No
+mMunRee1,Muntiacus reevesi,Reeves' muntjac,VGP,https://www.genomeark.org/vgp-all/Muntiacus_reevesi.html,No
+mMusLut2,Mustela lutreola,European mink,VGP,https://www.genomeark.org/genomeark-all/Mustela_lutreola.html,No
+mPipPyg2,Pipistrellus pygmaeus,soprano pipistrelle,VGP,https://www.genomeark.org/vgp-all/Pipistrellus_pygmaeus.html,No
+mSorAra2,Sorex araneus,Common shrew,VGP,https://genomeark.github.io/genomeark-all/Sorex_araneus.html,No
+mApoSyl1,Apodemus sylvaticus,wood mouse,VGP,https://genomeark.github.io/genomeark-all/Apodemus_sylvaticus.html,No
+mCamDro1,Camelus dromedarius,dromedary,VGP,https://www.genomeark.org/genomeark-all/Camelus_dromedarius.html,Yes
+mLemCat1,Lemur catta,Ring-tailed lemur,VGP,https://genomeark.github.io/genomeark-all/Lemur_catta.html,No
+mNycCou1,Nycticebus coucang,slow loris,VGP,https://genomeark.github.io/genomeark-all/Nycticebus_coucang.html,No
+mCanLor1,Canis_lupus,Greenland Wolf,VGP,https://42basepairs.com/browse/s3/genomeark/species/Canis_lupus/mCanLor1,No
+mDasNov1,Dasypus novemcinctus,nine-banded armadillo,VGP,https://genomeark.github.io/genomeark-all/Dasypus_novemcinctus.html,Yes
+mEriEur2,Erinaceus europaeus,western European hedgehog,VGP,https://www.genomeark.org/vgp-all/Erinaceus_europaeus.html,No
+mManPen7,Manis pentadactyla,Chinese pangolin,VGP,https://genomeark.github.io/genomeark-all/Manis_pentadactyla.html,Yes
+mBalAcu1,Balaenoptera_acutorostrata,minke whale,VGP,https://www.genomeark.org/vgp-all/Balaenoptera_acutorostrata.html,No
+mCorTow1,Corynorhinus townsendii,Townsend's Big-eared Bat,CCGP,https://www.ccgproject.org/species/corynorhinus-townsendii-townsends-big-eared-bat,Yes
+mDelDel1,Delphinus delphis,saddleback dolphin,VGP,https://www.genomeark.org/vgp-all/Delphinus_delphis.html,No
+mGloMel1,Globicephala melas,long-finned pilot whale,VGP,https://www.genomeark.org/vgp-all/Globicephala_melas.html,No
+mHypAmp2,Hyperoodon ampullatus,northern bottlenose whale,VGP,https://www.genomeark.org/vgp-all/Hyperoodon_ampullatus.html,No
+mLagAlb1,Lagenorhynchus albirostris,white-beaked dolphin,VGP,https://www.genomeark.org/vgp-all/Lagenorhynchus_albirostris.html,No
+mMicCal1,Microtus californicus,California Vole,CCGP,https://www.ccgproject.org/species/microtus-californicus-california-vole,Yes
+mMirAng1,Mirounga angustirostris,Northern Elephant Seal,CCGP,https://www.ccgproject.org/species/mirounga-angustirostris-northern-elephant-seal,Yes
+mMyoYum1,Myotis yumanensis,Yuma myotis,CCGP,https://www.ccgproject.org/species/myotis-yumanensis-yuma-myotis,Yes
+mOrcOrc1,Orcinus orca,killer whale,VGP,https://genomeark.github.io/genomeark-all/Orcinus_orca.html,No
+mPumCon1,Puma concolor,Mountain Lion,CCGP,https://www.ccgproject.org/species/puma-concolor-mountain-lion,Yes
+mSteCoe1,Stenella coeruleoalba,striped dolphin,VGP,https://www.genomeark.org/vgp-all/Stenella_coeruleoalba.html,No
+mDipMer1,Dipodomys merriami,Merriam Kangaroo Rat,CCGP,https://www.ccgproject.org/species/dipodomys-merriami-merriams-kangaroo-rat,No
+mEscRob2,Eschrichtius robustus,grey whale,VGP,https://www.genomeark.org/vgp-all/Eschrichtius_robustus.html,No
+mEubGla1,Eubalaena glacialis,North Atlantic right whale,VGP,https://www.genomeark.org/vgp-all/Eubalaena_glacialis.html,Yes
+mGorGor1,Gorilla_gorilla,Gorilla,T2T Primate,https://42basepairs.com/browse/s3/genomeark/species/Gorilla_gorilla/mGorGor1,Yes
+mHetBru1,Heterohyrax brucei,Yellow-spotted hyrax,VGP,https://genomeark.github.io/genomeark-all/Heterohyrax_brucei.html,No
+mLynRuf1,Lynx rufus,Bobcat,CCGP,https://www.ccgproject.org/species/lynx-rufus-bobcat,No
+mMesDen1,Mesoplodon densirostris,Blainville's beaked whale,VGP,https://www.genomeark.org/vgp-all/Mesoplodon_densirostris.html,No
+mPanPan1,Pan paniscus,Bonobo,T2T Primate,https://42basepairs.com/browse/s3/genomeark/species/Pan_paniscus/mPanPan1,Yes
+mPerMan1,Peromyscus maniculatus,deer mouse,CCGP,https://www.ccgproject.org/species/peromyscus-maniculatus-deer-mouse,No
+mPhoPho1,Phocoena phocoena,harbor porpoise,VGP,https://www.genomeark.org/vgp-all/Phocoena_phocoena.html,No
+mPonAbe1,Pongo_abelii,Sumatran orangutan,T2T Primate,https://42basepairs.com/browse/s3/genomeark/species/Pongo_abelii/mPonAbe1,Yes
+mPonPyg2,Pongo_pygmaeus,Bornean orangutan,T2T Primate,https://42basepairs.com/browse/s3/genomeark/species/Pongo_pygmaeus/mPonPyg2,Yes
+mPseCra1,Pseudorca crassidens,false killer whale,VGP,https://www.genomeark.org/vgp-all/Pseudorca_crassidens.html,Yes
+mThoBot1,Thomomys bottae,Botta's pocket gopher,CCGP,https://www.ccgproject.org/species/thomomys-bottae-pocket-gopher,No
+mUrsAme1,Ursus americanus,American black bear,CCGP,https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_024610735.1/,No
+mUrsArc2,Ursus arctos,brown bear,NCBI,https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_023065955.2/,No

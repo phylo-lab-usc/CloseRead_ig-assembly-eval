@@ -26,12 +26,17 @@ conda env create -f assembly.yml
 conda activate ig-assembly-eval
 ```
 
+### Other Requirements
+
+[IgDetective](https://github.com/Immunotools/IgDetective.git) is required for the following analysis.
+
 ## Usage
 ### Running the Pipeline
 
 ![snakefile overview](plots/dag_snake.png)
 
 Use the Snakefile to run all the code located in the `code` folder. Above is an example pipeline overview for 1 species.
+
 Required input files:
 
 - HiFi fastq/BAM files of species of interest at `$HOME/$fastqdir/$species_name/`
@@ -40,26 +45,29 @@ Required input files:
 - Alternate/Haplotype2/Paternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.alt.fasta`
 - Above assembly files' index file `.fai`
 
+Optional input file:
+- `species_metainfo.csv` containing meta information of the species of interest
+
 Please make sure you modify the header lines of `Snakefile` to reflect your directory organization:
 
-- `SPECIES = ["mEubGla1"]` # list of species name
-- `fastqdir = ["hifi_fastq"]` # sub-directory of your home directory where your fastq files are located
-- `HAPLOID = ["False"]` # if the list of species are halpid or not
-- `HOME = "/home1/zhuyixin/zhuyixin_proj/AssmQuality"` # your home directory
+- `SPECIES = ["mEubGla1"]`, list of species name
+- `fastqdir = ["hifi_fastq"]`,  sub-directory of your home directory where your fastq files are located
+- `HAPLOID = ["False"]`,  if the list of species are halpid or not
+- `HOME = "/home1/zhuyixin/zhuyixin_proj/AssmQuality"`,  your home directory
 
-The output will be in the `errorStats/` directory and should include the following 11 files:
+The output stats files will be in the `errorStats/` directory and should include the following 11 files:
 
-- `IGH.txt`
-- `IGH_alt_pileup.txt`
-- `IGH_pri_pileup.txt`
+- `IGH.txt`, read-oriented stats for both primary and alternate assembly at IGH locus
+- `IGH_alt_pileup.txt`, mpileup file, basepair-oriented stats for alternate assembly at IGH locus
+- `IGH_pri_pileup.txt`, mpileup file, basepair-oriented stats for primary assembly at IGH locus
 - `IGK.txt`
 - `IGK_alt_pileup.txt`
 - `IGK_pri_pileup.txt`
 - `IGL.txt`
 - `IGL_pri_pileup.txt`
-- `cigar.end`
-- `pileup.end`
-- `nonIG.txt`
+- `cigar.end`, empty flag file
+- `pileup.end`, empty flag file
+- `nonIG.txt`, read-oriented stats for both primary and alternate assembly at non-IG locus
 
 ```bash
 # Run the main workflow using Snakemake
