@@ -77,6 +77,8 @@ snakemake -R all --snakefile Snakefile --printshellcmds --reason --verbose --lat
 
 After running the Snakefile, execute the evaluation notebook `code/evaluate.ipynb` to generate visualizations, stored in `errorPlots`.
 
+Detailed break analysis is in notebook `code/break.ipynb`.
+
 ### Folder Structure
 
 A brief example overview of the project's structure and directories:
