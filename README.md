@@ -109,4 +109,5 @@ ig-assembly-eval/
 ├── assembly.yml       # Conda environment file
 ├── code/              # Source code and scripts
 ├── plots/             # Directory for plots and figures
+├── curated_IGH/       # Directory for LJA curated IGH assembly
 ```
