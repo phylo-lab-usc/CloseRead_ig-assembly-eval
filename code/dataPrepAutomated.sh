@@ -32,9 +32,10 @@ then
     echo "bam file exists, converting to fastq"
     for f in ${HOME}/${source}/${species}/*.bam ; do 
     (
-        name=${f%.ccs*};
+        name=${f%.bam*};
         echo $f;
         echo $name;
+        pbindex $f;
         bam2fastq -o $name -j 32 $f ;
     )&
     done ; wait

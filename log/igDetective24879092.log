@@ -1,0 +1,34 @@
+Warning: '/home1/zhuyixin/.conda/envs/' already in 'envs_dirs' list, moving to the bottom
+# conda environments:
+#
+IGdetective           *  /home1/zhuyixin/.conda/envs/IGdetective
+assembly                 /home1/zhuyixin/.conda/envs/assembly
+clam_latest              /home1/zhuyixin/.conda/envs/clam_latest
+csci567                  /home1/zhuyixin/.conda/envs/csci567
+igor_c                   /home1/zhuyixin/.conda/envs/igor_c
+igortest                 /home1/zhuyixin/.conda/envs/igortest
+ins                      /home1/zhuyixin/.conda/envs/ins
+ml                       /home1/zhuyixin/.conda/envs/ml
+ml2                      /home1/zhuyixin/.conda/envs/ml2
+ml3                      /home1/zhuyixin/.conda/envs/ml3
+py39                     /home1/zhuyixin/.conda/envs/py39
+base                     /spack/conda/miniconda3/23.10.0
+
+# conda environments:
+#
+IGdetective           *  /home1/zhuyixin/.conda/envs/IGdetective
+assembly                 /home1/zhuyixin/.conda/envs/assembly
+clam_latest              /home1/zhuyixin/.conda/envs/clam_latest
+csci567                  /home1/zhuyixin/.conda/envs/csci567
+igor_c                   /home1/zhuyixin/.conda/envs/igor_c
+igortest                 /home1/zhuyixin/.conda/envs/igortest
+ins                      /home1/zhuyixin/.conda/envs/ins
+ml                       /home1/zhuyixin/.conda/envs/ml
+ml2                      /home1/zhuyixin/.conda/envs/ml2
+ml3                      /home1/zhuyixin/.conda/envs/ml3
+py39                     /home1/zhuyixin/.conda/envs/py39
+base                     /spack/conda/miniconda3/23.10.0
+
+PATH: /spack/2206/apps/linux-centos7-x86_64_v3/gcc-11.3.0/samtools-1.17-fq34dvu/bin:/spack/2206/apps/linux-centos7-x86_64_v3/gcc-11.3.0/pv-1.6.6-viwgrjj/bin:/spack/2206/apps/linux-centos7-x86_64_v3/gcc-11.3.0/findutils-4.9.0-mm4dw4d/bin:/spack/apps/gcc/11.3.0/bin:/home1/zhuyixin/.conda/envs/IGdetective/bin:/sbin:/usr/sbin:/usr/local/bin:/project/qcb_640/local/bin:/home1/zhuyixin/proj/bin:/home1/zhuyixin/sc1/AssmQuality/code/LJA/bin:/home1/zhuyixin/bin:/spack/conda/miniconda3/23.10.0/condabin:/usr/bin
+/home1/zhuyixin/.conda/envs/IGdetective/bin/python
+/home1/zhuyixin/.conda/envs/IGdetective/bin/minimap2

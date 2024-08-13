@@ -1,0 +1,53 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+all                      1
+cigarProcessing          1
+convertPrimaryBam        1
+coverageAnalysis         1
+dataPrepAutomate         1
+finalIGLoci              1
+lociLocation             1
+total                    7
+
+Resources before job selection: {'_cores': 30, '_nodes': 9223372036854775807}
+Ready jobs (2)
+Select jobs to execute...
+Selected jobs (2)
+Resources after job selection: {'_cores': 28, '_nodes': 9223372036854775805}
+
+[Mon Aug 12 19:03:22 2024]
+rule lociLocation:
+    input: /home1/zhuyixin/zhuyixin_proj/AssmQuality/assemblies/Emax.pri.fasta, /home1/zhuyixin/zhuyixin_proj/AssmQuality/assemblies/Emax.alt.fasta, code/igDetective.sh
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/Emax.pri.txt, /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/Emax.alt.txt
+    jobid: 5
+    reason: Missing output files: /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/Emax.alt.txt, /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/Emax.pri.txt
+    wildcards: HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality, species=Emax
+    resources: tmpdir=/tmp/SLURM_24878687
+
+
+        if [ ! -f "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/Emax.pri.txt" ]; then
+            sbatch --partition=gpu code/igDetective.sh /home1/zhuyixin/zhuyixin_proj/AssmQuality/assemblies/Emax.pri.fasta /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/Emax.pri.igdetective/ Emax pri /home1/zhuyixin/zhuyixin_proj/AssmQuality
+        fi
+        if [ ! -f "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/Emax.alt.txt" ]; then
+            sbatch --partition=gpu code/igDetective.sh /home1/zhuyixin/zhuyixin_proj/AssmQuality/assemblies/Emax.alt.fasta /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/Emax.alt.igdetective/ Emax alt /home1/zhuyixin/zhuyixin_proj/AssmQuality
+        fi
+        
+
+[Mon Aug 12 19:03:22 2024]
+rule dataPrepAutomate:
+    input: code/dataPrepAutomated.sh
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted.bam, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted.bam.csi
+    jobid: 3
+    reason: Missing output files: /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted.bam
+    wildcards: HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality, species=Emax
+    resources: tmpdir=/tmp/SLURM_24878687
+
+
+        sbatch --partition=gpu code/dataPrepAutomated.sh -s Emax -w hifi_fastq -h False -d /home1/zhuyixin/zhuyixin_proj/AssmQuality
+        
+Waiting at most 60000 seconds for missing files.

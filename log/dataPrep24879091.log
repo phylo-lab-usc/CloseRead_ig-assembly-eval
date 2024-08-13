@@ -1,0 +1,26 @@
+no change     /spack/conda/miniconda3/23.10.0/condabin/conda
+no change     /spack/conda/miniconda3/23.10.0/bin/conda
+no change     /spack/conda/miniconda3/23.10.0/bin/conda-env
+no change     /spack/conda/miniconda3/23.10.0/bin/activate
+no change     /spack/conda/miniconda3/23.10.0/bin/deactivate
+no change     /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
+no change     /spack/conda/miniconda3/23.10.0/etc/fish/conf.d/conda.fish
+no change     /spack/conda/miniconda3/23.10.0/shell/condabin/Conda.psm1
+no change     /spack/conda/miniconda3/23.10.0/shell/condabin/conda-hook.ps1
+no change     /spack/conda/miniconda3/23.10.0/lib/python3.11/site-packages/xontrib/conda.xsh
+no change     /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.csh
+no change     /home1/zhuyixin/.bashrc
+No action taken.
+bam file exists, converting to fastq
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/hifi_fastq/Emax/CRR847679.bam
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/hifi_fastq/Emax/CRR847679
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/hifi_fastq/Emax/CRR847680.bam
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/hifi_fastq/Emax/CRR847680
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/hifi_fastq/Emax/CRR847681.bam
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/hifi_fastq/Emax/CRR847681
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/hifi_fastq/Emax/CRR847685.bam
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/hifi_fastq/Emax/CRR847685
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/hifi_fastq/Emax/CRR847686.bam
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/hifi_fastq/Emax/CRR847686
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/hifi_fastq/Emax/CRR847687.bam
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/hifi_fastq/Emax/CRR847687
