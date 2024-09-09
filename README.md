@@ -153,7 +153,7 @@ ig-assembly-eval/
 ```
 
 ## 
-### If you use this software in your research, please cite the following publication, thank you!
+### citing:
 
 Assessing Assembly Errors in Immunoglobulin Loci: A Comprehensive Evaluation of Long-read Genome Assemblies Across Vertebrates
 Yixin Zhu, Corey Watson, Yana Safonova, Matt Pennell, Anton Bankevich
