@@ -39,7 +39,7 @@ Use the Snakefile to run all the code located in the `code` folder. Above is an 
 
 #### Required input files:
 
-- HiFi fastq/BAM files of species of interest at `$HOME/$fastqdir/$species_name/`
+- HiFi fastq/BAM files that generated the assembly of the species of interest at `$HOME/$fastqdir/$species_name/`
 - Merged diploid assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.merged.fasta`
 - Primary/Haplotype1/Maternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.pri.fasta`
 - Alternate/Haplotype2/Paternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.alt.fasta`
