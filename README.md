@@ -151,3 +151,11 @@ ig-assembly-eval/
 ├── plots/             # Directory for plots and figures
 ├── curated_IGH/       # Directory for LJA curated IGH assembly
 ```
+
+## Cite
+### Thank you for using this tool! Please cite the following article:
+```plaintext
+Assessing Assembly Errors in Immunoglobulin Loci: A Comprehensive Evaluation of Long-read Genome Assemblies Across Vertebrates
+Yixin Zhu, Corey Watson, Yana Safonova, Matt Pennell, Anton Bankevich
+bioRxiv 2024.07.19.604360; doi: https://doi.org/10.1101/2024.07.19.604360
+```
