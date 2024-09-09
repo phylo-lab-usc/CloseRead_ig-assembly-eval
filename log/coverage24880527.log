@@ -1,0 +1,20 @@
+no change     /spack/conda/miniconda3/23.10.0/condabin/conda
+no change     /spack/conda/miniconda3/23.10.0/bin/conda
+no change     /spack/conda/miniconda3/23.10.0/bin/conda-env
+no change     /spack/conda/miniconda3/23.10.0/bin/activate
+no change     /spack/conda/miniconda3/23.10.0/bin/deactivate
+no change     /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
+no change     /spack/conda/miniconda3/23.10.0/etc/fish/conf.d/conda.fish
+no change     /spack/conda/miniconda3/23.10.0/shell/condabin/Conda.psm1
+no change     /spack/conda/miniconda3/23.10.0/shell/condabin/conda-hook.ps1
+no change     /spack/conda/miniconda3/23.10.0/lib/python3.11/site-packages/xontrib/conda.xsh
+no change     /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.csh
+no change     /home1/zhuyixin/.bashrc
+No action taken.
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam
+[mpileup] 1 samples in 1 input files
+[mpileup] 1 samples in 1 input files
+[mpileup] 1 samples in 1 input files
+[mpileup] 1 samples in 1 input files
+[mpileup] 1 samples in 1 input files
+[mpileup] 1 samples in 1 input files

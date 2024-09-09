@@ -51,3 +51,130 @@ rule dataPrepAutomate:
         sbatch --partition=gpu code/dataPrepAutomated.sh -s Emax -w hifi_fastq -h False -d /home1/zhuyixin/zhuyixin_proj/AssmQuality
         
 Waiting at most 60000 seconds for missing files.
+[Tue Aug 13 01:07:11 2024]
+Finished job 3.
+1 of 7 steps (14%) done
+Resources before job selection: {'_cores': 29, '_nodes': 9223372036854775806}
+Ready jobs (1)
+Select jobs to execute...
+Using greedy selector because only single job has to be scheduled.
+Selected jobs (1)
+Resources after job selection: {'_cores': 28, '_nodes': 9223372036854775805}
+
+[Tue Aug 13 01:07:11 2024]
+rule convertPrimaryBam:
+    input: /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted.bam
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam.csi
+    jobid: 2
+    reason: Missing output files: /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam.csi, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam; Input files updated by another job: /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted.bam
+    wildcards: HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality, species=Emax
+    resources: tmpdir=/tmp/SLURM_24878687
+
+
+        source /etc/profile.d/modules.sh
+        module load gcc/11.3.0
+        module load samtools/1.17
+        samtools view -b -F 0x800 -F 0x100 -@ 30 /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted.bam > /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam
+        samtools index -c -@ 30 /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam
+        
+[Tue Aug 13 01:07:11 2024]
+Finished job 5.
+2 of 7 steps (29%) done
+Resources before job selection: {'_cores': 29, '_nodes': 9223372036854775806}
+Ready jobs (1)
+Select jobs to execute...
+Using greedy selector because only single job has to be scheduled.
+Selected jobs (1)
+Resources after job selection: {'_cores': 28, '_nodes': 9223372036854775805}
+
+[Tue Aug 13 01:07:11 2024]
+rule finalIGLoci:
+    input: code/finalGene.py, /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/Emax.pri.txt, /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/Emax.alt.txt
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/Emax.final.Ig_loci.txt
+    jobid: 4
+    reason: Missing output files: /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/Emax.final.Ig_loci.txt; Input files updated by another job: /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/Emax.alt.txt, /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/Emax.pri.txt
+    wildcards: HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality, species=Emax
+    resources: tmpdir=/tmp/SLURM_24878687
+
+
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/Emax.final.Ig_loci.txt
+        touch /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/Emax.final.Ig_loci.txt
+        python code/finalGene.py Emax /home1/zhuyixin/zhuyixin_proj/AssmQuality
+        
+[Tue Aug 13 01:07:12 2024]
+Finished job 4.
+3 of 7 steps (43%) done
+[Tue Aug 13 01:27:04 2024]
+Finished job 2.
+4 of 7 steps (57%) done
+Resources before job selection: {'_cores': 30, '_nodes': 9223372036854775807}
+Ready jobs (2)
+Select jobs to execute...
+Selected jobs (2)
+Resources after job selection: {'_cores': 28, '_nodes': 9223372036854775805}
+
+[Tue Aug 13 01:27:04 2024]
+rule coverageAnalysis:
+    input: /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/Emax.final.Ig_loci.txt, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam.csi, code/coverage_snake.sh
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/pileup.end
+    jobid: 6
+    reason: Missing output files: /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/pileup.end; Input files updated by another job: /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam.csi, /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/Emax.final.Ig_loci.txt, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam
+    wildcards: HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality, species=Emax
+    resources: tmpdir=/tmp/SLURM_24878687
+
+
+        mkdir -p /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/IGH_pri_pileup.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/IGK_pri_pileup.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/IGL_pri_pileup.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/*_pileup.txt
+        sbatch --partition=gpu code/coverage_snake.sh -s Emax -a /home1/zhuyixin/zhuyixin_proj/AssmQuality/assemblies/Emax.merged.fasta -b /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam -f /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/Emax.final.Ig_loci.txt -d /home1/zhuyixin/zhuyixin_proj/AssmQuality
+        
+
+[Tue Aug 13 01:27:04 2024]
+rule cigarProcessing:
+    input: code/cigar_processing_region.py, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam.csi, /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/Emax.final.Ig_loci.txt
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/cigar.end
+    jobid: 1
+    reason: Missing output files: /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/cigar.end; Input files updated by another job: /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam.csi, /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/Emax.final.Ig_loci.txt, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam
+    wildcards: HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality, species=Emax
+    resources: tmpdir=/tmp/SLURM_24878687
+
+
+        mkdir -p /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/IGH.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/IGK.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/IGL.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/nonIG.txt
+        python code/cigar_processing_region.py /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/Emax/Emax_merged_sorted_primary.bam /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/Emax.final.Ig_loci.txt Emax
+        touch /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/cigar.end
+        
+Waiting at most 60000 seconds for missing files.
+[Tue Aug 13 04:52:44 2024]
+Finished job 6.
+5 of 7 steps (71%) done
+[Tue Aug 13 04:52:44 2024]
+Finished job 1.
+6 of 7 steps (86%) done
+Resources before job selection: {'_cores': 30, '_nodes': 9223372036854775807}
+Ready jobs (1)
+Select jobs to execute...
+Using greedy selector because only single job has to be scheduled.
+Selected jobs (1)
+Resources after job selection: {'_cores': 29, '_nodes': 9223372036854775806}
+
+[Tue Aug 13 04:52:44 2024]
+localrule all:
+    input: /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/cigar.end, /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/pileup.end
+    jobid: 0
+    reason: Forced execution
+    resources: tmpdir=/tmp/SLURM_24878687
+
+[Tue Aug 13 04:52:44 2024]
+Finished job 0.
+7 of 7 steps (100%) done
+Complete log: .snakemake/log/2024-08-12T190321.819784.snakemake.log
+unlocking
+removing lock
+removing lock
+removed all locks

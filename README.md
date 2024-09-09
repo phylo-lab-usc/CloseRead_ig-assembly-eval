@@ -45,8 +45,6 @@ Use the Snakefile to run all the code located in the `code` folder. Above is an 
 - Alternate/Haplotype2/Paternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.alt.fasta`
 - Above assembly files' index file `.fai`
 
-#### Optional input file:
-- `species_metainfo.csv` containing meta information of the species of interest
 
 #### Please make sure you modify the header lines of `Snakefile` to reflect your directory organization:
 
@@ -73,11 +71,53 @@ Use the Snakefile to run all the code located in the `code` folder. Above is an 
 # Run the main workflow using Snakemake
 snakemake -R all --snakefile Snakefile --printshellcmds --reason --verbose --latency-wait 60000 --cores all
 ```
-### Generating Visualizations
+### Generating Visualizations and Error-Reporting Stats file
 
-After running the Snakefile, execute the evaluation notebook `code/evaluate.ipynb` to generate visualizations, stored in `errorPlots`.
+#### Optional input file:
+- `species_metainfo.csv` containing meta information of the species of interest, format see example
 
-Detailed break analysis is in notebook `code/break.ipynb`.
+After running the Snakefile, execute the python script `code/CloseRead.py` to generate visualizations and error-reporting stats file, stored in `errorPlots`.
+```bash
+python CloseRead.py [OPTIONS]
+usage: CloseRead.py [-h] (--species s | --species_file sf) --gene g [--haploid h] --errorStatsDir dirStat --errorPlotsDir dirPlot [--lowCov_threshold cov] [--padding p]
+                    [--single_read_error re] [--readview_correct_threshold rc] [--baseview_correct_threshold bc] [--meta m]
+
+CloseRead Evaluation Stats and Visualization.
+
+options:
+  -h, --help            show this help message and exit
+  --species s           Single species identifier (use this if you are providing one species)
+  --species_file sf     Path to file containing a list of species (use this if you are providing multiple species)
+  --gene g              Gene identifier(IGH/IGK/IGL)
+  --haploid h           Haploid status (True/False) (alternate IG loci will not be shown if too short or has multiple)
+  --errorStatsDir dirStat
+                        Path to the previous errorStats directory containing mpileup file
+  --errorPlotsDir dirPlot
+                        Path to the output errorPlots directory
+  --lowCov_threshold cov
+                        Threshold for low coverage (default: 2)
+  --padding p           Padding around low coverage regions (default: 2000bps)
+  --single_read_error re
+                        Threshold for a single read to consider as high mismatch (default: 0.01)
+  --readview_correct_threshold rc
+                        Number of high mismatch reads needed to cover a position for it to be considered as high mismatch rate position from read-view (default: 5)
+  --baseview_correct_threshold bc
+                        Threshold for the percent of reads with exact match at a position for it to be considered as well-supported, used in heatmap (default: 80 percent)
+  --meta m              Absolute path to the meta information .csv file, used for generating pdf.
+```
+
+#### The output files will be in the `errorPlots/` directory and should include the following files:
+
+- `summary.allreads.png`, summary evaluation of the general stats
+- `length.png`, locus length plot
+- `readcoverage.all.png`, coverage by read mapping quality across a genomic region, for both haplotype if diploid
+- `basecoverage.PerCorrect.png`, basepair level coverage (% mismatch per position) and a heatmap of poorly supported positions, for both haplotype if diploid
+- `break.txt` containing information for all low coverage positions
+- `read.mismatch.txt` containing positional information for all high-mismatch rate region from read-view
+- `base.exactmismatch.csv` containing detailed basepair-view mismatch information for every basepair with < bc (80% default) base support
+- `base.avgmismatch.csv` containing averaged basepair-view mismatch information, grouping consecutive basepairs (< 1000bps spaced), best for identifying regions with lots of single base mismatches
+- `finalMismatch.csv` containing positions marked highly mismacthed from both basepair-view and read-view, for both haplotype if diploid
+- `result.pdf`, single pdf with all figures and meta information. 
 
 ### Folder Structure
 
