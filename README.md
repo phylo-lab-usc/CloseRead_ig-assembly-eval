@@ -1,6 +1,6 @@
-# IG Assembly Evaluation
+# IG Assembly Evaluation with CloseRead
 
-**Brief description:** This project aims to evaluate the assembly of immunoglobulin (IG) sequences. The evaluation process includes various scripts and workflows to analyze, compare, and validate IG sequence assemblies.
+**Brief description:** This tool aims to evaluate the assembly of immunoglobulin (IG) sequences. The evaluation process includes various scripts and workflows to analyze, compare, and validate IG sequence assemblies.
 
 ![pipeline overview](plots/overview.png)
 
