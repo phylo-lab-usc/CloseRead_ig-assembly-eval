@@ -52,6 +52,7 @@ Use the Snakefile to run all the code located in the `code` folder. Above is an 
 - `fastqdir = ["hifi_fastq"]`,  sub-directory of your home directory where your fastq files are located
 - `HAPLOID = ["False"]`,  if the list of species are halpid or not
 - `HOME = "/home1/zhuyixin/zhuyixin_proj/AssmQuality"`,  your home directory
+- Header of all `.sh` file also need to be modified for correct cluster job submission
 
 #### The output stats files will be in the `errorStats/` directory and should include the following 11 files:
 
