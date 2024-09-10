@@ -55,6 +55,7 @@ if __name__ == "__main__":
     parser.add_argument('--readview_correct_threshold', type=int, default=5, metavar="rc", help="Number of high mismatch reads needed to cover a position for it to be considered as high mismatch rate position from read-view (default: 5)")
     parser.add_argument('--baseview_correct_threshold', type=int, default=5, metavar="bc", help="Threshold for the percent of reads with exact match at a position for it to be considered as well-supported, used in heatmap (default: 80 percent)")
     parser.add_argument('--meta', type=str, metavar="m", help="Absolute path to the meta information .csv file, used for generating pdf.")
+    parser.add_argument('--stats_only', type=bool, default=False, metavar="so", help="output .txt and .csv files only, skip visualization")
 
 
     # Parse the command line arguments
@@ -129,10 +130,11 @@ if __name__ == "__main__":
             start_break_alt= break_regions[break_regions['Chrom'] == chr2]['Start'].tolist()
             end_break_alt = break_regions[break_regions['Chrom'] == chr2]['End'].tolist()
             
-        #Plot loci length
-        plot_locus_length(pri_pileup, alt_pileup, gene, "#6AABD7", "#F0DDB8", dirOut, haploid, chr1, chr2)
-        #Plot summary read info
-        plot_summary(read_pri, read_alt, "#6AABD7", "#F0DDB8", haploid, dirOut, gene, chr1, chr2)
+        if not args.stats_only:
+            #Plot loci length
+            plot_locus_length(pri_pileup, alt_pileup, gene, "#6AABD7", "#F0DDB8", dirOut, haploid, chr1, chr2)
+            #Plot summary read info
+            plot_summary(read_pri, read_alt, "#6AABD7", "#F0DDB8", haploid, dirOut, gene, chr1, chr2)
 
         #Compute read-view stats
         start_indices_pri, end_indices_pri, high_mismatch_bool_pri, positions_pri, coverage_counts_pri, zero_counts_pri, min_position_pri, max_position_pri, mid_counts_pri, high_mismatch_coverage_pri = coverage(read_pri, single_read_error, readview_correct_threshold)
@@ -151,12 +153,13 @@ if __name__ == "__main__":
                 for start, end in zip(start_indices_alt, end_indices_alt):
                     file.write(f"{chr2}:{start}-{end}\n")
 
-        #Plot read coverage across loci
-        plot_coverage(positions_pri, coverage_counts_pri, mid_counts_pri, zero_counts_pri, start_indices_pri,
-                      end_indices_pri, high_mismatch_bool_pri.size, start_break_pri, end_break_pri, min_position_pri, max_position_pri, chr1, gene, dirOut)
-        if not haploid:
-            plot_coverage(positions_alt, coverage_counts_alt, mid_counts_alt, zero_counts_alt, start_indices_alt, 
-                          end_indices_alt, high_mismatch_bool_alt.size, start_break_alt, end_break_alt, min_position_alt, max_position_alt, chr2, gene, dirOut)
+        if not args.stats_only:
+            #Plot read coverage across loci
+            plot_coverage(positions_pri, coverage_counts_pri, mid_counts_pri, zero_counts_pri, start_indices_pri,
+                        end_indices_pri, high_mismatch_bool_pri.size, start_break_pri, end_break_pri, min_position_pri, max_position_pri, chr1, gene, dirOut)
+            if not haploid:
+                plot_coverage(positions_alt, coverage_counts_alt, mid_counts_alt, zero_counts_alt, start_indices_alt, 
+                            end_indices_alt, high_mismatch_bool_alt.size, start_break_alt, end_break_alt, min_position_alt, max_position_alt, chr2, gene, dirOut)
 
         #Compute basepair mismatch
         bin_count = calculate_bin_counts(pri_pileup, baseview_correct_threshold=80, bin_size=1000)
@@ -177,51 +180,52 @@ if __name__ == "__main__":
         overlaps_pri.to_csv(f"{dirOut}/{gene}.{chr1}.finalMismatch.csv", index=False)
         overlaps_alt.to_csv(f"{dirOut}/{gene}.{chr2}.finalMismatch.csv", index=False)
 
-        #Plot basepair mismatch across loci
-        #Define the colors for the heatmap
-        colors = [(1, 1, 1), (0.6, 0.6, 0.6), (0.2, 0.2, 0.2), (0, 0, 0)]  
-        n_bins = 100  
-        cmap_name = 'custom'
-        cm = LinearSegmentedColormap.from_list(cmap_name, colors, N=n_bins)
-        plot_mismatch_coverage(pri_pileup, bin_count, positions_pri, start_indices_pri, end_indices_pri, 
-                               high_mismatch_bool_pri.size, start_break_pri, end_break_pri, 
-                               chr1_color, chr1, gene, dirOut, cm)
-        if not haploid:
-            plot_mismatch_coverage(alt_pileup, bin_count, positions_alt, start_indices_alt, end_indices_alt, 
-                               high_mismatch_bool_alt.size, start_break_alt, end_break_alt, 
-                               chr2_color, chr2, gene, dirOut, cm)
-
-        #Generate PDF - without dotplot
-        if args.meta:
-            meta = pd.read_csv(args.meta, sep=",")
-            LatinName = meta[meta['IndividualID'] == species]['LatinName'].item()
-            CommonName = meta[meta['IndividualID'] == species]['CommonName'].item()
-            Source = meta[meta['IndividualID'] == species]['Source'].item()
-            SourceLink = meta[meta['IndividualID'] == species]['SourceLink'].item()
-            Haplotype = meta[meta['IndividualID'] == species]['Haplotype Resolved'].item()
-            if Haplotype == "No":
-                hapkind = "Not Haplotype Resolved"
-            else:
-                hapkind = "Haplotype Resolved"
-                
-            output_filename = f"{dirOut}/{species}_{gene}_result.pdf"
+        if not args.stats_only:
+            #Plot basepair mismatch across loci
+            #Define the colors for the heatmap
+            colors = [(1, 1, 1), (0.6, 0.6, 0.6), (0.2, 0.2, 0.2), (0, 0, 0)]  
+            n_bins = 100  
+            cmap_name = 'custom'
+            cm = LinearSegmentedColormap.from_list(cmap_name, colors, N=n_bins)
+            plot_mismatch_coverage(pri_pileup, bin_count, positions_pri, start_indices_pri, end_indices_pri, 
+                                high_mismatch_bool_pri.size, start_break_pri, end_break_pri, 
+                                chr1_color, chr1, gene, dirOut, cm)
             if not haploid:
-                image_files = [
-                    f'{dirOut}/{gene}.summary.allreads.png', 
-                    f'{dirOut}/{gene}.length.png', 
-                    f'{dirOut}/{gene}.{chr1}.readcoverage.all.png',
-                    f'{dirOut}/{gene}.{chr1}.basecoverage.PerCorrect.png',
-                    f'{dirOut}/{gene}.{chr2}.readcoverage.all.png',
-                    f'{dirOut}/{gene}.{chr2}.basecoverage.PerCorrect.png',
-                ]
-                make_pdfdi(image_files, output_filename, species, CommonName, LatinName, hapkind, Source, overlapx=0.7, overlapy=0.01, scale_top=0.6, scale_bottom=0.3)
-            else:
-                image_files = [
-                    f'{dirOut}/{gene}.summary.allreads.png', 
-                    f'{dirOut}/{gene}.length.png', 
-                    f'{dirOut}/{gene}.{chr1}.readcoverage.all.png',
-                    f'{dirOut}/{gene}.{chr1}.basecoverage.PerCorrect.png',
-                ]
-                make_pdf(image_files, output_filename, species, CommonName, LatinName, hapkind, Source, overlapx=0.7, overlapy=0.01, scale_top=0.6, scale_bottom=0.3)
-                
+                plot_mismatch_coverage(alt_pileup, bin_count, positions_alt, start_indices_alt, end_indices_alt, 
+                                high_mismatch_bool_alt.size, start_break_alt, end_break_alt, 
+                                chr2_color, chr2, gene, dirOut, cm)
+
+            #Generate PDF - without dotplot
+            if args.meta:
+                meta = pd.read_csv(args.meta, sep=",")
+                LatinName = meta[meta['IndividualID'] == species]['LatinName'].item()
+                CommonName = meta[meta['IndividualID'] == species]['CommonName'].item()
+                Source = meta[meta['IndividualID'] == species]['Source'].item()
+                SourceLink = meta[meta['IndividualID'] == species]['SourceLink'].item()
+                Haplotype = meta[meta['IndividualID'] == species]['Haplotype Resolved'].item()
+                if Haplotype == "No":
+                    hapkind = "Not Haplotype Resolved"
+                else:
+                    hapkind = "Haplotype Resolved"
+                    
+                output_filename = f"{dirOut}/{species}_{gene}_result.pdf"
+                if not haploid:
+                    image_files = [
+                        f'{dirOut}/{gene}.summary.allreads.png', 
+                        f'{dirOut}/{gene}.length.png', 
+                        f'{dirOut}/{gene}.{chr1}.readcoverage.all.png',
+                        f'{dirOut}/{gene}.{chr1}.basecoverage.PerCorrect.png',
+                        f'{dirOut}/{gene}.{chr2}.readcoverage.all.png',
+                        f'{dirOut}/{gene}.{chr2}.basecoverage.PerCorrect.png',
+                    ]
+                    make_pdfdi(image_files, output_filename, species, CommonName, LatinName, hapkind, Source, overlapx=0.7, overlapy=0.01, scale_top=0.6, scale_bottom=0.3)
+                else:
+                    image_files = [
+                        f'{dirOut}/{gene}.summary.allreads.png', 
+                        f'{dirOut}/{gene}.length.png', 
+                        f'{dirOut}/{gene}.{chr1}.readcoverage.all.png',
+                        f'{dirOut}/{gene}.{chr1}.basecoverage.PerCorrect.png',
+                    ]
+                    make_pdf(image_files, output_filename, species, CommonName, LatinName, hapkind, Source, overlapx=0.7, overlapy=0.01, scale_top=0.6, scale_bottom=0.3)
+                    
 

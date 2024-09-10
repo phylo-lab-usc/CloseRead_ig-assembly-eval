@@ -81,7 +81,7 @@ After running the Snakefile, execute the python script `code/CloseRead.py` to ge
 ```bash
 python CloseRead.py [OPTIONS]
 usage: CloseRead.py [-h] (--species s | --species_file sf) --gene g [--haploid h] --errorStatsDir dirStat --errorPlotsDir dirPlot [--lowCov_threshold cov] [--padding p]
-                    [--single_read_error re] [--readview_correct_threshold rc] [--baseview_correct_threshold bc] [--meta m]
+                    [--single_read_error re] [--readview_correct_threshold rc] [--baseview_correct_threshold bc] [--meta m] [--stats_only so]
 
 CloseRead Evaluation Stats and Visualization.
 
@@ -105,6 +105,7 @@ options:
   --baseview_correct_threshold bc
                         Threshold for the percent of reads with exact match at a position for it to be considered as well-supported, used in heatmap (default: 80 percent)
   --meta m              Absolute path to the meta information .csv file, used for generating pdf.
+  --stats_only so       output .txt and .csv files only, skip visualization
 ```
 
 #### The output files will be in the `errorPlots/` directory and should include the following files:
