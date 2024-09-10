@@ -27,7 +27,6 @@ from CloseRead_stats import read_species_from_file, create_directories
 from CloseRead_stats import process_pileup, process_low_coverage_regions, process_read_file, coverage
 from CloseRead_stats import calculate_bin_counts, write_pileup, find_overlapping_mismatch_regions
 
-
 warnings.filterwarnings('ignore')
 
 # Main block to execute
@@ -37,48 +36,48 @@ if __name__ == "__main__":
 
     # Add mutually exclusive group for either species or species file input
     group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('--species', type=str, metavar="s", help="Single species identifier (use this if you are providing one species)")
-    group.add_argument('--species_file', type=str, metavar="sf", help="Path to file containing a list of species (use this if you are providing multiple species)")
+    group.add_argument('--s', type=str, metavar="species", help="Single species identifier (use this if you are providing one species)")
+    group.add_argument('--sf', type=str, metavar="species_file", help="Path to file containing a list of species (use this if you are providing multiple species)")
 
     # Add arguments for gene and haploid
-    parser.add_argument('--gene', type=str, required=True, metavar="g", help="Gene identifier(IGH/IGK/IGL)")
-    parser.add_argument('--haploid', type=bool, default=False, metavar="h", help="Haploid status (True/False) (alternate IG loci will not be shown if too short or has multiple)")
+    parser.add_argument('--g', type=str, required=True, metavar="gene", help="Gene identifier(IGH/IGK/IGL)")
+    parser.add_argument('--ha', type=bool, default=False, metavar="haploid", help="Haploid status (True/False) (alternate IG loci will not be shown if too short or has multiple)")
 
     # Add argument for Output
-    parser.add_argument('--errorStatsDir', type=str, required=True, metavar="dirStat", help="Path to the previous errorStats directory containing mpileup file")
-    parser.add_argument('--errorPlotsDir', type=str, required=True, metavar="dirPlot", help="Path to the output errorPlots directory")
+    parser.add_argument('--dirStat', type=str, required=True, metavar="errorStatsDir", help="Path to the previous errorStats directory containing mpileup file")
+    parser.add_argument('--dirPlot', type=str, required=True, metavar="errorPlotsDir", help="Path to the output errorPlots directory")
 
     # Add optional argument
-    parser.add_argument('--lowCov_threshold', type=int, default=2, metavar="cov", help="Threshold for low coverage (default: 2)")
-    parser.add_argument('--padding', type=int, default=2000, metavar="p", help="Padding around low coverage regions (default: 2000bps)")
-    parser.add_argument('--single_read_error', type=float, default=0.01, metavar="re", help="Threshold for a single read to consider as high mismatch (default: 0.01)")
-    parser.add_argument('--readview_correct_threshold', type=int, default=5, metavar="rc", help="Number of high mismatch reads needed to cover a position for it to be considered as high mismatch rate position from read-view (default: 5)")
-    parser.add_argument('--baseview_correct_threshold', type=int, default=5, metavar="bc", help="Threshold for the percent of reads with exact match at a position for it to be considered as well-supported, used in heatmap (default: 80 percent)")
-    parser.add_argument('--meta', type=str, metavar="m", help="Absolute path to the meta information .csv file, used for generating pdf.")
-    parser.add_argument('--stats_only', type=bool, default=False, metavar="so", help="output .txt and .csv files only, skip visualization")
+    parser.add_argument('--cov', type=int, default=2, metavar="lowCov_threshold", help="Threshold for low coverage (default: 2)")
+    parser.add_argument('--p', type=int, default=2000, metavar="padding", help="Padding around low coverage regions (default: 2000bps)")
+    parser.add_argument('--re', type=float, default=0.01, metavar="single_read_error", help="Threshold for a single read to consider as high mismatch (default: 0.01)")
+    parser.add_argument('--rc', type=int, default=5, metavar="readview_correct_threshold", help="Number of high mismatch reads needed to cover a position for it to be considered as high mismatch rate position from read-view (default: 5)")
+    parser.add_argument('--bc', type=int, default=5, metavar="baseview_correct_threshold", help="Threshold for the percent of reads with exact match at a position for it to be considered as well-supported, used in heatmap (default: 80 percent)")
+    parser.add_argument('--m', type=str, metavar="meta", help="Absolute path to the meta information .csv file, used for generating pdf.")
+    parser.add_argument('--so', type=bool, default=False, metavar="stats_only", help="output .txt and .csv files only, skip visualization")
 
 
     # Parse the command line arguments
     args = parser.parse_args()
 
     # Determine if single species or species file is provided
-    if args.species_file:
-        species_list = read_species_from_file(args.species_file)
+    if args.sf:
+        species_list = read_species_from_file(args.sf)
     else:
-        species_list = [args.species]  # Convert single species into a list
+        species_list = [args.s]  # Convert single species into a list
    
-    gene = args.gene
+    gene = args.g
     haploid = False
-    single_read_error = args.single_read_error
-    readview_correct_threshold = args.readview_correct_threshold
+    single_read_error = args.re
+    readview_correct_threshold = args.rc
     chr1_color = "#6AABD7"
     chr2_color = "#F0DDB8"
 
     # Iterate through each species
     for species in species_list:
         haploid = False
-        dirOut = f"{args.errorPlotsDir}/{species}"
-        dirStat = f"{args.errorStatsDir}/{species}"
+        dirOut = f"{args.dirPlot}/{species}"
+        dirStat = f"{args.dirStat}/{species}"
         create_directories(species, dirStat, dirOut)
 
         #process basepair-view mpileup file
@@ -93,6 +92,8 @@ if __name__ == "__main__":
             print(f"Haploit = True : Alternate mpileup file not found: {alt_pileup_file}")
             alt_pileup = None
             haploid = True
+            chr2 = None
+            read_alt = None
             
         # Concatenate primary and alternate pileup data if diploid
         if alt_pileup is not None:
@@ -119,7 +120,7 @@ if __name__ == "__main__":
                 alt_pileup = alt_pileup[alt_pileup['Chrom']==chr2]
 
         # Find and output break locations 
-        break_regions_list, break_regions = process_low_coverage_regions(merged_pileup, lowCov_threshold=args.lowCov_threshold, padding=args.padding)
+        break_regions_list, break_regions = process_low_coverage_regions(merged_pileup, lowCov_threshold=args.cov, padding=args.p)
         with open(f"{dirOut}/{gene}.break.txt", 'w') as file:
             for row in break_regions_list:
                 s = str(row)
@@ -130,7 +131,7 @@ if __name__ == "__main__":
             start_break_alt= break_regions[break_regions['Chrom'] == chr2]['Start'].tolist()
             end_break_alt = break_regions[break_regions['Chrom'] == chr2]['End'].tolist()
             
-        if not args.stats_only:
+        if not args.so:
             #Plot loci length
             plot_locus_length(pri_pileup, alt_pileup, gene, "#6AABD7", "#F0DDB8", dirOut, haploid, chr1, chr2)
             #Plot summary read info
@@ -153,7 +154,7 @@ if __name__ == "__main__":
                 for start, end in zip(start_indices_alt, end_indices_alt):
                     file.write(f"{chr2}:{start}-{end}\n")
 
-        if not args.stats_only:
+        if not args.so:
             #Plot read coverage across loci
             plot_coverage(positions_pri, coverage_counts_pri, mid_counts_pri, zero_counts_pri, start_indices_pri,
                         end_indices_pri, high_mismatch_bool_pri.size, start_break_pri, end_break_pri, min_position_pri, max_position_pri, chr1, gene, dirOut)
@@ -172,15 +173,17 @@ if __name__ == "__main__":
         with open(f"{dirOut}/{gene}.base.avgmismatch.csv", 'w') as f:
             f.write("Chrom,Start,End,AvgPercentMismatch,AvgDepth,AvgIndel\n")
         grouped_baseMis_pri = write_pileup(pri_pileup, gene, dirOut)
-        grouped_baseMis_alt = write_pileup(alt_pileup, gene, dirOut)
+        if not haploid:
+            grouped_baseMis_alt = write_pileup(alt_pileup, gene, dirOut)
 
         #Compute overlapping mismatch regions between read-view and base-view
         overlaps_pri = find_overlapping_mismatch_regions(pri_pileup, start_indices_pri, end_indices_pri)
-        overlaps_alt = find_overlapping_mismatch_regions(alt_pileup, start_indices_alt, end_indices_alt)
         overlaps_pri.to_csv(f"{dirOut}/{gene}.{chr1}.finalMismatch.csv", index=False)
-        overlaps_alt.to_csv(f"{dirOut}/{gene}.{chr2}.finalMismatch.csv", index=False)
+        if not haploid:
+            overlaps_alt = find_overlapping_mismatch_regions(alt_pileup, start_indices_alt, end_indices_alt)
+            overlaps_alt.to_csv(f"{dirOut}/{gene}.{chr2}.finalMismatch.csv", index=False)
 
-        if not args.stats_only:
+        if not args.so:
             #Plot basepair mismatch across loci
             #Define the colors for the heatmap
             colors = [(1, 1, 1), (0.6, 0.6, 0.6), (0.2, 0.2, 0.2), (0, 0, 0)]  
@@ -196,8 +199,8 @@ if __name__ == "__main__":
                                 chr2_color, chr2, gene, dirOut, cm)
 
             #Generate PDF - without dotplot
-            if args.meta:
-                meta = pd.read_csv(args.meta, sep=",")
+            if args.m:
+                meta = pd.read_csv(args.m, sep=",")
                 LatinName = meta[meta['IndividualID'] == species]['LatinName'].item()
                 CommonName = meta[meta['IndividualID'] == species]['CommonName'].item()
                 Source = meta[meta['IndividualID'] == species]['Source'].item()

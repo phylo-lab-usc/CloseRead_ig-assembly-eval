@@ -37,8 +37,7 @@ def create_directories(species, dirStat, dirOut):
     if not os.path.exists(dirStat):
         os.makedirs(dirStat)
         print(f"Created directory: {dirStat}")
-    else:
-        print(f"Directory already exists: {dirStat}, will overwrite existing file")
+
 
 
 def parse_read_bases(read_bases):
