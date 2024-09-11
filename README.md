@@ -31,7 +31,7 @@ conda activate ig-assembly-eval
 [IgDetective](https://github.com/Immunotools/IgDetective.git) is required for the following analysis.
 
 ## Usage
-### Running the Pipeline
+### 1. Running Read-to-Assembly Pipeline and Preparing Files
 
 ![snakefile overview](plots/dag_snake.png)
 
@@ -52,7 +52,7 @@ Use the Snakefile to run all the code located in the `code` folder. Above is an 
 - `fastqdir = ["hifi_fastq"]`,  sub-directory of your home directory where your fastq files are located
 - `HAPLOID = ["False"]`,  if the list of species are halpid or not
 - `HOME = "/home1/zhuyixin/zhuyixin_proj/AssmQuality"`,  your home directory
-- Header of all `.sh` file also need to be modified for correct cluster job submission
+- Header of all `.sh` file in `code` also need to be modified for correct cluster job submission
 
 #### The output stats files will be in the `errorStats/` directory and should include the following 11 files:
 
@@ -72,7 +72,7 @@ Use the Snakefile to run all the code located in the `code` folder. Above is an 
 # Run the main workflow using Snakemake
 snakemake -R all --snakefile Snakefile --printshellcmds --reason --verbose --latency-wait 60000 --cores all
 ```
-### Generating Visualizations and Error-Reporting Stats file
+### 2. Generating Visualizations and Error-Reporting Stats file
 
 #### Optional input file:
 - `species_metainfo.csv` containing meta information of the species of interest, format see example
