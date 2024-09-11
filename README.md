@@ -80,32 +80,35 @@ snakemake -R all --snakefile Snakefile --printshellcmds --reason --verbose --lat
 After running the Snakefile, execute the python script `code/CloseRead.py` to generate visualizations and error-reporting stats file, stored in `errorPlots`.
 ```bash
 python CloseRead.py [OPTIONS]
-usage: CloseRead.py [-h] (--species s | --species_file sf) --gene g [--haploid h] --errorStatsDir dirStat --errorPlotsDir dirPlot [--lowCov_threshold cov] [--padding p]
-                    [--single_read_error re] [--readview_correct_threshold rc] [--baseview_correct_threshold bc] [--meta m] [--stats_only so]
+usage: CloseRead.py [-h] (--s species | --sf species_file) --g gene [--ha haploid] --dirStat errorStatsDir --dirPlot errorPlotsDir
+                    [--cov lowCov_threshold] [--p padding] [--re single_read_error] [--rc readview_correct_threshold]
+                    [--bc baseview_correct_threshold] [--m meta] [--so stats_only]
 
 CloseRead Evaluation Stats and Visualization.
 
 options:
   -h, --help            show this help message and exit
-  --species s           Single species identifier (use this if you are providing one species)
-  --species_file sf     Path to file containing a list of species (use this if you are providing multiple species)
-  --gene g              Gene identifier(IGH/IGK/IGL)
-  --haploid h           Haploid status (True/False) (alternate IG loci will not be shown if too short or has multiple)
-  --errorStatsDir dirStat
+  --s species           Single species identifier (use this if you are providing one species)
+  --sf species_file     Path to file containing a list of species (use this if you are providing multiple species)
+  --g gene              Gene identifier(IGH/IGK/IGL)
+  --ha haploid          Haploid status (True/False) (alternate IG loci will not be shown if too short or has multiple)
+  --dirStat errorStatsDir
                         Path to the previous errorStats directory containing mpileup file
-  --errorPlotsDir dirPlot
+  --dirPlot errorPlotsDir
                         Path to the output errorPlots directory
-  --lowCov_threshold cov
+  --cov lowCov_threshold
                         Threshold for low coverage (default: 2)
-  --padding p           Padding around low coverage regions (default: 2000bps)
-  --single_read_error re
+  --p padding           Padding around low coverage regions (default: 2000bps)
+  --re single_read_error
                         Threshold for a single read to consider as high mismatch (default: 0.01)
-  --readview_correct_threshold rc
-                        Number of high mismatch reads needed to cover a position for it to be considered as high mismatch rate position from read-view (default: 5)
-  --baseview_correct_threshold bc
-                        Threshold for the percent of reads with exact match at a position for it to be considered as well-supported, used in heatmap (default: 80 percent)
-  --meta m              Absolute path to the meta information .csv file, used for generating pdf.
-  --stats_only so       output .txt and .csv files only, skip visualization
+  --rc readview_correct_threshold
+                        Number of high mismatch reads needed to cover a position for it to be considered as high mismatch rate position from
+                        read-view (default: 5)
+  --bc baseview_correct_threshold
+                        Threshold for the percent of reads with exact match at a position for it to be considered as well-supported, used in
+                        heatmap (default: 80 percent)
+  --m meta              Absolute path to the meta information .csv file, used for generating pdf.
+  --so stats_only       output .txt and .csv files only, skip visualization
 ```
 
 #### The output files will be in the `errorPlots/` directory and should include the following files:
@@ -118,8 +121,10 @@ options:
 - `read.mismatch.txt` containing positional information for all high-mismatch rate region from read-view
 - `base.exactmismatch.csv` containing detailed basepair-view mismatch information for every basepair with < bc (80% default) base support
 - `base.avgmismatch.csv` containing averaged basepair-view mismatch information, grouping consecutive basepairs (< 1000bps spaced), best for identifying regions with lots of single base mismatches
-- `finalMismatch.csv` containing positions marked highly mismacthed from both basepair-view and read-view, for both haplotype if diploid
+- `finalMismatch.csv` containing positions marked highly mismatched from both basepair-view and read-view, for both haplotype if diploid
 - `result.pdf`, single pdf with all figures and meta information. 
+
+#### For more information on how to interpret the result please refer to this [document](https://docs.google.com/document/d/1QOh3Z6noqZ7x-u70QhQv4VhQOrCJJ1hz_NEmvBDaT_A/pub) 
 
 ### Folder Structure
 
@@ -155,7 +160,7 @@ ig-assembly-eval/
 ```
 
 ## 
-### citing:
+### Citing:
 
 Assessing Assembly Errors in Immunoglobulin Loci: A Comprehensive Evaluation of Long-read Genome Assemblies Across Vertebrates
 Yixin Zhu, Corey Watson, Yana Safonova, Matt Pennell, Anton Bankevich
