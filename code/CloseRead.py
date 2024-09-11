@@ -178,10 +178,14 @@ if __name__ == "__main__":
 
         #Compute overlapping mismatch regions between read-view and base-view
         overlaps_pri = find_overlapping_mismatch_regions(pri_pileup, start_indices_pri, end_indices_pri)
-        overlaps_pri.to_csv(f"{dirOut}/{gene}.{chr1}.finalMismatch.csv", index=False)
+        with open(f"{dirOut}/{species}.{gene}.{chr1}.finalMismatch.csv", 'w') as file:
+            pass
+        overlaps_pri.to_csv(f"{dirOut}/{species}.{gene}.{chr1}.finalMismatch.csv", index=False)
         if not haploid:
             overlaps_alt = find_overlapping_mismatch_regions(alt_pileup, start_indices_alt, end_indices_alt)
-            overlaps_alt.to_csv(f"{dirOut}/{gene}.{chr2}.finalMismatch.csv", index=False)
+            with open(f"{dirOut}/{species}.{gene}.{chr1}.finalMismatch.csv", 'w') as file:
+                pass
+            overlaps_alt.to_csv(f"{dirOut}/{species}.{gene}.{chr2}.finalMismatch.csv", index=False)
 
         if not args.so:
             #Plot basepair mismatch across loci
