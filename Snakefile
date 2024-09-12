@@ -2,7 +2,7 @@ SPECIES = ["fScoMax1"]
 fastqdir = ["hifi_fastq"]
 HAPLOID = ["False"]
 knownLoci = config.get("knownLoci", False)
-known_lociPos = config.get("loci_file", "NA")  # Default value if not provided
+known_lociDir= config.get("loci_dir", "NA")  
 
 HOME = "/home1/zhuyixin/zhuyixin_proj/AssmQuality"
 files = dict()
@@ -25,6 +25,10 @@ files['cigarend'] = "{HOME}/errorStats/{species}/cigar.end"
 files['pileupend'] = "{HOME}/errorStats/{species}/pileup.end"
 files['igDetect.pri'] = "{HOME}/igGene/{species}.pri.txt"
 files['igDetect.alt'] = "{HOME}/igGene/{species}.alt.txt"
+if not knownLoci:
+    igAnnotation = files['final.genePos_IG']
+else:
+    igAnnotation = lambda wildcards: f"{known_lociDir}/{wildcards.species}.customIG.txt"
 
 rule all:
     input:
@@ -105,7 +109,7 @@ rule cigarProcessing:
         script = "code/cigar_processing_region.py",
         bam = files['priRead.bam'],
         csi = files['priRead.csi'],
-        finalout = files['final.genePos_IG'] if not knownLoci else known_lociPos
+        finalout = igAnnotation
     output:
         files['cigarend']
     params:
@@ -127,7 +131,7 @@ rule cigarProcessing:
 
 rule coverageAnalysis:
     input:
-        finalout = files['final.genePos_IG'] if not knownLoci else known_lociPos,
+        finalout = igAnnotation,
         bam = files['priRead.bam'],
         csi = files['priRead.csi'],
         script = "code/coverage_snake.sh"
