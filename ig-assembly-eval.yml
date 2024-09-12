@@ -1,4 +1,4 @@
-name: assembly
+name: ig-assembly-eval
 channels:
   - bioconda
   - conda-forge

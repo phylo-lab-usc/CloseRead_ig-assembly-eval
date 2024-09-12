@@ -16,13 +16,13 @@ Follow these steps to set up the development environment:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/ig-assembly-eval.git
+git clone https://github.com/phylo-lab-usc/CloseRead_ig-assembly-eval.git
 
 # Navigate to the project directory
-cd ig-assembly-eval
+cd CloseRead_ig-assembly-eval
 
 # Create and activate the conda environment
-conda env create -f assembly.yml
+conda env create -f ig-assembly-eval.yml
 conda activate ig-assembly-eval
 ```
 
@@ -150,7 +150,7 @@ $HOME/
 ## Project Structure
 
 ```plaintext
-ig-assembly-eval/
+CloseRead_ig-assembly-eval/
 ├── README.md          # Project documentation
 ├── Snakefile          # Main workflow file
 ├── assembly.yml       # Conda environment file
