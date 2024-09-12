@@ -44,6 +44,7 @@ Use the Snakefile to run all the code located in the `code` folder. Above is an 
 - Primary/Haplotype1/Maternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.pri.fasta`
 - Alternate/Haplotype2/Paternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.alt.fasta`
 - Above assembly files' index file `.fai`
+- (Optional) Loci Annotation file in `${species_name}.customIG.txt` 
 
 
 #### Please make sure you modify the header lines of `Snakefile` to reflect your directory organization:
@@ -71,6 +72,8 @@ Use the Snakefile to run all the code located in the `code` folder. Above is an 
 ```bash
 # Run the main workflow using Snakemake
 snakemake -R all --snakefile Snakefile --printshellcmds --reason --verbose --latency-wait 60000 --cores all
+# If you already know the loci position you want to evaluate and would like to skip IgDetective step, prepare `${species_name}.customIG.txt`, flag knownLoci=True and provide the path of the directory containing this file(s)
+snakemake -R all --snakefile Snakefile --printshellcmds --reason --verbose --latency-wait 60000 --cores all --config knownLoci=True loci_dir="/home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position"
 ```
 ### 2. Generating Visualizations and Error-Reporting Stats file
 
