@@ -133,12 +133,6 @@ if __name__ == "__main__":
             end_break_alt = break_regions[break_regions['Chrom'] == chr2]['End'].tolist()
 
         if not args.pg:
-            if not args.so:
-                #Plot loci length
-                plot_locus_length(pri_pileup, alt_pileup, gene, "#6AABD7", "#F0DDB8", dirOut, haploid, chr1, chr2)
-                #Plot summary read info
-                plot_summary(read_pri, read_alt, "#6AABD7", "#F0DDB8", haploid, dirOut, gene, chr1, chr2)
-
             #Compute read-view stats
             start_indices_pri, end_indices_pri, high_mismatch_bool_pri, positions_pri, coverage_counts_pri, zero_counts_pri, min_position_pri, max_position_pri, mid_counts_pri, high_mismatch_coverage_pri = coverage(read_pri, single_read_error, readview_correct_threshold)
             min_position_pri = min(pri_pileup['Pos'])
@@ -148,6 +142,12 @@ if __name__ == "__main__":
                 min_position_alt = min(alt_pileup['Pos'])
                 max_position_alt = max(alt_pileup['Pos'])
     
+            if not args.so:
+                #Plot loci length
+                plot_locus_length(pri_pileup, alt_pileup, gene, "#6AABD7", "#F0DDB8", dirOut, haploid, chr1, chr2)
+                #Plot summary read info
+                plot_summary(read_pri, read_alt, "#6AABD7", "#F0DDB8", haploid, dirOut, gene, chr1, chr2)
+            
             #Write read-view mismatch to file
             with open(f"{dirOut}/{gene}.read.mismatch.txt", 'w') as file:
                 for start, end in zip(start_indices_pri, end_indices_pri):
@@ -198,11 +198,11 @@ if __name__ == "__main__":
                 cm = LinearSegmentedColormap.from_list(cmap_name, colors, N=n_bins)
                 plot_mismatch_coverage(pri_pileup, bin_count, positions_pri, start_indices_pri, end_indices_pri, 
                                     high_mismatch_bool_pri.size, start_break_pri, end_break_pri, 
-                                    chr1_color, chr1, gene, dirOut, cm)
+                                    chr1_color, chr1, gene, dirOut, cm, min_position_pri, max_position_pri)
                 if not haploid:
                     plot_mismatch_coverage(alt_pileup, bin_count, positions_alt, start_indices_alt, end_indices_alt, 
                                     high_mismatch_bool_alt.size, start_break_alt, end_break_alt, 
-                                    chr2_color, chr2, gene, dirOut, cm)
+                                    chr2_color, chr2, gene, dirOut, cm, min_position_alt, max_position_alt)
     
                 #Generate PDF - without dotplot
                 if args.m:

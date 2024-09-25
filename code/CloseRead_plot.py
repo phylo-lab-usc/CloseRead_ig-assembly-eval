@@ -276,7 +276,7 @@ def plot_coverage(
 
 def plot_mismatch_coverage(pileup, bin_count, positions, start_indices, end_indices, 
                            high_mismatch_size, start_breaks, end_breaks, chr_color, 
-                           chr_label, gene, dirOut, cmap):
+                           chr_label, gene, dirOut, cmap, min_position, max_position):
     """
     Plots basepair level coverage (% mismatch per position) and a heatmap of poorly supported positions.
 
@@ -334,6 +334,7 @@ def plot_mismatch_coverage(pileup, bin_count, positions, start_indices, end_indi
     axes[1].set_xlabel('Genomic Position')
     axes[1].set_ylabel('% of mismatch\nper position')
     axes[1].set_ylim(0, 101)
+    axes[1].set_xlim(min_position, max_position)
 
     # Adjust layout and margins
     plt.tight_layout()
