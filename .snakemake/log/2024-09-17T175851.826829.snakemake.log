@@ -1,0 +1,32 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Job stats:
+job      count
+-----  -------
+all          1
+total        1
+
+Resources before job selection: {'_cores': 20, '_nodes': 9223372036854775807}
+Ready jobs (1)
+Select jobs to execute...
+Using greedy selector because only single job has to be scheduled.
+Selected jobs (1)
+Resources after job selection: {'_cores': 19, '_nodes': 9223372036854775806}
+
+[Tue Sep 17 17:58:53 2024]
+localrule all:
+    input: /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/cigar.end, /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/Emax/pileup.end
+    jobid: 0
+    reason: Forced execution
+    resources: tmpdir=/tmp/SLURM_25698983
+
+[Tue Sep 17 17:58:53 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-09-17T175851.826829.snakemake.log
+unlocking
+removing lock
+removing lock
+removed all locks

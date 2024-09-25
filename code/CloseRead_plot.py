@@ -61,7 +61,7 @@ def plot_locus_length(pri_pileup, alt_pileup, gene, chr1_color, chr2_color, dirO
     for spine in ['right', 'top', 'left', 'bottom']:
         ax.spines[spine].set_visible(False)
     
-    ax.tick_params(axis="both", which="both", bottom=False, top=False, labelbottom=True, left=False, right=False, labelleft=False)
+    ax.tick_params(axis="both", which="both", bottom=False, top=False, labelbottom=True, left=True, right=False, labelleft=True)
     ax.ticklabel_format(axis='y', style='sci', scilimits=(0, 0))
 
     # Add dashed lines for y-axis ticks
@@ -104,7 +104,8 @@ def plot_summary(pri_data, alt_data, chr1_color, chr2_color, haploid, dirOut, ge
     # Set up subfigures and axes
     fig_size = (10, 5) if not haploid else (5, 5)
     SummPlt = plt.figure(figsize=fig_size)
-    subfigs = SummPlt.subfigures(3, 2, wspace=0, hspace=0.3)
+    w = 0 if not haploid else 0.2
+    subfigs = SummPlt.subfigures(3, 2, wspace=w, hspace=0.3)
 
     if not haploid:
         subfigsnest1 = subfigs[0][0].subplots(1, 2, sharey=True)

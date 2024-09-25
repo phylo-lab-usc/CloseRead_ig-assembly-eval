@@ -1,4 +1,4 @@
-SPECIES = ["fScoMax1"]
+SPECIES = ["Emax"]
 fastqdir = ["hifi_fastq"]
 HAPLOID = ["False"]
 knownLoci = config.get("knownLoci", False)
