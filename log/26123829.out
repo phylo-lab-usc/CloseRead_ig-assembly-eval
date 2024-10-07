@@ -1,0 +1,95 @@
+==========================================
+SLURM_JOB_ID = 26123829
+SLURM_JOB_NODELIST = a01-06
+TMPDIR = /tmp/SLURM_26123829
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=60000, mem_mib=954, disk_mb=1000, disk_mib=954
+Select jobs to execute...
+
+[Mon Oct  7 15:56:35 2024]
+rule dataPrepAutomate:
+    input: code/dataPrepAutomated.sh
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted.bam, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted.bam.csi
+    log: /home1/zhuyixin/zhuyixin_proj/AssmQuality/log/dataPrepAutomated.test.log
+    jobid: 0
+    reason: Forced execution
+    wildcards: HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality, species=test
+    threads: 32
+    resources: mem_mb=60000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp/SLURM_26123829, mem=60G
+
+
+        code/dataPrepAutomated.sh -s test -w hifi_fastq -h True -d /home1/zhuyixin/zhuyixin_proj/AssmQuality
+        
+no change     /spack/conda/miniforge3/24.3.0/condabin/conda
+no change     /spack/conda/miniforge3/24.3.0/bin/conda
+no change     /spack/conda/miniforge3/24.3.0/bin/conda-env
+no change     /spack/conda/miniforge3/24.3.0/bin/activate
+no change     /spack/conda/miniforge3/24.3.0/bin/deactivate
+no change     /spack/conda/miniforge3/24.3.0/etc/profile.d/conda.sh
+no change     /spack/conda/miniforge3/24.3.0/etc/fish/conf.d/conda.fish
+no change     /spack/conda/miniforge3/24.3.0/shell/condabin/Conda.psm1
+no change     /spack/conda/miniforge3/24.3.0/shell/condabin/conda-hook.ps1
+no change     /spack/conda/miniforge3/24.3.0/lib/python3.10/site-packages/xontrib/conda.xsh
+no change     /spack/conda/miniforge3/24.3.0/etc/profile.d/conda.csh
+no change     /home1/zhuyixin/.bashrc
+No action taken.
+
+CondaError: Run 'conda init' before 'conda activate'
+
+mkdir: cannot create directory '/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_sam/': File exists
+mkdir: cannot create directory '/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/': File exists
+mkdir: cannot create directory '/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_sam/test': File exists
+mkdir: cannot create directory '/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test': File exists
+mapping fastq to assembly
+[M::mm_idx_gen::0.149*0.58] collected minimizers
+[M::mm_idx_gen::0.183*3.85] sorted minimizers
+[M::main::0.183*3.85] loaded/built the index for 1 target sequence(s)
+[M::mm_mapopt_update::0.194*3.70] mid_occ = 50
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 1
+[M::mm_idx_stat::0.197*3.65] distinct minimizers: 344383 (80.21% are singletons); average occurrences: 1.551; average spacing: 9.971; total length: 5327297
+[M::worker_pipeline::17.257*24.09] mapped 32370 sequences
+[M::worker_pipeline::28.793*26.72] mapped 32462 sequences
+[M::worker_pipeline::41.022*27.27] mapped 32661 sequences
+[M::worker_pipeline::54.021*27.44] mapped 32672 sequences
+[M::worker_pipeline::66.201*27.51] mapped 32748 sequences
+[M::worker_pipeline::77.491*27.88] mapped 32596 sequences
+[M::worker_pipeline::91.302*27.80] mapped 32551 sequences
+[M::worker_pipeline::103.062*27.84] mapped 32438 sequences
+[M::worker_pipeline::116.434*27.81] mapped 32476 sequences
+[M::worker_pipeline::128.567*27.92] mapped 32459 sequences
+[M::worker_pipeline::140.794*27.84] mapped 32556 sequences
+[M::worker_pipeline::152.853*28.01] mapped 32553 sequences
+[M::worker_pipeline::166.746*28.00] mapped 32524 sequences
+[M::worker_pipeline::179.099*28.02] mapped 32586 sequences
+[M::worker_pipeline::191.409*27.98] mapped 32521 sequences
+[M::worker_pipeline::203.308*28.07] mapped 32593 sequences
+[M::worker_pipeline::216.534*28.00] mapped 32602 sequences
+[M::worker_pipeline::228.595*28.07] mapped 32657 sequences
+[M::worker_pipeline::241.408*28.07] mapped 32644 sequences
+[M::worker_pipeline::254.787*28.16] mapped 32563 sequences
+[M::worker_pipeline::266.496*28.10] mapped 32614 sequences
+[M::worker_pipeline::278.030*28.16] mapped 32636 sequences
+[M::worker_pipeline::291.680*28.08] mapped 32754 sequences
+[M::worker_pipeline::304.095*28.14] mapped 32743 sequences
+[M::worker_pipeline::316.757*28.09] mapped 32797 sequences
+[M::worker_pipeline::328.860*28.14] mapped 32677 sequences
+[M::worker_pipeline::340.765*28.13] mapped 32599 sequences
+[M::worker_pipeline::352.804*28.16] mapped 32673 sequences
+[M::worker_pipeline::364.977*28.16] mapped 32709 sequences
+[M::worker_pipeline::376.999*28.22] mapped 32726 sequences
+[M::worker_pipeline::388.931*28.12] mapped 32676 sequences
+[M::worker_pipeline::404.203*28.06] mapped 32740 sequences
+[M::worker_pipeline::416.173*27.97] mapped 32686 sequences
+[M::worker_pipeline::430.024*27.88] mapped 32698 sequences
+[M::worker_pipeline::444.874*27.74] mapped 32719 sequences
+[M::worker_pipeline::469.447*27.02] mapped 32738 sequences
+[M::worker_pipeline::497.491*26.21] mapped 32702 sequences
+[M::worker_pipeline::510.990*26.30] mapped 32699 sequences
+[M::worker_pipeline::525.141*26.34] mapped 32798 sequences
+[M::worker_pipeline::539.609*26.13] mapped 32764 sequences
+[M::worker_pipeline::562.094*25.84] mapped 32710 sequences
+slurmstepd: error: *** JOB 26123829 ON a01-06 CANCELLED AT 2024-10-07T16:05:59 ***

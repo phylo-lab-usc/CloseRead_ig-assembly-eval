@@ -1,28 +1,17 @@
-#!/bin/bash
-#SBATCH --job-name=automated    # Job name
-#SBATCH --nodes=1
-#SBATCH --cpus-per-task=32                    # Run on a single CPU 
-#SBATCH --time=24:00:00               # Time limit hrs:min:sec
-#SBATCH --output=log/dataPrep%j.log   # Standard output and error log
-#SBATCH --mem=60G
-
-source /etc/profile.d/modules.sh
-module load conda
-module load gcc/11.3.0
-module load samtools/1.17
-conda init
-source /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
-conda activate /home1/zhuyixin/.conda/envs/assembly
-
-while getopts s:w:h:d: flag
+while getopts s:w:h:d:c: flag
 do
     case "${flag}" in
         s) species=${OPTARG};;
         w) source=${OPTARG};;
         h) haploid=${OPTARG};;
         d) HOME=${OPTARG};;
+        c) conda=${OPTARG};;
     esac
 done
+
+conda init
+source ${conda}
+conda activate ig-assembly-eval
 
 #check if this species' raw data has .bam format or not, convert to fastq if yes
 count=`ls -1 ${HOME}/${source}/${species}/*.bam 2>/dev/null | wc -l`
@@ -72,6 +61,7 @@ mkdir ${HOME}/aligned_bam/
 mkdir ${HOME}/aligned_sam/${outdir}
 mkdir ${HOME}/aligned_bam/${outdir}
 fastq=${HOME}/${source}/${species}/${species}_merged.fastq
+
 
 #map the merged fastq file to the coresponding assembly
 echo "mapping fastq to assembly"

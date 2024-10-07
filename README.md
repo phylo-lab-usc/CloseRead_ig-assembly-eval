@@ -21,14 +21,16 @@ git clone https://github.com/phylo-lab-usc/CloseRead_ig-assembly-eval.git
 # Navigate to the project directory
 cd CloseRead_ig-assembly-eval
 
-# Create and activate the conda environment
+# Create and activate the conda environments
 conda env create -f ig-assembly-eval.yml
+conda env create -f IGdetective.yml
 conda activate ig-assembly-eval
 ```
 
 ### Other Requirements
 
 [IgDetective](https://github.com/Immunotools/IgDetective.git) is required for the following analysis.
+samtools is required for the following analysis.
 
 ## Usage
 ### 1. Running Read-to-Assembly Pipeline and Preparing Files
@@ -46,13 +48,14 @@ Use the Snakefile to run all the code located in the `code` folder. Above is an 
 - Above assembly files' index file `.fai`
 - (Optional) Loci Annotation file in `${species_name}.customIG.txt`, file format see example
 
-#### Please make sure you modify the header lines of `Snakefile` to reflect your directory organization:
+#### Please make sure you modify the `config.yaml` to reflect your directory organization and paths:
 
 - `SPECIES = ["mEubGla1"]`, list of species name
 - `fastqdir = ["hifi_fastq"]`,  sub-directory of your home directory where your fastq files are located
 - `HAPLOID = ["False"]`,  if the list of species are halpid or not
 - `HOME = "/home1/zhuyixin/zhuyixin_proj/AssmQuality"`,  your home directory
-- Header of all `.sh` file in `code` also need to be modified for correct cluster job submission
+- `igdetective_home: "/home1/zhuyixin/IgDetective"`, where your IgDetective is installed
+- `condaPath: "/spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh"`, path to your `conda.sh` file
 
 #### The output stats files will be in the `errorStats/` directory and should include the following 11 files:
 
@@ -70,9 +73,9 @@ Use the Snakefile to run all the code located in the `code` folder. Above is an 
 
 ```bash
 # Run the main workflow using Snakemake
-snakemake -R all --snakefile Snakefile --printshellcmds --reason --verbose --latency-wait 60000 --cores all
+snakemake --cluster "sbatch -A mpennell_978 -p gpu --ntasks=1 --cpus-per-task=32 --output=log/%j.out --time=24:00:00 --mem=65GB" --snakefile Snakefile --printshellcmds --reason --verbose --latency-wait 60000 --cores all --jobs 2
 # If you already know the loci position you want to evaluate and would like to skip IgDetective step, prepare `${species_name}.customIG.txt`, flag knownLoci=True and provide the path of the directory containing this file(s)
-snakemake -R all --snakefile Snakefile --printshellcmds --reason --verbose --latency-wait 60000 --cores all --config knownLoci=True loci_dir="/home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position"
+snakemake --cluster "sbatch -A mpennell_978 -p gpu --ntasks=1 --cpus-per-task=32 --output=log/%j.out --time=24:00:00 --mem=65GB" --snakefile Snakefile --printshellcmds --reason --verbose --latency-wait 60000 --cores all --jobs 2 --config knownLoci=True loci_dir="/home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position"
 ```
 ### 2. Generating Visualizations and Error-Reporting Stats file
 

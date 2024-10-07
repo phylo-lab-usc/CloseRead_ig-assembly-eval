@@ -1,0 +1,7 @@
+# config.yaml
+speciesList: ["test"]
+fastqdir: ["hifi_fastq"]
+haploid: ["True"]
+home: "/home1/zhuyixin/zhuyixin_proj/AssmQuality"
+igdetective_home: "/home1/zhuyixin/IgDetective"
+condaPath: "/spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh"

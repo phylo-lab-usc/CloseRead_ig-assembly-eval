@@ -1,23 +1,4 @@
-#!/bin/bash
-#SBATCH --job-name=coverage    # Job name
-#SBATCH --nodes=1
-#SBATCH --cpus-per-task=10                    # Run on a single CPU 
-#SBATCH --time=6:00:00               # Time limit hrs:min:sec
-#SBATCH --output=log/coverage%j.log   # Standard output and error log
-#SBATCH --mem=100G
-
-
-source /etc/profile.d/modules.sh
-module load conda
-module load gcc/11.3.0
-module load samtools/1.17
-conda init
-source /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
-conda activate /home1/zhuyixin/.conda/envs/assembly
-
-
-
-while getopts s:a:b:f:d: flag
+while getopts s:a:b:f:d:c: flag
 do
     case "${flag}" in
         s) species=${OPTARG};;
@@ -25,8 +6,13 @@ do
         b) bam=${OPTARG};;
         f) loci=${OPTARG};;
         d) HOME=${OPTARG};;
+        c) conda=${OPTARG};;
     esac
 done
+
+conda init
+source ${conda}
+conda activate ig-assembly-eval
 
 echo ${bam}
 
