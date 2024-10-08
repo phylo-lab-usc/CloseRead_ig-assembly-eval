@@ -1,0 +1,87 @@
+==========================================
+SLURM_JOB_ID = 26144416
+SLURM_JOB_NODELIST = a01-20
+TMPDIR = /tmp/SLURM_26144416
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=30000, mem_mib=46570, disk_mb=48832, disk_mib=46570
+Select jobs to execute...
+
+[Tue Oct  8 11:10:27 2024]
+rule cigarProcessing:
+    input: code/cigar_processing_region.py, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam.csi, /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/cigar.end
+    log: /home1/zhuyixin/zhuyixin_proj/AssmQuality/log/cigarProcessing.test.log
+    jobid: 0
+    reason: Forced execution
+    wildcards: HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality, species=test
+    threads: 10
+    resources: mem_mb=30000, mem_mib=28611, disk_mb=48832, disk_mib=46570, tmpdir=/tmp/SLURM_26144416, mem=30G
+
+
+        conda init
+        source /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
+        conda activate ig-assembly-eval
+        which python
+        mkdir -p /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGH.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGK.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGL.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/nonIG.txt
+        /home1/zhuyixin/.conda/envs/ig-assembly-eval/bin/python code/cigar_processing_region.py /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt test
+        touch /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/cigar.end
+        
+no change     /spack/conda/miniforge3/24.3.0/condabin/conda
+no change     /spack/conda/miniforge3/24.3.0/bin/conda
+no change     /spack/conda/miniforge3/24.3.0/bin/conda-env
+no change     /spack/conda/miniforge3/24.3.0/bin/activate
+no change     /spack/conda/miniforge3/24.3.0/bin/deactivate
+no change     /spack/conda/miniforge3/24.3.0/etc/profile.d/conda.sh
+no change     /spack/conda/miniforge3/24.3.0/etc/fish/conf.d/conda.fish
+no change     /spack/conda/miniforge3/24.3.0/shell/condabin/Conda.psm1
+no change     /spack/conda/miniforge3/24.3.0/shell/condabin/conda-hook.ps1
+no change     /spack/conda/miniforge3/24.3.0/lib/python3.10/site-packages/xontrib/conda.xsh
+no change     /spack/conda/miniforge3/24.3.0/etc/profile.d/conda.csh
+no change     /home1/zhuyixin/.bashrc
+No action taken.
+/spack/conda/miniforge3/24.3.0/bin/python
+/home1/zhuyixin/ig-assembly-eval/code/cigar_processing_region.py:165: UserWarning: No output dir specified. Using default output dir path: /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/
+  warnings.warn("No output dir specified. Using default output dir path: " + args.output)
+IGH regions: ['CM064826.1:49695077-55022373:2555338-5322150']
+IGK regions: []
+IGL regions: []
+Traceback (most recent call last):
+  File "/home1/zhuyixin/ig-assembly-eval/code/cigar_processing_region.py", line 218, in <module>
+    main()
+  File "/home1/zhuyixin/ig-assembly-eval/code/cigar_processing_region.py", line 214, in main
+    process_bam_file(args.input_file, region_list_IGH, region_list_IGK, region_list_IGL, args.output, region_list_TRA, region_list_TRB, region_list_TRG)
+  File "/home1/zhuyixin/ig-assembly-eval/code/cigar_processing_region.py", line 50, in process_bam_file
+    chrom, positions = region.split(':')
+ValueError: too many values to unpack (expected 2)
+[Tue Oct  8 11:10:29 2024]
+Error in rule cigarProcessing:
+    jobid: 0
+    input: code/cigar_processing_region.py, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam.csi, /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/cigar.end
+    log: /home1/zhuyixin/zhuyixin_proj/AssmQuality/log/cigarProcessing.test.log (check log file(s) for error details)
+    shell:
+        
+        conda init
+        source /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
+        conda activate ig-assembly-eval
+        which python
+        mkdir -p /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGH.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGK.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGL.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/nonIG.txt
+        /home1/zhuyixin/.conda/envs/ig-assembly-eval/bin/python code/cigar_processing_region.py /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt test
+        touch /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/cigar.end
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message

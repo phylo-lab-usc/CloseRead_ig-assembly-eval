@@ -1,0 +1,46 @@
+==========================================
+SLURM_JOB_ID = 26144415
+SLURM_JOB_NODELIST = a01-15
+TMPDIR = /tmp/SLURM_26144415
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=30000, mem_mib=46570, disk_mb=48832, disk_mib=46570
+Select jobs to execute...
+
+[Tue Oct  8 11:10:27 2024]
+rule coverageAnalysis:
+    input: /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam.csi, code/coverage_snake.sh
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/pileup.end
+    log: /home1/zhuyixin/zhuyixin_proj/AssmQuality/log/coverageAnalysis.test.log
+    jobid: 0
+    reason: Forced execution
+    wildcards: HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality, species=test
+    threads: 10
+    resources: mem_mb=30000, mem_mib=28611, disk_mb=48832, disk_mib=46570, tmpdir=/tmp/SLURM_26144415, mem=30G
+
+
+        mkdir -p /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGH_pri_pileup.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGK_pri_pileup.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGL_pri_pileup.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/*_pileup.txt
+        code/coverage_snake.sh -s test -a /home1/zhuyixin/zhuyixin_proj/AssmQuality/assemblies/test.merged.fasta -b /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam -f /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt -d /home1/zhuyixin/zhuyixin_proj/AssmQuality -c /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
+        
+no change     /spack/conda/miniforge3/24.3.0/condabin/conda
+no change     /spack/conda/miniforge3/24.3.0/bin/conda
+no change     /spack/conda/miniforge3/24.3.0/bin/conda-env
+no change     /spack/conda/miniforge3/24.3.0/bin/activate
+no change     /spack/conda/miniforge3/24.3.0/bin/deactivate
+no change     /spack/conda/miniforge3/24.3.0/etc/profile.d/conda.sh
+no change     /spack/conda/miniforge3/24.3.0/etc/fish/conf.d/conda.fish
+no change     /spack/conda/miniforge3/24.3.0/shell/condabin/Conda.psm1
+no change     /spack/conda/miniforge3/24.3.0/shell/condabin/conda-hook.ps1
+no change     /spack/conda/miniforge3/24.3.0/lib/python3.10/site-packages/xontrib/conda.xsh
+no change     /spack/conda/miniforge3/24.3.0/etc/profile.d/conda.csh
+no change     /home1/zhuyixin/zhuyixin_proj/AssmQuality/.bashrc
+No action taken.
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam
+[mpileup] 1 samples in 1 input files

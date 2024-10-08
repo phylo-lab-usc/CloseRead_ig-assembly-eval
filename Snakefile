@@ -93,20 +93,22 @@ rule lociLocation:
         lociScript = "code/igDetective.sh"
     output:
         files['igDetect.pri'],
-        files['igDetect.alt']
+        out = files['igDetect.alt'] if (HAPLOID[0]=='False') else []
     params:
         pri_outdir = "{HOME}/igGene/{species}.pri.igdetective/",
         alt_outdir = "{HOME}/igGene/{species}.alt.igdetective/",
         species = "{species}",
         igdetective_home = config["igdetective_home"],
-        conda = config["condaPath"] 
+        conda = config["condaPath"],
+        haploid = HAPLOID[0],
+        condaEnv = config["condaEnvPath"]
     shell:
         """
         if [ ! -f "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/{params.species}.pri.txt" ]; then
-            {input.lociScript} {input.pri_genome} {params.pri_outdir} {params.species} pri {HOME} {params.igdetective_home} {params.conda}
+            {input.lociScript} {input.pri_genome} {params.pri_outdir} {params.species} pri {HOME} {params.igdetective_home} {params.conda} {params.condaEnv}
         fi
-        if [ ! -f "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/{params.species}.alt.txt" ]; then
-            {input.lociScript} {input.alt_genome} {params.alt_outdir} {params.species} alt {HOME} {params.igdetective_home} {params.conda}
+        if [ "{params.haploid}" == "False" ] && [ ! -f "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/{params.species}.alt.txt" ]; then
+            {input.lociScript} {input.alt_genome} {params.alt_outdir} {params.species} alt {HOME} {params.igdetective_home} {params.conda} {params.condaEnv}
         fi
         """
 
@@ -118,7 +120,7 @@ rule finalIGLoci:
     input:
         script = "code/finalGene.py",
         pri = files['igDetect.pri'],
-        alt = files['igDetect.alt']
+        alt = files['igDetect.alt'] if (HAPLOID[0]=='False') else []
     output:
         finalout = files['final.genePos_IG']
     params:
@@ -147,15 +149,21 @@ rule cigarProcessing:
         IGK_out = files['read_IGK.out'],
         IGL_out = files['read_IGL.out'],
         nonIG_out = files['read_nonIG.out'],
-        species = "{species}"
+        species = "{species}",
+        conda = config["condaPath"],
+        condaEnv = config["condaEnvPath"]
     shell:
         """
+        conda init
+        source {params.conda}
+        conda activate ig-assembly-eval
+        which python
         mkdir -p {HOME}/errorStats/{params.species}
         rm -rf {params.IGH_out}
         rm -rf {params.IGK_out}
         rm -rf {params.IGL_out}
         rm -rf {params.nonIG_out}
-        python {input.script} {input.bam} {input.finalout} {params.species}
+        {params.condaEnv}/ig-assembly-eval/bin/python {input.script} {input.bam} {input.finalout} {params.species}
         touch {HOME}/errorStats/{params.species}/cigar.end
         """
 
@@ -185,5 +193,5 @@ rule coverageAnalysis:
         rm -rf {params.IGK_out}
         rm -rf {params.IGL_out}
         rm -rf {HOME}/errorStats/{params.species}/*_pileup.txt
-        sbatch --partition=gpu {input.script} -s {params.species} -a {params.assemblies} -b {input.bam} -f {input.finalout} -d {HOME} -c {params.conda}
+        {input.script} -s {params.species} -a {params.assemblies} -b {input.bam} -f {input.finalout} -d {HOME} -c {params.conda}
         """

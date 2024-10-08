@@ -27,9 +27,9 @@ dependencies:
   - brotli-bin=1.1.0=hd590300_1
   - bzip2=1.0.8=h7f98852_4
   - c-ares=1.28.1=hd590300_0
-  - ca-certificates=2024.2.2=hbcca054_0
+  - ca-certificates=2024.8.30=hbcca054_0
   - cairo=1.18.0=h3faef2a_0
-  - certifi=2024.2.2=pyhd8ed1ab_0
+  - certifi=2024.8.30=pyhd8ed1ab_0
   - charset-normalizer=3.1.0=pyhd8ed1ab_0
   - contourpy=1.0.7=py310hdf3cbec_0
   - cycler=0.11.0=pyhd8ed1ab_0
@@ -89,12 +89,13 @@ dependencies:
   - libexpat=2.5.0=hcb278e6_1
   - libffi=3.4.2=h7f98852_5
   - libflac=1.4.2=h27087fc_0
-  - libgcc-ng=13.1.0=he5830b7_0
+  - libgcc=14.1.0=h77fa898_1
+  - libgcc-ng=14.1.0=h69a702a_1
   - libgcrypt=1.10.1=h166bdaf_0
   - libgfortran-ng=13.1.0=h69a702a_0
   - libgfortran5=13.1.0=h15d22d2_0
   - libglib=2.80.0=hf2295e7_1
-  - libgomp=13.1.0=he5830b7_0
+  - libgomp=14.1.0=h77fa898_1
   - libgoogle-cloud=2.22.0=h9be4e54_1
   - libgoogle-cloud-storage=2.22.0=hc7a4891_1
   - libgpg-error=1.46=h620e276_0
@@ -143,7 +144,7 @@ dependencies:
   - nss=3.98=h1d7d5a4_0
   - numpy=1.26.4=py310hb13e2d6_0
   - openjpeg=2.5.0=hfec8fc6_2
-  - openssl=3.2.1=hd590300_1
+  - openssl=3.3.2=hb9d3cd8_0
   - orc=2.0.0=h1e5e2c1_0
   - packaging=23.1=pyhd8ed1ab_0
   - pandas=2.2.0=py310hcc13569_0

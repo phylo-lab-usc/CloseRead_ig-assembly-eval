@@ -29,8 +29,8 @@ conda activate ig-assembly-eval
 
 ### Other Requirements
 
-[IgDetective](https://github.com/Immunotools/IgDetective.git) is required for the following analysis.
-samtools is required for the following analysis.
+- [IgDetective](https://github.com/Immunotools/IgDetective.git) is required for the following analysis.
+- `samtools` is required for the following analysis.
 
 ## Usage
 ### 1. Running Read-to-Assembly Pipeline and Preparing Files
@@ -46,16 +46,18 @@ Use the Snakefile to run all the code located in the `code` folder. Above is an 
 - Primary/Haplotype1/Maternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.pri.fasta`
 - Alternate/Haplotype2/Paternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.alt.fasta`
 - Above assembly files' index file `.fai`
-- (Optional) Loci Annotation file in `${species_name}.customIG.txt`, file format see example
+- (Optional, if want to skip IgDetective) Loci Annotation file in `${species_name}.customIG.txt`, file format see example
 
-#### Please make sure you modify the `config.yaml` to reflect your directory organization and paths:
+#### Please make sure you modify the `config.yaml` to reflect your directory organization and enviroment paths:
 
-- `SPECIES = ["mEubGla1"]`, list of species name
+- `speciesList = ["mEubGla1"]`, list of species name
 - `fastqdir = ["hifi_fastq"]`,  sub-directory of your home directory where your fastq files are located
-- `HAPLOID = ["False"]`,  if the list of species are halpid or not
-- `HOME = "/home1/zhuyixin/zhuyixin_proj/AssmQuality"`,  your home directory
+- `haploid = ["False"]`,  if the list of species are halpid or not
+- `home = "/home1/zhuyixin/zhuyixin_proj/AssmQuality"`,  your working directory
 - `igdetective_home: "/home1/zhuyixin/IgDetective"`, where your IgDetective is installed
-- `condaPath: "/spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh"`, path to your `conda.sh` file
+- `condaPath: "/spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh"`, path to your `conda.sh` 
+- `condaEnvPath: "/home1/zhuyixin/.conda/envs"`, path to where all you conda enviroment is located
+
 
 #### The output stats files will be in the `errorStats/` directory and should include the following 11 files:
 
@@ -72,7 +74,7 @@ Use the Snakefile to run all the code located in the `code` folder. Above is an 
 - `nonIG.txt`, read-oriented stats for both primary and alternate assembly at non-IG locus
 
 ```bash
-# Run the main workflow using Snakemake
+# Run the main workflow using Snakemake, make sure conda enviroment is activated beforehand
 snakemake --cluster "sbatch -A mpennell_978 -p gpu --ntasks=1 --cpus-per-task=32 --output=log/%j.out --time=24:00:00 --mem=65GB" --snakefile Snakefile --printshellcmds --reason --verbose --latency-wait 60000 --cores all --jobs 2
 # If you already know the loci position you want to evaluate and would like to skip IgDetective step, prepare `${species_name}.customIG.txt`, flag knownLoci=True and provide the path of the directory containing this file(s)
 snakemake --cluster "sbatch -A mpennell_978 -p gpu --ntasks=1 --cpus-per-task=32 --output=log/%j.out --time=24:00:00 --mem=65GB" --snakefile Snakefile --printshellcmds --reason --verbose --latency-wait 60000 --cores all --jobs 2 --config knownLoci=True loci_dir="/home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position"
@@ -179,6 +181,7 @@ CloseRead_ig-assembly-eval/
 ├── code/              # Source code and scripts
 ├── plots/             # Directory for plots and figures
 ├── curated_IGH/       # Directory for LJA curated IGH assembly
+├── example/           # example input format
 ```
 
 ## Citing:

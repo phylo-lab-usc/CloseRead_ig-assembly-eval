@@ -5,3 +5,4 @@ haploid: ["True"]
 home: "/home1/zhuyixin/zhuyixin_proj/AssmQuality"
 igdetective_home: "/home1/zhuyixin/IgDetective"
 condaPath: "/spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh"
+condaEnvPath: "/home1/zhuyixin/.conda/envs"

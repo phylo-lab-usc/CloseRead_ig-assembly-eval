@@ -1,0 +1,189 @@
+Building DAG of jobs...
+Forcing incomplete files:
+	/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/test.pri.txt
+Using shell: /usr/bin/bash
+Provided cluster nodes: 2
+Job stats:
+job                 count
+----------------  -------
+all                     1
+cigarProcessing         1
+coverageAnalysis        1
+finalIGLoci             1
+lociLocation            1
+total                   5
+
+Resources before job selection: {'_cores': 9223372036854775807, '_nodes': 2}
+Ready jobs (1)
+Select jobs to execute...
+Using greedy selector because only single job has to be scheduled.
+Selected jobs (1)
+Resources after job selection: {'_cores': 9223372036854775797, '_nodes': 1}
+
+[Tue Oct  8 09:28:00 2024]
+rule lociLocation:
+    input: /home1/zhuyixin/zhuyixin_proj/AssmQuality/assemblies/test.pri.fasta, code/igDetective.sh
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/test.pri.txt
+    log: /home1/zhuyixin/zhuyixin_proj/AssmQuality/log/igDetective.test.log
+    jobid: 5
+    reason: Forced execution
+    wildcards: HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality, species=test
+    threads: 10
+    resources: mem_mb=30000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, mem=30G
+
+
+        if [ ! -f "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/test.pri.txt" ]; then
+            code/igDetective.sh /home1/zhuyixin/zhuyixin_proj/AssmQuality/assemblies/test.pri.fasta /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/test.pri.igdetective/ test pri /home1/zhuyixin/zhuyixin_proj/AssmQuality /home1/zhuyixin/IgDetective /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh /home1/zhuyixin/.conda/envs
+        fi
+        if [ "True" == "False" ] && [ ! -f "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/test.alt.txt" ]; then
+            code/igDetective.sh  /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/test.alt.igdetective/ test alt /home1/zhuyixin/zhuyixin_proj/AssmQuality /home1/zhuyixin/IgDetective /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh /home1/zhuyixin/.conda/envs
+        fi
+        
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "lociLocation", "local": false, "input": ["/home1/zhuyixin/zhuyixin_proj/AssmQuality/assemblies/test.pri.fasta", "code/igDetective.sh"], "output": ["/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/test.pri.txt"], "wildcards": {"HOME": "/home1/zhuyixin/zhuyixin_proj/AssmQuality", "species": "test"}, "params": {"pri_outdir": "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/test.pri.igdetective/", "alt_outdir": "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/test.alt.igdetective/", "species": "test", "igdetective_home": "/home1/zhuyixin/IgDetective", "conda": "/spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh", "haploid": "True", "condaEnv": "/home1/zhuyixin/.conda/envs"}, "log": ["/home1/zhuyixin/zhuyixin_proj/AssmQuality/log/igDetective.test.log"], "threads": 10, "resources": {"mem_mb": 30000, "mem_mib": 954, "disk_mb": 1000, "disk_mib": 954, "tmpdir": "<TBD>", "mem": "30G"}, "jobid": 5, "cluster": {}}
+cd /home1/zhuyixin/ig-assembly-eval && /home1/zhuyixin/.conda/envs/assembly/bin/python3.10 -m snakemake --snakefile '/home1/zhuyixin/ig-assembly-eval/Snakefile' --target-jobs 'lociLocation:HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality,species=test' --allowed-rules 'lociLocation' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=30000' 'mem_mib=954' 'disk_mb=1000' 'disk_mib=954' --wait-for-files '/home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.zdpfzlua' '/home1/zhuyixin/zhuyixin_proj/AssmQuality/assemblies/test.pri.fasta' 'code/igDetective.sh' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'params' 'mtime' 'input' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --printshellcmds  --latency-wait 60000 --scheduler 'ilp' --scheduler-solver-path '/home1/zhuyixin/.conda/envs/assembly/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.zdpfzlua/5.jobfinished' || (touch '/home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.zdpfzlua/5.jobfailed'; exit 1)
+
+Submitted job 5 with external jobid 'Submitted batch job 26138912'.
+[Tue Oct  8 10:08:12 2024]
+Finished job 5.
+1 of 5 steps (20%) done
+Resources before job selection: {'_cores': 9223372036854775807, '_nodes': 2}
+Ready jobs (1)
+Select jobs to execute...
+Using greedy selector because only single job has to be scheduled.
+Selected jobs (1)
+Resources after job selection: {'_cores': 9223372036854775797, '_nodes': 1}
+
+[Tue Oct  8 10:08:12 2024]
+rule finalIGLoci:
+    input: code/finalGene.py, /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/test.pri.txt
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt
+    jobid: 4
+    reason: Missing output files: /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt; Input files updated by another job: /home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/test.pri.txt
+    wildcards: HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality, species=test
+    threads: 10
+    resources: mem_mb=30000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, mem=30G
+
+
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt
+        touch /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt
+        python code/finalGene.py test /home1/zhuyixin/zhuyixin_proj/AssmQuality
+        
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "finalIGLoci", "local": false, "input": ["code/finalGene.py", "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/test.pri.txt"], "output": ["/home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt"], "wildcards": {"HOME": "/home1/zhuyixin/zhuyixin_proj/AssmQuality", "species": "test"}, "params": {"species": "test"}, "log": [], "threads": 10, "resources": {"mem_mb": 30000, "mem_mib": 954, "disk_mb": 1000, "disk_mib": 954, "tmpdir": "<TBD>", "mem": "30G"}, "jobid": 4, "cluster": {}}
+cd /home1/zhuyixin/ig-assembly-eval && /home1/zhuyixin/.conda/envs/assembly/bin/python3.10 -m snakemake --snakefile '/home1/zhuyixin/ig-assembly-eval/Snakefile' --target-jobs 'finalIGLoci:HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality,species=test' --allowed-rules 'finalIGLoci' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=30000' 'mem_mib=954' 'disk_mb=1000' 'disk_mib=954' --wait-for-files '/home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.zdpfzlua' 'code/finalGene.py' '/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/test.pri.txt' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'params' 'mtime' 'input' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --printshellcmds  --latency-wait 60000 --scheduler 'ilp' --scheduler-solver-path '/home1/zhuyixin/.conda/envs/assembly/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.zdpfzlua/4.jobfinished' || (touch '/home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.zdpfzlua/4.jobfailed'; exit 1)
+
+Submitted job 4 with external jobid 'Submitted batch job 26139608'.
+[Tue Oct  8 10:09:12 2024]
+Finished job 4.
+2 of 5 steps (40%) done
+Resources before job selection: {'_cores': 9223372036854775807, '_nodes': 2}
+Ready jobs (2)
+Select jobs to execute...
+Selected jobs (2)
+Resources after job selection: {'_cores': 9223372036854775787, '_nodes': 0}
+
+[Tue Oct  8 10:09:13 2024]
+rule coverageAnalysis:
+    input: /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam.csi, code/coverage_snake.sh
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/pileup.end
+    log: /home1/zhuyixin/zhuyixin_proj/AssmQuality/log/coverageAnalysis.test.log
+    jobid: 6
+    reason: Missing output files: /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/pileup.end; Input files updated by another job: /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt
+    wildcards: HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality, species=test
+    threads: 10
+    resources: mem_mb=30000, mem_mib=46570, disk_mb=48832, disk_mib=46570, tmpdir=<TBD>, mem=30G
+
+
+        mkdir -p /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGH_pri_pileup.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGK_pri_pileup.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGL_pri_pileup.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/*_pileup.txt
+        sbatch --partition=gpu code/coverage_snake.sh -s test -a /home1/zhuyixin/zhuyixin_proj/AssmQuality/assemblies/test.merged.fasta -b /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam -f /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt -d /home1/zhuyixin/zhuyixin_proj/AssmQuality -c /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
+        
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "coverageAnalysis", "local": false, "input": ["/home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt", "/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam", "/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam.csi", "code/coverage_snake.sh"], "output": ["/home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/pileup.end"], "wildcards": {"HOME": "/home1/zhuyixin/zhuyixin_proj/AssmQuality", "species": "test"}, "params": {"species": "test", "assemblies": "/home1/zhuyixin/zhuyixin_proj/AssmQuality/assemblies/test.merged.fasta", "IGH_out": "/home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGH_pri_pileup.txt", "IGK_out": "/home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGK_pri_pileup.txt", "IGL_out": "/home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGL_pri_pileup.txt", "conda": "/spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh"}, "log": ["/home1/zhuyixin/zhuyixin_proj/AssmQuality/log/coverageAnalysis.test.log"], "threads": 10, "resources": {"mem_mb": 30000, "mem_mib": 46570, "disk_mb": 48832, "disk_mib": 46570, "tmpdir": "<TBD>", "mem": "30G"}, "jobid": 6, "cluster": {}}
+cd /home1/zhuyixin/ig-assembly-eval && /home1/zhuyixin/.conda/envs/assembly/bin/python3.10 -m snakemake --snakefile '/home1/zhuyixin/ig-assembly-eval/Snakefile' --target-jobs 'coverageAnalysis:HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality,species=test' --allowed-rules 'coverageAnalysis' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=30000' 'mem_mib=46570' 'disk_mb=48832' 'disk_mib=46570' --wait-for-files '/home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.zdpfzlua' '/home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt' '/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam' '/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam.csi' 'code/coverage_snake.sh' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'params' 'mtime' 'input' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --printshellcmds  --latency-wait 60000 --scheduler 'ilp' --scheduler-solver-path '/home1/zhuyixin/.conda/envs/assembly/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.zdpfzlua/6.jobfinished' || (touch '/home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.zdpfzlua/6.jobfailed'; exit 1)
+
+Submitted job 6 with external jobid 'Submitted batch job 26139635'.
+
+[Tue Oct  8 10:09:13 2024]
+rule cigarProcessing:
+    input: code/cigar_processing_region.py, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam.csi, /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/cigar.end
+    log: /home1/zhuyixin/zhuyixin_proj/AssmQuality/log/cigarProcessing.test.log
+    jobid: 1
+    reason: Missing output files: /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/cigar.end; Input files updated by another job: /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt
+    wildcards: HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality, species=test
+    threads: 10
+    resources: mem_mb=30000, mem_mib=46570, disk_mb=48832, disk_mib=46570, tmpdir=<TBD>, mem=30G
+
+
+        mkdir -p /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGH.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGK.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGL.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/nonIG.txt
+        python code/cigar_processing_region.py /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt test
+        touch /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/cigar.end
+        
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "cigarProcessing", "local": false, "input": ["code/cigar_processing_region.py", "/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam", "/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam.csi", "/home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt"], "output": ["/home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/cigar.end"], "wildcards": {"HOME": "/home1/zhuyixin/zhuyixin_proj/AssmQuality", "species": "test"}, "params": {"IGH_out": "/home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGH.txt", "IGK_out": "/home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGK.txt", "IGL_out": "/home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGL.txt", "nonIG_out": "/home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/nonIG.txt", "species": "test"}, "log": ["/home1/zhuyixin/zhuyixin_proj/AssmQuality/log/cigarProcessing.test.log"], "threads": 10, "resources": {"mem_mb": 30000, "mem_mib": 46570, "disk_mb": 48832, "disk_mib": 46570, "tmpdir": "<TBD>", "mem": "30G"}, "jobid": 1, "cluster": {}}
+cd /home1/zhuyixin/ig-assembly-eval && /home1/zhuyixin/.conda/envs/assembly/bin/python3.10 -m snakemake --snakefile '/home1/zhuyixin/ig-assembly-eval/Snakefile' --target-jobs 'cigarProcessing:HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality,species=test' --allowed-rules 'cigarProcessing' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=30000' 'mem_mib=46570' 'disk_mb=48832' 'disk_mib=46570' --wait-for-files '/home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.zdpfzlua' 'code/cigar_processing_region.py' '/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam' '/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam.csi' '/home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'params' 'mtime' 'input' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --printshellcmds  --latency-wait 60000 --scheduler 'ilp' --scheduler-solver-path '/home1/zhuyixin/.conda/envs/assembly/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.zdpfzlua/1.jobfinished' || (touch '/home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.zdpfzlua/1.jobfailed'; exit 1)
+
+Submitted job 1 with external jobid 'Submitted batch job 26139636'.
+[Tue Oct  8 10:10:12 2024]
+Error in rule coverageAnalysis:
+    jobid: 6
+    input: /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam.csi, code/coverage_snake.sh
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/pileup.end
+    log: /home1/zhuyixin/zhuyixin_proj/AssmQuality/log/coverageAnalysis.test.log (check log file(s) for error details)
+    shell:
+        
+        mkdir -p /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGH_pri_pileup.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGK_pri_pileup.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGL_pri_pileup.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/*_pileup.txt
+        sbatch --partition=gpu code/coverage_snake.sh -s test -a /home1/zhuyixin/zhuyixin_proj/AssmQuality/assemblies/test.merged.fasta -b /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam -f /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt -d /home1/zhuyixin/zhuyixin_proj/AssmQuality -c /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Submitted batch job 26139635
+
+Error executing rule coverageAnalysis on cluster (jobid: 6, external: Submitted batch job 26139635, jobscript: /home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.zdpfzlua/snakejob.coverageAnalysis.6.sh). For error details see the cluster log and the log files of the involved rule(s).
+Cleanup job metadata.
+[Tue Oct  8 10:10:12 2024]
+Error in rule cigarProcessing:
+    jobid: 1
+    input: code/cigar_processing_region.py, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam.csi, /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/cigar.end
+    log: /home1/zhuyixin/zhuyixin_proj/AssmQuality/log/cigarProcessing.test.log (check log file(s) for error details)
+    shell:
+        
+        mkdir -p /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGH.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGK.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/IGL.txt
+        rm -rf /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/nonIG.txt
+        python code/cigar_processing_region.py /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam /home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt test
+        touch /home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/cigar.end
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Submitted batch job 26139636
+
+Error executing rule cigarProcessing on cluster (jobid: 1, external: Submitted batch job 26139636, jobscript: /home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.zdpfzlua/snakejob.cigarProcessing.1.sh). For error details see the cluster log and the log files of the involved rule(s).
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-10-08T092758.824292.snakemake.log
+unlocking
+removing lock
+removing lock
+removed all locks
