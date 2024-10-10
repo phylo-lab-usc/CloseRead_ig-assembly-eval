@@ -1,5 +1,5 @@
 #!/bin/sh
-while getopts s:a:b:f:d:c: flag
+while getopts s:a:b:f:d:c:c1: flag
 do
     case "${flag}" in
         s) species=${OPTARG};;
@@ -8,12 +8,13 @@ do
         f) loci=${OPTARG};;
         d) HOME=${OPTARG};;
         c) conda=${OPTARG};;
+        c1) condaEnv=${OPTARG};;
     esac
 done
 
-conda init
 source ${conda}
-conda activate ig-assembly-eval
+conda init
+conda activate ${condaEnv}/ig-assembly-eval
 
 echo ${bam}
 

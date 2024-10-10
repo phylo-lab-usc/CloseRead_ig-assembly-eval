@@ -1,4 +1,4 @@
-while getopts s:w:h:d:c: flag
+while getopts s:w:h:d:c:c1: flag
 do
     case "${flag}" in
         s) species=${OPTARG};;
@@ -6,12 +6,15 @@ do
         h) haploid=${OPTARG};;
         d) HOME=${OPTARG};;
         c) conda=${OPTARG};;
+        c1) condaEnv=${OPTARG};;
     esac
 done
 
-conda init
 source ${conda}
-conda activate ig-assembly-eval
+conda init
+conda activate ${condaEnv}/ig-assembly-eval
+conda env list
+conda info --envs
 
 #check if this species' raw data has .bam format or not, convert to fastq if yes
 count=`ls -1 ${HOME}/${source}/${species}/*.bam 2>/dev/null | wc -l`

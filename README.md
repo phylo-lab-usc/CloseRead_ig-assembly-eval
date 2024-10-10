@@ -57,6 +57,7 @@ Use the Snakefile to run all the code located in the `code` folder. Above is an 
 - `igdetective_home: "/home1/zhuyixin/IgDetective"`, where your IgDetective is installed
 - `condaPath: "/spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh"`, path to your `conda.sh` 
 - `condaEnvPath: "/home1/zhuyixin/.conda/envs"`, path to where all you conda enviroment is located
+- `closeread: "/home1/zhuyixin/ig-assembly-eval"`, path to where your closeread is installed
 
 
 #### The output stats files will be in the `errorStats/` directory and should include the following 11 files:

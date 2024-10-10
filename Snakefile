@@ -4,6 +4,7 @@ SPECIES = config['speciesList']
 fastqdir = config['fastqdir']
 HAPLOID = config['haploid']
 HOME = config['home']
+closeread = config['closeread']
 
 knownLoci = config.get("knownLoci", False)
 known_lociDir= config.get("loci_dir", "NA")  
@@ -52,7 +53,7 @@ rule dataPrepAutomate:
     threads: 32
     log: files["logMinimap"]
     input:
-        script = "code/dataPrepAutomated.sh"
+        script = "{closeread}/code/dataPrepAutomated.sh"
     output:
         files["merged.bam"],
         files["merged.csi"]
@@ -60,10 +61,11 @@ rule dataPrepAutomate:
         species = "{species}",
         source = fastqdir[0],
         haploid = HAPLOID[0],
-        conda = config["condaPath"] 
+        conda = config["condaPath"],
+        condaEnv = config["condaEnvPath"]
     shell:
         """
-        {input.script} -s {params.species} -w {params.source} -h {params.haploid} -d {HOME} -c {params.conda}
+        {input.script} -s {params.species} -w {params.source} -h {params.haploid} -d {HOME} -c {params.conda} -c1 {params.condaEnv}
         """
 
 rule convertPrimaryBam:
@@ -90,7 +92,7 @@ rule lociLocation:
     input:
         pri_genome = files['pri.genome'],
         alt_genome = files['alt.genome'] if (HAPLOID[0]=='False') else [],
-        lociScript = "code/igDetective.sh"
+        lociScript = "{closeread}/code/igDetective.sh"
     output:
         files['igDetect.pri'],
         out = files['igDetect.alt'] if (HAPLOID[0]=='False') else []
@@ -104,10 +106,10 @@ rule lociLocation:
         condaEnv = config["condaEnvPath"]
     shell:
         """
-        if [ ! -f "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/{params.species}.pri.txt" ]; then
+        if [ ! -f "{HOME}/igGene/{params.species}.pri.txt" ]; then
             {input.lociScript} {input.pri_genome} {params.pri_outdir} {params.species} pri {HOME} {params.igdetective_home} {params.conda} {params.condaEnv}
         fi
-        if [ "{params.haploid}" == "False" ] && [ ! -f "/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/{params.species}.alt.txt" ]; then
+        if [ "{params.haploid}" == "False" ] && [ ! -f "{HOME}/igGene/{params.species}.alt.txt" ]; then
             {input.lociScript} {input.alt_genome} {params.alt_outdir} {params.species} alt {HOME} {params.igdetective_home} {params.conda} {params.condaEnv}
         fi
         """
@@ -118,7 +120,7 @@ rule finalIGLoci:
        mem="30G",
     threads: 10
     input:
-        script = "code/finalGene.py",
+        script = "{closeread}/code/finalGene.py",
         pri = files['igDetect.pri'],
         alt = files['igDetect.alt'] if (HAPLOID[0]=='False') else []
     output:
@@ -138,7 +140,7 @@ rule cigarProcessing:
     threads: 10
     log: files['logcigarProcessing']
     input:
-        script = "code/cigar_processing_region.py",
+        script = "{closeread}/code/cigar_processing_region.py",
         bam = files['priRead.bam'],
         csi = files['priRead.csi'],
         finalout = igAnnotation
@@ -176,7 +178,7 @@ rule coverageAnalysis:
         finalout = igAnnotation,
         bam = files['priRead.bam'],
         csi = files['priRead.csi'],
-        script = "code/coverage_snake.sh"
+        script = "{closeread}/code/coverage_snake.sh"
     output:
         files['pileupend']
     params:
@@ -185,7 +187,8 @@ rule coverageAnalysis:
         IGH_out = files['pileup_IGH.out'],
         IGK_out = files['pileup_IGK.out'],
         IGL_out = files['pileup_IGL.out'],
-        conda = config["condaPath"]
+        conda = config["condaPath"],
+        condaEnv = config["condaEnvPath"]
     shell:
         """
         mkdir -p {HOME}/errorStats/{params.species}
@@ -193,5 +196,5 @@ rule coverageAnalysis:
         rm -rf {params.IGK_out}
         rm -rf {params.IGL_out}
         rm -rf {HOME}/errorStats/{params.species}/*_pileup.txt
-        {input.script} -s {params.species} -a {params.assemblies} -b {input.bam} -f {input.finalout} -d {HOME} -c {params.conda}
+        {input.script} -s {params.species} -a {params.assemblies} -b {input.bam} -f {input.finalout} -d {HOME} -c {params.conda} -c1 {params.condaEnv}
         """
