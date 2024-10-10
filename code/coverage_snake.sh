@@ -1,5 +1,5 @@
 #!/bin/sh
-while getopts s:a:b:f:d:c:c1: flag
+while getopts s:a:b:f:d:c:e: flag
 do
     case "${flag}" in
         s) species=${OPTARG};;
@@ -8,7 +8,7 @@ do
         f) loci=${OPTARG};;
         d) HOME=${OPTARG};;
         c) conda=${OPTARG};;
-        c1) condaEnv=${OPTARG};;
+        e) condaEnv=${OPTARG};;
     esac
 done
 

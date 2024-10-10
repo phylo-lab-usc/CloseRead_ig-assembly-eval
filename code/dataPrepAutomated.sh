@@ -1,4 +1,4 @@
-while getopts s:w:h:d:c:c1: flag
+while getopts s:w:h:d:c:e: flag
 do
     case "${flag}" in
         s) species=${OPTARG};;
@@ -6,7 +6,7 @@ do
         h) haploid=${OPTARG};;
         d) HOME=${OPTARG};;
         c) conda=${OPTARG};;
-        c1) condaEnv=${OPTARG};;
+        e) condaEnv=${OPTARG};;
     esac
 done
 

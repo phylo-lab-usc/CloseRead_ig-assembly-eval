@@ -65,7 +65,7 @@ rule dataPrepAutomate:
         condaEnv = config["condaEnvPath"]
     shell:
         """
-        {input.script} -s {params.species} -w {params.source} -h {params.haploid} -d {HOME} -c {params.conda} -c1 {params.condaEnv}
+        {input.script} -s {params.species} -w {params.source} -h {params.haploid} -d {HOME} -c {params.conda} -e {params.condaEnv}
         """
 
 rule convertPrimaryBam:
@@ -196,5 +196,5 @@ rule coverageAnalysis:
         rm -rf {params.IGK_out}
         rm -rf {params.IGL_out}
         rm -rf {HOME}/errorStats/{params.species}/*_pileup.txt
-        {input.script} -s {params.species} -a {params.assemblies} -b {input.bam} -f {input.finalout} -d {HOME} -c {params.conda} -c1 {params.condaEnv}
+        {input.script} -s {params.species} -a {params.assemblies} -b {input.bam} -f {input.finalout} -d {HOME} -c {params.conda} -e {params.condaEnv}
         """
