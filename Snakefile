@@ -53,7 +53,7 @@ rule dataPrepAutomate:
     threads: 32
     log: files["logMinimap"]
     input:
-        script = "{closeread}/code/dataPrepAutomated.sh"
+        script = closeread+"/code/dataPrepAutomated.sh"
     output:
         files["merged.bam"],
         files["merged.csi"]
@@ -92,7 +92,7 @@ rule lociLocation:
     input:
         pri_genome = files['pri.genome'],
         alt_genome = files['alt.genome'] if (HAPLOID[0]=='False') else [],
-        lociScript = "{closeread}/code/igDetective.sh"
+        lociScript = closeread+"/code/igDetective.sh"
     output:
         files['igDetect.pri'],
         out = files['igDetect.alt'] if (HAPLOID[0]=='False') else []
@@ -120,7 +120,7 @@ rule finalIGLoci:
        mem="30G",
     threads: 10
     input:
-        script = "{closeread}/code/finalGene.py",
+        script = closeread+"/code/finalGene.py",
         pri = files['igDetect.pri'],
         alt = files['igDetect.alt'] if (HAPLOID[0]=='False') else []
     output:
@@ -140,7 +140,7 @@ rule cigarProcessing:
     threads: 10
     log: files['logcigarProcessing']
     input:
-        script = "{closeread}/code/cigar_processing_region.py",
+        script = closeread+"/code/cigar_processing_region.py",
         bam = files['priRead.bam'],
         csi = files['priRead.csi'],
         finalout = igAnnotation
@@ -178,7 +178,7 @@ rule coverageAnalysis:
         finalout = igAnnotation,
         bam = files['priRead.bam'],
         csi = files['priRead.csi'],
-        script = "{closeread}/code/coverage_snake.sh"
+        script = closeread+"/code/coverage_snake.sh"
     output:
         files['pileupend']
     params:
