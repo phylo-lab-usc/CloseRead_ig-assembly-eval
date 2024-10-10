@@ -29,7 +29,7 @@ conda activate ig-assembly-eval
 
 ### Other Requirements
 
-- [IgDetective](https://github.com/Immunotools/IgDetective.git) is required for the following analysis.
+- [IgDetective](https://github.com/Immunotools/IgDetective.git) is required for the following analysis. Please make sure all the relative path is changed to absolute path in IgDetective source code, otherwise error will occur.
 - `samtools` is required for the following analysis.
 
 ## Usage
