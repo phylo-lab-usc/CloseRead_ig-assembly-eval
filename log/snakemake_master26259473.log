@@ -1,0 +1,63 @@
+==========================================
+SLURM_JOB_ID = 26259473
+SLURM_JOB_NODELIST = a02-06
+TMPDIR = /tmp/SLURM_26259473
+==========================================
+no change     /spack/conda/miniforge3/24.3.0/condabin/conda
+no change     /spack/conda/miniforge3/24.3.0/bin/conda
+no change     /spack/conda/miniforge3/24.3.0/bin/conda-env
+no change     /spack/conda/miniforge3/24.3.0/bin/activate
+no change     /spack/conda/miniforge3/24.3.0/bin/deactivate
+no change     /spack/conda/miniforge3/24.3.0/etc/profile.d/conda.sh
+no change     /spack/conda/miniforge3/24.3.0/etc/fish/conf.d/conda.fish
+no change     /spack/conda/miniforge3/24.3.0/shell/condabin/Conda.psm1
+no change     /spack/conda/miniforge3/24.3.0/shell/condabin/conda-hook.ps1
+no change     /spack/conda/miniforge3/24.3.0/lib/python3.10/site-packages/xontrib/conda.xsh
+no change     /spack/conda/miniforge3/24.3.0/etc/profile.d/conda.csh
+no change     /home1/zhuyixin/.bashrc
+No action taken.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 2
+Job stats:
+job                 count
+----------------  -------
+all                     1
+cigarProcessing         1
+coverageAnalysis        1
+finalIGLoci             1
+lociLocation            1
+total                   5
+
+Resources before job selection: {'_cores': 9223372036854775807, '_nodes': 2}
+Ready jobs (1)
+Select jobs to execute...
+Using greedy selector because only single job has to be scheduled.
+Selected jobs (1)
+Resources after job selection: {'_cores': 9223372036854775797, '_nodes': 1}
+
+[Fri Oct 11 11:12:02 2024]
+rule lociLocation:
+    input: /project/mpennell_978/kavoss/HorseT2T/assemblies/mule.pri.fasta, /project/mpennell_978/kavoss/HorseT2T/assemblies/mule.alt.fasta, /home1/zhuyixin/ig-assembly-eval/code/igDetective.sh
+    output: /project/mpennell_978/kavoss/HorseT2T/igGene/mule.pri.txt, /project/mpennell_978/kavoss/HorseT2T/igGene/mule.alt.txt
+    log: /project/mpennell_978/kavoss/HorseT2T/log/igDetective.mule.log
+    jobid: 5
+    reason: Missing output files: /project/mpennell_978/kavoss/HorseT2T/igGene/mule.pri.txt, /project/mpennell_978/kavoss/HorseT2T/igGene/mule.alt.txt
+    wildcards: HOME=/project/mpennell_978/kavoss/HorseT2T, species=mule
+    threads: 10
+    resources: mem_mb=30000, mem_mib=10254, disk_mb=10752, disk_mib=10254, tmpdir=<TBD>, mem=30G
+
+
+        if [ ! -f "/project/mpennell_978/kavoss/HorseT2T/igGene/mule.pri.txt" ]; then
+            /home1/zhuyixin/ig-assembly-eval/code/igDetective.sh /project/mpennell_978/kavoss/HorseT2T/assemblies/mule.pri.fasta /project/mpennell_978/kavoss/HorseT2T/igGene/mule.pri.igdetective/ mule pri /project/mpennell_978/kavoss/HorseT2T /home1/zhuyixin/IgDetective /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh /home1/zhuyixin/.conda/envs
+        fi
+        if [ "False" == "False" ] && [ ! -f "/project/mpennell_978/kavoss/HorseT2T/igGene/mule.alt.txt" ]; then
+            /home1/zhuyixin/ig-assembly-eval/code/igDetective.sh /project/mpennell_978/kavoss/HorseT2T/assemblies/mule.alt.fasta /project/mpennell_978/kavoss/HorseT2T/igGene/mule.alt.igdetective/ mule alt /project/mpennell_978/kavoss/HorseT2T /home1/zhuyixin/IgDetective /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh /home1/zhuyixin/.conda/envs
+        fi
+        
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "lociLocation", "local": false, "input": ["/project/mpennell_978/kavoss/HorseT2T/assemblies/mule.pri.fasta", "/project/mpennell_978/kavoss/HorseT2T/assemblies/mule.alt.fasta", "/home1/zhuyixin/ig-assembly-eval/code/igDetective.sh"], "output": ["/project/mpennell_978/kavoss/HorseT2T/igGene/mule.pri.txt", "/project/mpennell_978/kavoss/HorseT2T/igGene/mule.alt.txt"], "wildcards": {"HOME": "/project/mpennell_978/kavoss/HorseT2T", "species": "mule"}, "params": {"pri_outdir": "/project/mpennell_978/kavoss/HorseT2T/igGene/mule.pri.igdetective/", "alt_outdir": "/project/mpennell_978/kavoss/HorseT2T/igGene/mule.alt.igdetective/", "species": "mule", "igdetective_home": "/home1/zhuyixin/IgDetective", "conda": "/spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh", "haploid": "False", "condaEnv": "/home1/zhuyixin/.conda/envs"}, "log": ["/project/mpennell_978/kavoss/HorseT2T/log/igDetective.mule.log"], "threads": 10, "resources": {"mem_mb": 30000, "mem_mib": 10254, "disk_mb": 10752, "disk_mib": 10254, "tmpdir": "<TBD>", "mem": "30G"}, "jobid": 5, "cluster": {}}
+cd /home1/zhuyixin/ig-assembly-eval && /home1/zhuyixin/.conda/envs/assembly/bin/python3.10 -m snakemake --snakefile '/home1/zhuyixin/ig-assembly-eval/Snakefile' --target-jobs 'lociLocation:HOME=/project/mpennell_978/kavoss/HorseT2T,species=mule' --allowed-rules 'lociLocation' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=30000' 'mem_mib=10254' 'disk_mb=10752' 'disk_mib=10254' --wait-for-files '/home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.2tlvvf5g' '/project/mpennell_978/kavoss/HorseT2T/assemblies/mule.pri.fasta' '/project/mpennell_978/kavoss/HorseT2T/assemblies/mule.alt.fasta' '/home1/zhuyixin/ig-assembly-eval/code/igDetective.sh' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'mtime' 'software-env' 'params' 'input' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --printshellcmds  --latency-wait 60000 --scheduler 'ilp' --scheduler-solver-path '/home1/zhuyixin/.conda/envs/assembly/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.2tlvvf5g/5.jobfinished' || (touch '/home1/zhuyixin/ig-assembly-eval/.snakemake/tmp.2tlvvf5g/5.jobfailed'; exit 1)
+
+Submitted job 5 with external jobid 'Submitted batch job 26259474'.

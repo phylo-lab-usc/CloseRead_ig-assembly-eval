@@ -22,7 +22,7 @@ dependencies:
   - aws-checksums=0.1.18=h4466546_2
   - aws-crt-cpp=0.26.4=hba3594f_2
   - aws-sdk-cpp=1.11.267=hb1af6a8_4
-  - biopython=1.83=py310h2372a71_0
+  - biopython=1.79=py310h5764c6d_3
   - brotli=1.1.0=hd590300_1
   - brotli-bin=1.1.0=hd590300_1
   - bzip2=1.0.8=h7f98852_4
