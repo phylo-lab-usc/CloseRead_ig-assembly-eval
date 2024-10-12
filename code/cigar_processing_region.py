@@ -153,17 +153,10 @@ def main():
     parser.add_argument('input_file', help='Input SAM or BAM file.')
     parser.add_argument('IG_region', help='IG position file')
     parser.add_argument('species', help='Species name.')
-
-    # Optional arguments
-    parser.add_argument('-o', '--output', help='Output directory path.')
+    parser.add_argument('output', help='Output directory path.')
 
     # Parse arguments
     args = parser.parse_args()
-
-    if args.output is None:
-        args.output = f"/home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/{args.species}/"
-        warnings.warn("No output dir specified. Using default output dir path: " + args.output)
-
 
     # Validate the input_file extension
     valid_extensions = ['.sam', '.bam']

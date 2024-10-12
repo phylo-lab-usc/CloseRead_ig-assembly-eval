@@ -165,7 +165,7 @@ rule cigarProcessing:
         rm -rf {params.IGK_out}
         rm -rf {params.IGL_out}
         rm -rf {params.nonIG_out}
-        {params.condaEnv}/ig-assembly-eval/bin/python {input.script} {input.bam} {input.finalout} {params.species}
+        {params.condaEnv}/ig-assembly-eval/bin/python {input.script} {input.bam} {input.finalout} {params.species} {HOME}/errorStats/{params.species}
         touch {HOME}/errorStats/{params.species}/cigar.end
         """
 
