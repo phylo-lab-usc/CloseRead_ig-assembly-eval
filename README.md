@@ -31,6 +31,7 @@ conda activate ig-assembly-eval
 
 - [IgDetective](https://github.com/Immunotools/IgDetective.git) is required for the following analysis. Please make sure all the relative path is changed to absolute path in IgDetective source code, otherwise error will occur.
 - `samtools` is required for the following analysis.
+- `python=3.10` is used, should be installed by default in the above conda enviroments
 
 ## Usage
 ### 1. Running Read-to-Assembly Pipeline and Preparing Files
@@ -190,3 +191,7 @@ CloseRead_ig-assembly-eval/
 Assessing Assembly Errors in Immunoglobulin Loci: A Comprehensive Evaluation of Long-read Genome Assemblies Across Vertebrates
 Yixin Zhu, Corey Watson, Yana Safonova, Matt Pennell, Anton Bankevich
 bioRxiv 2024.07.19.604360; doi: https://doi.org/10.1101/2024.07.19.604360
+
+## License
+
+This project is licensed under the GNU General Public License v3 (GPLv3). See the [LICENSE](LICENSE) file for full details.
