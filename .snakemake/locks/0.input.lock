@@ -1,0 +1,16 @@
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/cigar.end
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/errorStats/test/pileup.end
+/home1/zhuyixin/ig-assembly-eval/code/cigar_processing_region.py
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam.csi
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted.bam
+/home1/zhuyixin/ig-assembly-eval/code/dataPrepAutomated.sh
+/home1/zhuyixin/ig-assembly-eval/code/finalGene.py
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/igGene/test.pri.txt
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/assemblies/test.pri.fasta
+/home1/zhuyixin/ig-assembly-eval/code/igDetective.sh
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position/test.final.Ig_loci.txt
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam
+/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted_primary.bam.csi
+/home1/zhuyixin/ig-assembly-eval/code/coverage_snake.sh

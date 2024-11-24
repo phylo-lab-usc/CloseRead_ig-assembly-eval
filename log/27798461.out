@@ -1,0 +1,93 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=60000, mem_mib=954, disk_mb=1000, disk_mib=954
+Select jobs to execute...
+
+[Sun Nov 24 15:39:40 2024]
+rule dataPrepAutomate:
+    input: /home1/zhuyixin/ig-assembly-eval/code/dataPrepAutomated.sh
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted.bam, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test/test_merged_sorted.bam.csi
+    log: /home1/zhuyixin/zhuyixin_proj/AssmQuality/log/dataPrepAutomated.test.log
+    jobid: 0
+    reason: Forced execution
+    wildcards: HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality, species=test
+    threads: 32
+    resources: mem_mb=60000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp/SLURM_27798461, mem=60G
+
+
+        /home1/zhuyixin/ig-assembly-eval/code/dataPrepAutomated.sh -s test -w hifi_fastq -h True -d /home1/zhuyixin/zhuyixin_proj/AssmQuality -c /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh -e /home1/zhuyixin/.conda/envs
+        
+no change     /spack/conda/miniconda3/23.10.0/condabin/conda
+no change     /spack/conda/miniconda3/23.10.0/bin/conda
+no change     /spack/conda/miniconda3/23.10.0/bin/conda-env
+no change     /spack/conda/miniconda3/23.10.0/bin/activate
+no change     /spack/conda/miniconda3/23.10.0/bin/deactivate
+no change     /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
+no change     /spack/conda/miniconda3/23.10.0/etc/fish/conf.d/conda.fish
+no change     /spack/conda/miniconda3/23.10.0/shell/condabin/Conda.psm1
+no change     /spack/conda/miniconda3/23.10.0/shell/condabin/conda-hook.ps1
+no change     /spack/conda/miniconda3/23.10.0/lib/python3.11/site-packages/xontrib/conda.xsh
+no change     /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.csh
+modified      /home1/zhuyixin/zhuyixin_proj/AssmQuality/.bashrc
+
+==> For changes to take effect, close and re-open your current shell. <==
+
+# conda environments:
+#
+IGdetective              /home1/zhuyixin/.conda/envs/IGdetective
+R                        /home1/zhuyixin/.conda/envs/R
+R350                     /home1/zhuyixin/.conda/envs/R350
+R441                     /home1/zhuyixin/.conda/envs/R441
+assembly                 /home1/zhuyixin/.conda/envs/assembly
+clam_latest              /home1/zhuyixin/.conda/envs/clam_latest
+csci567                  /home1/zhuyixin/.conda/envs/csci567
+ig-assembly-eval      *  /home1/zhuyixin/.conda/envs/ig-assembly-eval
+igor_c                   /home1/zhuyixin/.conda/envs/igor_c
+igortest                 /home1/zhuyixin/.conda/envs/igortest
+ins                      /home1/zhuyixin/.conda/envs/ins
+ml                       /home1/zhuyixin/.conda/envs/ml
+ml2                      /home1/zhuyixin/.conda/envs/ml2
+ml3                      /home1/zhuyixin/.conda/envs/ml3
+py39                     /home1/zhuyixin/.conda/envs/py39
+test_IGdetective         /home1/zhuyixin/.conda/envs/test_IGdetective
+base                     /spack/conda/miniconda3/23.10.0
+
+# conda environments:
+#
+IGdetective              /home1/zhuyixin/.conda/envs/IGdetective
+R                        /home1/zhuyixin/.conda/envs/R
+R350                     /home1/zhuyixin/.conda/envs/R350
+R441                     /home1/zhuyixin/.conda/envs/R441
+assembly                 /home1/zhuyixin/.conda/envs/assembly
+clam_latest              /home1/zhuyixin/.conda/envs/clam_latest
+csci567                  /home1/zhuyixin/.conda/envs/csci567
+ig-assembly-eval      *  /home1/zhuyixin/.conda/envs/ig-assembly-eval
+igor_c                   /home1/zhuyixin/.conda/envs/igor_c
+igortest                 /home1/zhuyixin/.conda/envs/igortest
+ins                      /home1/zhuyixin/.conda/envs/ins
+ml                       /home1/zhuyixin/.conda/envs/ml
+ml2                      /home1/zhuyixin/.conda/envs/ml2
+ml3                      /home1/zhuyixin/.conda/envs/ml3
+py39                     /home1/zhuyixin/.conda/envs/py39
+test_IGdetective         /home1/zhuyixin/.conda/envs/test_IGdetective
+base                     /spack/conda/miniconda3/23.10.0
+
+mkdir: cannot create directory '/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_sam/': File exists
+mkdir: cannot create directory '/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/': File exists
+mkdir: cannot create directory '/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_sam/test': File exists
+mkdir: cannot create directory '/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/test': File exists
+mapping fastq to assembly
+[M::mm_idx_gen::0.791*0.11] collected minimizers
+[M::mm_idx_gen::0.821*0.65] sorted minimizers
+[M::main::0.821*0.65] loaded/built the index for 1 target sequence(s)
+[M::mm_mapopt_update::0.829*0.66] mid_occ = 50
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 1
+[M::mm_idx_stat::0.832*0.66] distinct minimizers: 344383 (80.21% are singletons); average occurrences: 1.551; average spacing: 9.971; total length: 5327297
+[M::worker_pipeline::21.946*21.03] mapped 32370 sequences
+[M::worker_pipeline::33.817*24.11] mapped 32462 sequences
+[M::worker_pipeline::45.211*25.63] mapped 32661 sequences
+[M::worker_pipeline::58.054*26.25] mapped 32672 sequences
+[M::worker_pipeline::71.372*26.40] mapped 32748 sequences
+[M::worker_pipeline::84.088*26.88] mapped 32596 sequences
