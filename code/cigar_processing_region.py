@@ -8,7 +8,28 @@ import argparse
 import os
 import warnings
 
-
+# Print iterations progress
+def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
+    """
+	From https://stackoverflow.com/questions/3173320/text-progress-bar-in-terminal-with-block-characters
+    Call in a loop to create terminal progress bar
+    @params:
+        iteration   - Required  : current iteration (Int)
+        total       - Required  : total iterations (Int)
+        prefix      - Optional  : prefix string (Str)
+        suffix      - Optional  : suffix string (Str)
+        decimals    - Optional  : positive number of decimals in percent complete (Int)
+        length      - Optional  : character length of bar (Int)
+        fill        - Optional  : bar fill character (Str)
+        printEnd    - Optional  : end character (e.g. "\r", "\r\n") (Str)
+    """
+    percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+    filledLength = int(length * iteration // total)
+    bar = fill * filledLength + '-' * (length - filledLength)
+    print(f'\r{prefix} |{bar}| {percent}% {suffix}', end = printEnd)
+    # Print New Line on Complete
+    if iteration == total: 
+        print()
 def calculate_mismatches(read):
     """ Calculate the number of mismatches using NM tag and CIGAR string. """
     nm_tag = read.get_tag('NM') if read.has_tag('NM') else 0
@@ -115,10 +136,13 @@ def process_bam_file(bam_file_path, region_list_IGH, region_list_IGK, region_lis
     trees = [treesIGH, treesIGK, treesIGL] #, treesTRA, treesTRB, treesTRG]
     print(trees)
     bamfile = pysam.AlignmentFile(bam_file_path, "rb")
+    i=0
     for read in bamfile:
-        if not read.is_unmapped:
+        if not read.is_unmapped and read.query_length>0:
+            i+=1
             mismatches, longindels, total_indel_length, soft_clipping, hard_clipping = calculate_mismatches(read)
             read_length = read.query_length
+            printProgressBar(i, bamfile.mapped, prefix = 'BAM analysis: ')
             if mismatches != 0:
                 mismatch_rate = mismatches / read_length
             else:
