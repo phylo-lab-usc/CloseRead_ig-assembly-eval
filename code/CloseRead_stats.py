@@ -398,7 +398,6 @@ def process_gene_data(gene_file, merged_pileup, read):
         genes.rename(columns={'Gene': 'Gene', 'Chromosome': 'Contig', 'Start': 'Pos', 'End': 'EndPos'}, inplace=True)
         # Calculate sequence length from start and end positions
         genes['SeqLength'] = genes['EndPos'] - genes['Pos'] + 1
-
     # Check if the input file is IgDetected format (GeneType, Contig, Pos, Sequence, etc.)
     elif 'Pos' in genes.columns and 'Sequence' in genes.columns:
         # Detected Type 1 format
@@ -432,12 +431,13 @@ def process_gene_data(gene_file, merged_pileup, read):
         # Calculate mismatch rate and classify positions
         gene_df['mismatch_rate'] = 100 - gene_df['PercentCorrect']
         mismatch_positions = (gene_df['mismatch_rate'] > 20).sum()
+        mismatch_positions_percent = round(mismatch_positions / len(gene_df),2)
         match_positions = (gene_df['mismatch_rate'] <= 20).sum()
-
+        match_positions_percent = round(match_positions / len(gene_df),2)
         # Filter reads that fully span the gene region on the correct chromosome
         reads_spanning_region = read[(read['chromosome'] == chrom) & (read['start'] <= start) & (read['end'] >= end)].shape[0]
         fully_spanning_reads_100 = read[(read['chromosome'] == chrom) & (read['start'] <= start) & (read['end'] >= end) & (read['mismatches'] == 0)].shape[0]
-
+        fully_spanning_reads_100_percent = round(fully_spanning_reads_100 / reads_spanning_region,2)
         # Calculate average coverage and percent accuracy
         if length > 0:
             average_coverage = reads_spanning_region / length
@@ -453,14 +453,16 @@ def process_gene_data(gene_file, merged_pileup, read):
         # Update the gene DataFrame with calculated metrics
         genes.loc[index, 'Average_Coverage'] = average_coverage
         genes.loc[index, 'Mismatched_Positions'] = mismatch_positions
+        genes.loc[index, 'Mismatched_Positions_Percent'] = mismatch_positions_percent
         genes.loc[index, 'Matched_Positions'] = match_positions
+        genes.loc[index, 'Matched_Positions_Percent'] = match_positions_percent
         genes.loc[index, 'Position_Mismatches'] = position_mismatches
         genes.loc[index, 'Position_Matches'] = position_matches
         genes.loc[index, 'Percent_Accuracy'] = percent_accuracy
         genes.loc[index, 'Positions_With_At_Least_10x_Coverage'] = positions_with_10x
         genes.loc[index, 'Fully_Spanning_Reads'] = reads_spanning_region
         genes.loc[index, 'Fully_Spanning_Reads_100%_Match'] = fully_spanning_reads_100
-
+        genes.loc[index, 'Fully_Spanning_Reads_100%_Match_Percent'] = fully_spanning_reads_100_percent
     # Return the updated DataFrame
     return genes
 
