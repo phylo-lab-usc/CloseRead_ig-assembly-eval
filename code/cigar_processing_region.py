@@ -32,14 +32,21 @@ def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, 
         print()
 def calculate_mismatches(read):
     """ Calculate the number of mismatches using NM tag and CIGAR string. """
+    cigartest = read.get_cigar_stats()[0]
+    """
     nm_tag = read.get_tag('NM') if read.has_tag('NM') else 0
-
     insertions = sum(length for op, length in read.cigartuples if op == 1)  # Sum of 'I'
     deletions = sum(length for op, length in read.cigartuples if op == 2)  # Sum of 'D'
     ambiguous = sum(length for op, length in read.cigartuples if op == 3)  # Sum of 'N'
     soft_clipping = sum(length for op, length in read.cigartuples if op == 4)  # Sum of 'S'
     hard_clipping = sum(length for op, length in read.cigartuples if op == 5)  # Sum of 'H'
-
+    """
+    nm_tag = cigartest[-1]
+    insertions = cigartest[1]  # Sum of 'I'
+    deletions = cigartest[2]  # Sum of 'D'
+    ambiguous = cigartest[3]  # Sum of 'N'
+    soft_clipping = cigartest[4]  # Sum of 'S'
+    hard_clipping = cigartest[5]  # Sum of 'H'
     mismatches = nm_tag - insertions - deletions - ambiguous
     longindels = 0
     total_indel_length = 0
@@ -146,18 +153,15 @@ def process_bam_file(bam_file_path, region_list_IGH, region_list_IGK, region_lis
                 mismatches, longindels, total_indel_length, soft_clipping, hard_clipping = calculate_mismatches(read)
                 read_length = read.query_length if read.query_length else read.infer_query_length()
                 if not read_length:
-                    print(f"Read {read_name} is skipped because no length")
+                    print(f"Read {read_name} is skipped because no length found.")
                     continue #Cannot get length so skip
-                if mismatches != 0:
-                    mismatch_rate = mismatches / read_length
-                else:
-                    mismatch_rate = 0
+                mismatch_rate = mismatches / max(1,read_length) if mismatches != 0 else 0
                 read_name = read.query_name
                 chromosome = bamfile.get_reference_name(read.reference_id)
                 start = read.reference_start
                 end = read.reference_end
                 mapping_quality = read.mapping_quality
-                indel_rate = total_indel_length / read_length
+                indel_rate = total_indel_length / max(1,read_length)
                 output_files[i].write(f"{read_name}\t{chromosome}\t{start}\t{read_length}\t{mapping_quality}\t{mismatches}\t{mismatch_rate}\t{longindels}\t{total_indel_length}\t{indel_rate}\t{soft_clipping}\t{hard_clipping}\n")
         printProgressBar (i+1,len(trees),"BAM analysis: ")
     '''

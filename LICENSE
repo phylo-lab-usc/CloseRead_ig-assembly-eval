@@ -1,3 +1,7 @@
+CloseRead_ig-assembly-eval This tool aims to evaluate the assembly of immunoglobulin (IG) sequences. The evaluation process includes various scripts and workflows to analyze, compare, and validate IG sequence assemblies.
+    Copyright (C) 2024 Yixin Zhu, Guilhem Zeitoun (IMGT)
+
+
                    GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 

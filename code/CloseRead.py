@@ -41,7 +41,7 @@ if __name__ == "__main__":
 
     # Add arguments for gene and haploid
     parser.add_argument('--g', type=str, required=True, metavar="gene", help="Gene identifier(IGH/IGK/IGL)")
-    parser.add_argument('--ha', type=bool, default=False, metavar="haploid", help="Haploid status (True/False) (alternate IG loci will not be shown if too short or has multiple)")
+    parser.add_argument('--ha', action="store_true", default=False, help="Haploid status (True/False) (alternate IG loci will not be shown if too short or has multiple)")
 
     # Add argument for Output
     parser.add_argument('--dirStat', type=str, required=True, metavar="errorStatsDir", help="Path to the previous errorStats directory containing mpileup file")
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     parser.add_argument('--rc', type=int, default=5, metavar="readview_correct_threshold", help="Number of high mismatch reads needed to cover a position for it to be considered as high mismatch rate position from read-view (default: 5)")
     parser.add_argument('--bc', type=int, default=5, metavar="baseview_correct_threshold", help="Threshold for the percent of reads with exact match at a position for it to be considered as well-supported, used in heatmap (default: 80 percent)")
     parser.add_argument('--m', type=str, metavar="meta", help="Absolute path to the meta information .csv file, used for generating pdf.")
-    parser.add_argument('--so', type=bool, default=False, metavar="stats_only", help="output .txt and .csv files only, skip visualization.")
+    parser.add_argument('--so', action="store_true", default=False, help="output .txt and .csv files only, skip visualization.")
     parser.add_argument('--pg', type=str, metavar="gene_level assessment", help="Absolute path for gene level annotation file, Generate gene level read support information only.")
 
 
@@ -86,11 +86,19 @@ if __name__ == "__main__":
         alt_pileup_file = f'{dirStat}/{gene}_alt_pileup.txt'
         pri_pileup = process_pileup(pri_pileup_file)
         # Check if alternate pileup file exists
-        if os.path.exists(alt_pileup_file):
+        hap=True
+        if os.path.exists(alt_pileup_file) and args.ha:
+            print("You said genome is haploid but you have alternate file, only haploid will be used.")
+            hap=False
+        elif not args.ha and not os.path.exists(alt_pileup_file):
+            print(f"Haploit = True : Alternate mpileup file not found so not used: {alt_pileup_file}")
+            hap=False
+        else:
+            hap=haploid
+        if hap:
             alt_pileup = process_pileup(alt_pileup_file)
             haploid = False
         else:
-            print(f"Haploit = True : Alternate mpileup file not found: {alt_pileup_file}")
             alt_pileup = None
             haploid = True
             chr2 = None
@@ -204,38 +212,39 @@ if __name__ == "__main__":
                                     high_mismatch_bool_alt.size, start_break_alt, end_break_alt, 
                                     chr2_color, chr2, gene, dirOut, cm, min_position_alt, max_position_alt)
     
-                #Generate PDF - without dotplot
-                if args.m:
-                    meta = pd.read_csv(args.m, sep=",")
-                    LatinName = meta[meta['IndividualID'] == species]['LatinName'].item()
-                    CommonName = meta[meta['IndividualID'] == species]['CommonName'].item()
-                    Source = meta[meta['IndividualID'] == species]['Source'].item()
-                    SourceLink = meta[meta['IndividualID'] == species]['SourceLink'].item()
-                    Haplotype = meta[meta['IndividualID'] == species]['Haplotype Resolved'].item()
-                    if Haplotype == "No":
-                        hapkind = "Not Haplotype Resolved"
-                    else:
-                        hapkind = "Haplotype Resolved"
-                        
-                    output_filename = f"{dirOut}/{species}_{gene}_result.pdf"
-                    if not haploid:
-                        image_files = [
-                            f'{dirOut}/{gene}.summary.allreads.png', 
-                            f'{dirOut}/{gene}.length.png', 
-                            f'{dirOut}/{gene}.{chr1}.readcoverage.all.png',
-                            f'{dirOut}/{gene}.{chr1}.basecoverage.PerCorrect.png',
-                            f'{dirOut}/{gene}.{chr2}.readcoverage.all.png',
-                            f'{dirOut}/{gene}.{chr2}.basecoverage.PerCorrect.png',
-                        ]
-                        make_pdfdi(image_files, output_filename, species, CommonName, LatinName, hapkind, Source, overlapx=0.7, overlapy=0.01, scale_top=0.6, scale_bottom=0.3)
-                    else:
-                        image_files = [
-                            f'{dirOut}/{gene}.summary.allreads.png', 
-                            f'{dirOut}/{gene}.length.png', 
-                            f'{dirOut}/{gene}.{chr1}.readcoverage.all.png',
-                            f'{dirOut}/{gene}.{chr1}.basecoverage.PerCorrect.png',
-                        ]
-                        make_pdf(image_files, output_filename, species, CommonName, LatinName, hapkind, Source, overlapx=0.7, overlapy=0.01, scale_top=0.6, scale_bottom=0.3)
+            #Generate PDF - without dotplot
+            if args.m:
+                meta = pd.read_csv(args.m, sep=",")
+                print("Making PDF file")
+                LatinName = meta[meta['IndividualID'] == species]['LatinName'].item()
+                CommonName = meta[meta['IndividualID'] == species]['CommonName'].item()
+                Source = meta[meta['IndividualID'] == species]['Source'].item()
+                SourceLink = meta[meta['IndividualID'] == species]['SourceLink'].item()
+                Haplotype = meta[meta['IndividualID'] == species]['Haplotype Resolved'].item()
+                if Haplotype == "No":
+                    hapkind = "Not Haplotype Resolved"
+                else:
+                    hapkind = "Haplotype Resolved"
+                species=meta[meta['CommonName'] == species]["IndividualID"].item()
+                output_filename = f"{dirOut}/{species}_{gene}_result.pdf"
+                if not haploid:
+                    image_files = [
+                        f'{dirOut}/{gene}.summary.allreads.png', 
+                        f'{dirOut}/{gene}.length.png', 
+                        f'{dirOut}/{gene}.{chr1}.readcoverage.all.png',
+                        f'{dirOut}/{gene}.{chr1}.basecoverage.PerCorrect.png',
+                        f'{dirOut}/{gene}.{chr2}.readcoverage.all.png',
+                        f'{dirOut}/{gene}.{chr2}.basecoverage.PerCorrect.png',
+                    ]
+                    make_pdfdi(image_files, output_filename, species, CommonName, LatinName, hapkind, Source, overlapx=0.7, overlapy=0.01, scale_top=0.6, scale_bottom=0.3)
+                else:
+                    image_files = [
+                        f'{dirOut}/{gene}.summary.allreads.png', 
+                        f'{dirOut}/{gene}.length.png', 
+                        f'{dirOut}/{gene}.{chr1}.readcoverage.all.png',
+                        f'{dirOut}/{gene}.{chr1}.basecoverage.PerCorrect.png',
+                    ]
+                    make_pdf(image_files, output_filename, species, CommonName, LatinName, hapkind, Source, overlapx=0.7, overlapy=0.01, scale_top=0.6, scale_bottom=0.3)
         else:
             genelevel_result = process_gene_data(gene_file=args.pg, merged_pileup=merged_pileup, read=read)
             outFile = f"{dirOut}/{species}.{gene}.genelevel.csv"

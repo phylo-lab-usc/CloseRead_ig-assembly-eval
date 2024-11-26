@@ -424,7 +424,8 @@ def process_gene_data(gene_file, merged_pileup, read):
 
         # Filter the pileup data for the exact chromosome and gene region
         gene_df = merged_pileup[(merged_pileup['Chrom'] == chrom) & (merged_pileup['Pos'] >= start) & (merged_pileup['Pos'] <= end)]
-
+        if len(gene_df)==0:
+            raise ValueError("No data extracted from pileup, did you name chromosome and position correctly?")
         # Calculate positions with at least 10x coverage
         positions_with_10x = (gene_df['Depth'] >= 10).sum()
 
