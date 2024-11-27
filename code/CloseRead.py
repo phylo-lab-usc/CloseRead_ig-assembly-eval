@@ -86,16 +86,17 @@ if __name__ == "__main__":
         alt_pileup_file = f'{dirStat}/{gene}_alt_pileup.txt'
         pri_pileup = process_pileup(pri_pileup_file)
         # Check if alternate pileup file exists
-        hap=True
+        hap=False
         if os.path.exists(alt_pileup_file) and args.ha:
             print("You said genome is haploid but you have alternate file, only haploid will be used.")
-            hap=False
+            hap=True
         elif not args.ha and not os.path.exists(alt_pileup_file):
             print(f"Haploit = True : Alternate mpileup file not found so not used: {alt_pileup_file}")
-            hap=False
+            hap=True
         else:
-            hap=haploid
-        if hap:
+            hap=args.ha
+        if not hap:
+            print("Going for both haplotypes")
             alt_pileup = process_pileup(alt_pileup_file)
             haploid = False
         else:
@@ -216,11 +217,11 @@ if __name__ == "__main__":
             if args.m:
                 meta = pd.read_csv(args.m, sep=",")
                 print("Making PDF file")
-                LatinName = meta[meta['IndividualID'] == species]['LatinName'].item()
-                CommonName = meta[meta['IndividualID'] == species]['CommonName'].item()
-                Source = meta[meta['IndividualID'] == species]['Source'].item()
-                SourceLink = meta[meta['IndividualID'] == species]['SourceLink'].item()
-                Haplotype = meta[meta['IndividualID'] == species]['Haplotype Resolved'].item()
+                LatinName = meta[meta['CommonName'] == species]['LatinName'].item()
+                CommonName = meta[meta['CommonName'] == species]['CommonName'].item()
+                Source = meta[meta['CommonName'] == species]['Source'].item()
+                SourceLink = meta[meta['CommonName'] == species]['SourceLink'].item()
+                Haplotype = meta[meta['CommonName'] == species]['Haplotype Resolved'].item()
                 if Haplotype == "No":
                     hapkind = "Not Haplotype Resolved"
                 else:
