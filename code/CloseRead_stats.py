@@ -431,13 +431,13 @@ def process_gene_data(gene_file, merged_pileup, read):
         # Calculate mismatch rate and classify positions
         gene_df['mismatch_rate'] = 100 - gene_df['PercentCorrect']
         mismatch_positions = (gene_df['mismatch_rate'] > 20).sum()
-        mismatch_positions_percent = round(mismatch_positions / len(gene_df),2)
+        mismatch_positions_percent = round(mismatch_positions / len(gene_df),2) if len(gene_df) != 0 else 0
         match_positions = (gene_df['mismatch_rate'] <= 20).sum()
-        match_positions_percent = round(match_positions / len(gene_df),2)
+        match_positions_percent = round(match_positions / len(gene_df),2) if len(gene_df) != 0 else 0
         # Filter reads that fully span the gene region on the correct chromosome
         reads_spanning_region = read[(read['chromosome'] == chrom) & (read['start'] <= start) & (read['end'] >= end)].shape[0]
         fully_spanning_reads_100 = read[(read['chromosome'] == chrom) & (read['start'] <= start) & (read['end'] >= end) & (read['mismatches'] == 0)].shape[0]
-        fully_spanning_reads_100_percent = round(fully_spanning_reads_100 / reads_spanning_region,2)
+        fully_spanning_reads_100_percent = round(fully_spanning_reads_100 / reads_spanning_region,2) if reads_spanning_region != 0 else 0
         # Calculate average coverage and percent accuracy
         if length > 0:
             average_coverage = reads_spanning_region / length
