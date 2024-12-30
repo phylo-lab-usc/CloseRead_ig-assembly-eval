@@ -12,7 +12,8 @@ setup(
     packages=find_packages(),
     entry_points={
         "console_scripts": [
-            "closeread=closeread.pipeline:run_pipeline_cli",  # Maps `closeread` to the `run_pipeline_cli` function in pipeline.py
+            "closeread-pipeline=closeread.pipeline:run_pipeline_cli",
+            "closeread-plot=closeread.finalize_plot:run_plot_cli",
         ],
     },
     include_package_data=True,

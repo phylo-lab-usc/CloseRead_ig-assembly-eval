@@ -33,9 +33,9 @@ pip install -e .
 
 ### Other Requirements
 
-- [IgDetective](https://github.com/Immunotools/IgDetective.git) is required for the following analysis. Please make sure all the relative path is changed to absolute path in IgDetective source code, otherwise error will occur.
+- [IgDetective](https://github.com/Immunotools/IgDetective.git) is required for the following analysis. Please make sure all the relative path is changed to absolute path in IgDetective source code, otherwise error will occur. Also make sure you are running IgDetective with the python in the above conda enviroment. 
 - `samtools` is required for the following analysis.
-- `python=3.10` is used, should be installed by default in the above conda enviroments
+- `python=3.10` is used, should be installed by default in the above conda enviroments. Again make sure whenever running python, you are using the python installed in the above conda enviroment. You can check by runnning `which python`
 
 ## Usage
 ### 1. Running closeread Pipeline
@@ -54,28 +54,17 @@ pip install -e .
 - Gene level annotation file in either IgDetective generated format OR in [Gene, Chromosome, Strand, Start, End] csv format
 
 ```bash
-closeread -h
-usage: closeread [-h] --species SPECIES --home HOME --haploid HAPLOID --fastqdir FASTQDIR --closeread CLOSEREAD --igdetective_home IGDETECTIVE_HOME
-
-Run the CloseRead pipeline.
-
-options:
-  -h, --help            show this help message and exit
-  --species SPECIES     Comma-separated list of species (e.g., species1,species2).
-  --home HOME           Path to the home directory.
-  --haploid HAPLOID     Haploid status (True or False).
-  --fastqdir FASTQDIR   Path to the FASTQ directory.
-  --closeread CLOSEREAD
-                        Path to the CloseRead directory.
-  --igdetective_home IGDETECTIVE_HOME
-                        Path to the igDetective home directory.
+closeread-pipeline --species species1,species2 \
+                   --home /path/to/home \
+                   --haploid True \
+                   --fastqdir /path/to/fastqdir \
+                   --closeread /path/to/closeread \
+                   --igdetective_home /path/to/igdetective_home
 ```
 
-**TBD here**
-
 ```bash
-python CloseRead.py [OPTIONS]
-usage: CloseRead.py [-h] (--s species | --sf species_file) --g gene [--ha haploid] --dirStat errorStatsDir --dirPlot
+closeread-plot [OPTIONS]
+usage: closeread-plot [-h] (--s species | --sf species_file) --g gene --dirStat errorStatsDir --dirPlot
                     errorPlotsDir [--cov lowCov_threshold] [--p padding] [--re single_read_error]
                     [--rc readview_correct_threshold] [--bc baseview_correct_threshold] [--m meta] [--so stats_only]
                     [--pg gene_level assessment]

@@ -22,7 +22,7 @@ def final_ig_loci(species, home, closeread):
             log.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Running script: python {script} {species} {home}\n")
             log.flush()
             subprocess.run(
-                f"python {script} {species} {home}",
+                ["python", script, species, home],
                 stdout=log,
                 stderr=log,
                 check=True,
