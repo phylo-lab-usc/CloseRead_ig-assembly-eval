@@ -7,7 +7,10 @@
 ## Table of Contents
 
 - [Installation](#installation)
-- [Usage](#usage)
+- [Input](#input)
+- [Running](#running)
+- [Output and Intermediate files](#output)
+- [Folder Structure](#folder-structure)
 - [Project Structure](#project-structure)
 
 ## Installation
@@ -37,9 +40,7 @@ pip install -e .
 - `samtools` is required for the following analysis.
 - `python=3.10` is used, should be installed by default in the above conda enviroments. Again make sure whenever running python, you are using the python installed in the above conda enviroment. You can check by runnning `which python`
 
-## Usage
-### 1. Running closeread Pipeline
-
+## Input
 #### Required input files:
 
 - HiFi fastq/BAM files that generated the assembly of the species of interest at `$HOME/$fastqdir/$species_name/`
@@ -53,6 +54,8 @@ pip install -e .
 - `species_metainfo.csv` containing meta information of the species of interest, format see example
 - Gene level annotation file in either IgDetective generated format OR in [Gene, Chromosome, Strand, Start, End] csv format
 
+## Running
+#### Run read-to-assembly pipeline
 ```bash
 closeread-pipeline --species species1,species2 \
                    --home /path/to/home \
@@ -61,50 +64,45 @@ closeread-pipeline --species species1,species2 \
                    --closeread /path/to/closeread \
                    --igdetective_home /path/to/igdetective_home
 ```
-
+#### Run evalutaion and plotting pipeline
+To note, you will need to run each loci separatly for plotting.
 ```bash
 closeread-plot [OPTIONS]
-usage: closeread-plot [-h] (--s species | --sf species_file) --g gene --dirStat errorStatsDir --dirPlot
-                    errorPlotsDir [--cov lowCov_threshold] [--p padding] [--re single_read_error]
-                    [--rc readview_correct_threshold] [--bc baseview_correct_threshold] [--m meta] [--so stats_only]
-                    [--pg gene_level assessment]
+usage: closeread-plot [-h] (--s species | --sf species_file) --g gene --home home --dirStat errorStatsDir --dirPlot errorPlotsDir [--cov lowCov_threshold]
+                      [--p padding] [--re single_read_error] [--rc readview_correct_threshold] [--bc baseview_correct_threshold] [--m meta]
+                      [--so stats_only] [--pg gene_level assessment]
 
-CloseRead Evaluation Stats and Visualization.
+Run CloseRead Final Evalutation and Plotting.
 
 options:
   -h, --help            show this help message and exit
-
-required:
   --s species           Single species identifier (use this if you are providing one species)
-  OR
   --sf species_file     Path to file containing a list of species (use this if you are providing multiple species)
-
   --g gene              Gene identifier(IGH/IGK/IGL)
+  --home home           Path to the home directory
   --dirStat errorStatsDir
                         Path to the previous errorStats directory containing mpileup file
   --dirPlot errorPlotsDir
                         Path to the output errorPlots directory
-optional:
-  --ha haploid          Haploid status (True/False) (alternate IG loci will not be shown if too short or has multiple)
-  --m meta              Absolute path to the meta information .csv file, used for generating pdf.
-  --so stats_only       output .txt and .csv files only, skip visualization.
-  --pg gene_level assessment
-                        Absolute path for gene level annotation file, Generate gene level read support information only. 
   --cov lowCov_threshold
                         Threshold for low coverage (default: 2)
   --p padding           Padding around low coverage regions (default: 2000bps)
   --re single_read_error
                         Threshold for a single read to consider as high mismatch (default: 0.01)
   --rc readview_correct_threshold
-                        Number of high mismatch reads needed to cover a position for it to be considered as high mismatch
-                        rate position from read-view (default: 5)
+                        Number of high mismatch reads needed to cover a position for it to be considered as high mismatch rate position from read-view
+                        (default: 5)
   --bc baseview_correct_threshold
-                        Threshold for the percent of reads with exact match at a position for it to be considered as well-
-                        supported, used in heatmap (default: 80 percent)
+                        Threshold for the percent of reads with exact match at a position for it to be considered as well-supported, used in heatmap
+                        (default: 80 percent)
+  --m meta              Absolute path to the meta information .csv file, used for generating pdf.
+  --so stats_only       output .txt and .csv files only, skip visualization.
+  --pg gene_level assessment
+                        Absolute path for gene level annotation file, Generate gene level read support information only.
 ```
 
-### 2. Output and Intermediate files
-#### The intermediate stats files will be in the `errorStats/` directory and should include the following 11 files:
+## Output and Intermediate files
+#### `closeread-pipeline` will generate intermediate stats files in the `errorStats/` directory and should include the following 11 files:
 
 - `IGH.txt`, read-oriented stats for both primary and alternate assembly at IGH locus
 - `IGH_alt_pileup.txt`, mpileup file, basepair-oriented stats for alternate assembly at IGH locus
@@ -118,7 +116,7 @@ optional:
 - `pileup.end`, empty flag file
 - `nonIG.txt`, read-oriented stats for both primary and alternate assembly at non-IG locus
 
-#### The final output files will be in the `errorPlots/` directory and should include the following files:
+#### `closeread-plot` will use above files as input and generate the final output files in the `errorPlots/` directory and should include the following files:
 
 - `summary.allreads.png`, summary evaluation of the general stats
 - `length.png`, locus length plot
@@ -134,12 +132,12 @@ optional:
 
 #### For more information on how to interpret the result please refer to this [document](https://docs.google.com/document/d/1QOh3Z6noqZ7x-u70QhQv4VhQOrCJJ1hz_NEmvBDaT_A/pub) 
 
-### 3. Log files
+#### Log files
 Log files will be avaliable at `$HOME/logs/`
 
-### Folder Structure
+## Folder Structure
 
-A brief example overview of the project's structure and directories:
+A brief example overview of the working directorie's structure:
 
 ```plaintext
 $HOME/
