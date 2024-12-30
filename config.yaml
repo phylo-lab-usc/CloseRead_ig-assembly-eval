@@ -1,9 +1,0 @@
-# config.yaml
-speciesList: ["human"]
-fastqdir: ["hifi_fastq"]
-haploid: ["True"]
-home: "/home1/zhuyixin/zhuyixin_proj/AssmQuality"
-closeread: "/home1/zhuyixin/zhuyixin_proj/AssmQuality/code/CloseRead_ig-assembly-eval"
-igdetective_home: "/home1/zhuyixin/IgDetective"
-condaPath: "/spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh"
-condaEnvPath: "/home1/zhuyixin/.conda/envs"
