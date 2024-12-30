@@ -1,0 +1,95 @@
+==========================================
+SLURM_JOB_ID = 28553898
+SLURM_JOB_NODELIST = a01-15
+TMPDIR = /tmp/SLURM_28553898
+==========================================
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=60000, mem_mib=954, disk_mb=1000, disk_mib=954
+Select jobs to execute...
+
+[Wed Dec 18 09:49:52 2024]
+rule dataPrepAutomate:
+    input: /home1/zhuyixin/zhuyixin_proj/AssmQuality/code/CloseRead_ig-assembly-eval/code/dataPrepAutomated.sh
+    output: /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/human/human_merged_sorted.bam, /home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/human/human_merged_sorted.bam.csi
+    log: /home1/zhuyixin/zhuyixin_proj/AssmQuality/log/dataPrepAutomated.human.log
+    jobid: 0
+    reason: Forced execution
+    wildcards: HOME=/home1/zhuyixin/zhuyixin_proj/AssmQuality, species=human
+    threads: 32
+    resources: mem_mb=60000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=/tmp/SLURM_28553898, mem=60G
+
+
+        /home1/zhuyixin/zhuyixin_proj/AssmQuality/code/CloseRead_ig-assembly-eval/code/dataPrepAutomated.sh -s human -w hifi_fastq -h True -d /home1/zhuyixin/zhuyixin_proj/AssmQuality -c /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh -e /home1/zhuyixin/.conda/envs
+        
+no change     /spack/conda/miniconda3/23.10.0/condabin/conda
+no change     /spack/conda/miniconda3/23.10.0/bin/conda
+no change     /spack/conda/miniconda3/23.10.0/bin/conda-env
+no change     /spack/conda/miniconda3/23.10.0/bin/activate
+no change     /spack/conda/miniconda3/23.10.0/bin/deactivate
+no change     /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh
+no change     /spack/conda/miniconda3/23.10.0/etc/fish/conf.d/conda.fish
+no change     /spack/conda/miniconda3/23.10.0/shell/condabin/Conda.psm1
+no change     /spack/conda/miniconda3/23.10.0/shell/condabin/conda-hook.ps1
+no change     /spack/conda/miniconda3/23.10.0/lib/python3.11/site-packages/xontrib/conda.xsh
+no change     /spack/conda/miniconda3/23.10.0/etc/profile.d/conda.csh
+no change     /home1/zhuyixin/zhuyixin_proj/AssmQuality/.bashrc
+No action taken.
+# conda environments:
+#
+IGdetective              /home1/zhuyixin/.conda/envs/IGdetective
+R                        /home1/zhuyixin/.conda/envs/R
+R350                     /home1/zhuyixin/.conda/envs/R350
+R441                     /home1/zhuyixin/.conda/envs/R441
+assembly                 /home1/zhuyixin/.conda/envs/assembly
+clam_latest              /home1/zhuyixin/.conda/envs/clam_latest
+csci567                  /home1/zhuyixin/.conda/envs/csci567
+ig-assembly-eval      *  /home1/zhuyixin/.conda/envs/ig-assembly-eval
+igor_c                   /home1/zhuyixin/.conda/envs/igor_c
+igortest                 /home1/zhuyixin/.conda/envs/igortest
+ins                      /home1/zhuyixin/.conda/envs/ins
+ml                       /home1/zhuyixin/.conda/envs/ml
+ml2                      /home1/zhuyixin/.conda/envs/ml2
+ml3                      /home1/zhuyixin/.conda/envs/ml3
+py39                     /home1/zhuyixin/.conda/envs/py39
+test_IGdetective         /home1/zhuyixin/.conda/envs/test_IGdetective
+base                     /spack/conda/miniconda3/23.10.0
+
+# conda environments:
+#
+IGdetective              /home1/zhuyixin/.conda/envs/IGdetective
+R                        /home1/zhuyixin/.conda/envs/R
+R350                     /home1/zhuyixin/.conda/envs/R350
+R441                     /home1/zhuyixin/.conda/envs/R441
+assembly                 /home1/zhuyixin/.conda/envs/assembly
+clam_latest              /home1/zhuyixin/.conda/envs/clam_latest
+csci567                  /home1/zhuyixin/.conda/envs/csci567
+ig-assembly-eval      *  /home1/zhuyixin/.conda/envs/ig-assembly-eval
+igor_c                   /home1/zhuyixin/.conda/envs/igor_c
+igortest                 /home1/zhuyixin/.conda/envs/igortest
+ins                      /home1/zhuyixin/.conda/envs/ins
+ml                       /home1/zhuyixin/.conda/envs/ml
+ml2                      /home1/zhuyixin/.conda/envs/ml2
+ml3                      /home1/zhuyixin/.conda/envs/ml3
+py39                     /home1/zhuyixin/.conda/envs/py39
+test_IGdetective         /home1/zhuyixin/.conda/envs/test_IGdetective
+base                     /spack/conda/miniconda3/23.10.0
+
+mkdir: cannot create directory '/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_sam/': File exists
+mkdir: cannot create directory '/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/': File exists
+mkdir: cannot create directory '/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_sam/human': File exists
+mkdir: cannot create directory '/home1/zhuyixin/zhuyixin_proj/AssmQuality/aligned_bam/human': File exists
+mapping fastq to assembly
+[M::mm_idx_gen::34.801*1.56] collected minimizers
+[M::mm_idx_gen::40.877*2.68] sorted minimizers
+[M::main::40.877*2.68] loaded/built the index for 25 target sequence(s)
+[M::mm_mapopt_update::46.027*2.49] mid_occ = 177
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 25
+[M::mm_idx_stat::51.127*2.35] distinct minimizers: 215125355 (92.06% are singletons); average occurrences: 1.455; average spacing: 9.958; total length: 3117292070
+[M::worker_pipeline::67.736*6.47] mapped 24172 sequences
+[M::worker_pipeline::75.342*8.49] mapped 24152 sequences
+[M::worker_pipeline::83.639*10.31] mapped 24143 sequences
+[M::worker_pipeline::92.507*11.85] mapped 24124 sequences
+slurmstepd: error: *** JOB 28553898 ON a01-15 CANCELLED AT 2024-12-18T09:51:33 ***

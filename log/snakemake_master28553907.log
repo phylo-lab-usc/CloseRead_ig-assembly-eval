@@ -1,0 +1,36 @@
+==========================================
+SLURM_JOB_ID = 28553907
+SLURM_JOB_NODELIST = a03-06
+TMPDIR = /tmp/SLURM_28553907
+==========================================
+no change     /spack/conda/miniforge3/24.3.0/condabin/conda
+no change     /spack/conda/miniforge3/24.3.0/bin/conda
+no change     /spack/conda/miniforge3/24.3.0/bin/conda-env
+no change     /spack/conda/miniforge3/24.3.0/bin/activate
+no change     /spack/conda/miniforge3/24.3.0/bin/deactivate
+no change     /spack/conda/miniforge3/24.3.0/etc/profile.d/conda.sh
+no change     /spack/conda/miniforge3/24.3.0/etc/fish/conf.d/conda.fish
+no change     /spack/conda/miniforge3/24.3.0/shell/condabin/Conda.psm1
+no change     /spack/conda/miniforge3/24.3.0/shell/condabin/conda-hook.ps1
+no change     /spack/conda/miniforge3/24.3.0/lib/python3.10/site-packages/xontrib/conda.xsh
+no change     /spack/conda/miniforge3/24.3.0/etc/profile.d/conda.csh
+no change     /home1/zhuyixin/.bashrc
+No action taken.
+Building DAG of jobs...
+Full Traceback (most recent call last):
+  File "/home1/zhuyixin/.conda/envs/assembly/lib/python3.10/site-packages/snakemake/__init__.py", line 792, in snakemake
+    success = workflow.execute(
+  File "/home1/zhuyixin/.conda/envs/assembly/lib/python3.10/site-packages/snakemake/workflow.py", line 899, in execute
+    self.persistence.lock()
+  File "/home1/zhuyixin/.conda/envs/assembly/lib/python3.10/site-packages/snakemake/persistence.py", line 190, in lock
+    raise snakemake.exceptions.LockException()
+snakemake.exceptions.LockException: Error: Directory cannot be locked. Please make sure that no other Snakemake process is trying to create the same files in the following directory:
+/project/mpennell_978/zhuyixin_proj/AssmQuality/code/CloseRead_ig-assembly-eval
+If you are sure that no other instances of snakemake are running on this directory, the remaining lock was likely caused by a kill signal or a power loss. It can be removed with the --unlock argument.
+
+LockException:
+Error: Directory cannot be locked. Please make sure that no other Snakemake process is trying to create the same files in the following directory:
+/project/mpennell_978/zhuyixin_proj/AssmQuality/code/CloseRead_ig-assembly-eval
+If you are sure that no other instances of snakemake are running on this directory, the remaining lock was likely caused by a kill signal or a power loss. It can be removed with the --unlock argument.
+unlocking
+removed all locks

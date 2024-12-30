@@ -18,4 +18,4 @@ conda activate /home1/zhuyixin/.conda/envs/assembly
 # Run Snakemake (submitting jobs to SLURM)
 snakemake --cluster "sbatch -A mpennell_978 -p gpu --ntasks=1 --cpus-per-task=32 --output=log/%j.out --time=24:00:00 --mem=65GB" \
           --snakefile Snakefile \
-          --printshellcmds --reason --verbose --latency-wait 60000 --cores all --jobs 2 --rerun-incomplete
+          --printshellcmds --reason --verbose --latency-wait 60000 --cores all --jobs 2

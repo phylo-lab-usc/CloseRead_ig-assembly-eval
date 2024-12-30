@@ -35,6 +35,10 @@ def process_bam_file(bam_file_path, region_list_IGH, region_list_IGK, region_lis
     output_file_names = [os.path.join(output_dir, "IGH.txt"), os.path.join(output_dir, "IGK.txt"), os.path.join(output_dir, "IGL.txt")]#, os.path.join(output_dir, "TRA.txt"), os.path.join(output_dir, "TRB.txt"), os.path.join(output_dir, "TRG.txt")]
     non_overlap_file_name = os.path.join(output_dir,"nonIG.txt")
 
+    # rm existing files
+    [os.remove(file) for file in output_file_names if os.path.isfile(file)]
+    [os.remove(file) for file in non_overlap_file_name if os.path.isfile(file)]
+
     # Open output files
     output_files = [open(name, "w") for name in output_file_names]
     non_overlap_file = open(non_overlap_file_name, "w")

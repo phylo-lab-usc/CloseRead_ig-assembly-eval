@@ -23,8 +23,12 @@ cd CloseRead_ig-assembly-eval
 
 # Create and activate the conda environments
 conda env create -f ig-assembly-eval.yml
-conda env create -f IGdetective.yml
 conda activate ig-assembly-eval
+
+# Install closeread
+pip install -e .
+
+# Optional: update your system path
 ```
 
 ### Other Requirements
@@ -34,60 +38,41 @@ conda activate ig-assembly-eval
 - `python=3.10` is used, should be installed by default in the above conda enviroments
 
 ## Usage
-### 1. Running Read-to-Assembly Pipeline and Preparing Files
-
-![snakefile overview](plots/dag_snake.png)
-
-Use the Snakefile to run all the code located in the `code` folder. Above is an example pipeline overview for 1 species.
+### 1. Running closeread Pipeline
 
 #### Required input files:
 
 - HiFi fastq/BAM files that generated the assembly of the species of interest at `$HOME/$fastqdir/$species_name/`
-- Merged diploid assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.merged.fasta`
+- Merged diploid assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.merged.fasta`, use the ENTIRE assembly even if you are only looking at specific loci
 - Primary/Haplotype1/Maternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.pri.fasta`
 - Alternate/Haplotype2/Paternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.alt.fasta`
 - Above assembly files' index file `.fai`
 - (Optional, if want to skip IgDetective) Loci Annotation file in `${species_name}.customIG.txt`, file format see example
 
-#### Please make sure you modify the `config.yaml` to reflect your directory organization and enviroment paths:
-
-- `speciesList = ["mEubGla1"]`, list of species name
-- `fastqdir = ["hifi_fastq"]`,  sub-directory of your home directory where your fastq files are located
-- `haploid = ["False"]`,  if the list of species are halpid or not
-- `home = "/home1/zhuyixin/zhuyixin_proj/AssmQuality"`,  your working directory
-- `igdetective_home: "/home1/zhuyixin/IgDetective"`, where your IgDetective is installed
-- `condaPath: "/spack/conda/miniconda3/23.10.0/etc/profile.d/conda.sh"`, path to your `conda.sh` 
-- `condaEnvPath: "/home1/zhuyixin/.conda/envs"`, path to where all you conda enviroment is located
-- `closeread: "/home1/zhuyixin/ig-assembly-eval"`, path to where your closeread is installed
-
-
-#### The output stats files will be in the `errorStats/` directory and should include the following 11 files:
-
-- `IGH.txt`, read-oriented stats for both primary and alternate assembly at IGH locus
-- `IGH_alt_pileup.txt`, mpileup file, basepair-oriented stats for alternate assembly at IGH locus
-- `IGH_pri_pileup.txt`, mpileup file, basepair-oriented stats for primary assembly at IGH locus
-- `IGK.txt`
-- `IGK_alt_pileup.txt`
-- `IGK_pri_pileup.txt`
-- `IGL.txt`
-- `IGL_pri_pileup.txt`
-- `cigar.end`, empty flag file
-- `pileup.end`, empty flag file
-- `nonIG.txt`, read-oriented stats for both primary and alternate assembly at non-IG locus
-
-```bash
-# Run the main workflow using Snakemake, make sure conda enviroment is activated beforehand
-snakemake --cluster "sbatch -A mpennell_978 -p gpu --ntasks=1 --cpus-per-task=32 --output=log/%j.out --time=24:00:00 --mem=65GB" --snakefile Snakefile --printshellcmds --reason --verbose --latency-wait 60000 --cores all --jobs 2
-# If you already know the loci position you want to evaluate and would like to skip IgDetective step, prepare `${species_name}.customIG.txt`, flag knownLoci=True and provide the path of the directory containing this file(s)
-snakemake --cluster "sbatch -A mpennell_978 -p gpu --ntasks=1 --cpus-per-task=32 --output=log/%j.out --time=24:00:00 --mem=65GB" --snakefile Snakefile --printshellcmds --reason --verbose --latency-wait 60000 --cores all --jobs 2 --config knownLoci=True loci_dir="/home1/zhuyixin/zhuyixin_proj/AssmQuality/gene_position"
-```
-### 2. Generating Visualizations and Error-Reporting Stats file
-
 #### Optional input file:
 - `species_metainfo.csv` containing meta information of the species of interest, format see example
 - Gene level annotation file in either IgDetective generated format OR in [Gene, Chromosome, Strand, Start, End] csv format
 
-After running the Snakefile, execute the python script `code/CloseRead.py` to generate visualizations and error-reporting stats file, stored in `errorPlots`.
+```bash
+closeread -h
+usage: closeread [-h] --species SPECIES --home HOME --haploid HAPLOID --fastqdir FASTQDIR --closeread CLOSEREAD --igdetective_home IGDETECTIVE_HOME
+
+Run the CloseRead pipeline.
+
+options:
+  -h, --help            show this help message and exit
+  --species SPECIES     Comma-separated list of species (e.g., species1,species2).
+  --home HOME           Path to the home directory.
+  --haploid HAPLOID     Haploid status (True or False).
+  --fastqdir FASTQDIR   Path to the FASTQ directory.
+  --closeread CLOSEREAD
+                        Path to the CloseRead directory.
+  --igdetective_home IGDETECTIVE_HOME
+                        Path to the igDetective home directory.
+```
+
+**TBD here**
+
 ```bash
 python CloseRead.py [OPTIONS]
 usage: CloseRead.py [-h] (--s species | --sf species_file) --g gene [--ha haploid] --dirStat errorStatsDir --dirPlot
@@ -128,15 +113,23 @@ optional:
                         Threshold for the percent of reads with exact match at a position for it to be considered as well-
                         supported, used in heatmap (default: 80 percent)
 ```
-Example Command:
-```bash
-# taking single species as input, generate locus level visualizations 
-python code/CloseRead.py --s $species_name --g $gene[IGH/IGK/IGL] --dirStat $PATH_TO_INPUT_DIR --dirPlot $PATH_TO_OUTPUT_DIR
-# taking single species as input, generate gene level assessment 
-python code/CloseRead.py --s $species_name --g $gene[IGH/IGK/IGL] --dirStat $PATH_TO_INPUT_DIR --dirPlot $PATH_TO_OUTPUT_DIR --pg $PATH_TO_genelevelannotation_FILE
-```
 
-#### The output files will be in the `errorPlots/` directory and should include the following files:
+### 2. Output and Intermediate files
+#### The intermediate stats files will be in the `errorStats/` directory and should include the following 11 files:
+
+- `IGH.txt`, read-oriented stats for both primary and alternate assembly at IGH locus
+- `IGH_alt_pileup.txt`, mpileup file, basepair-oriented stats for alternate assembly at IGH locus
+- `IGH_pri_pileup.txt`, mpileup file, basepair-oriented stats for primary assembly at IGH locus
+- `IGK.txt`
+- `IGK_alt_pileup.txt`
+- `IGK_pri_pileup.txt`
+- `IGL.txt`
+- `IGL_pri_pileup.txt`
+- `cigar.end`, empty flag file
+- `pileup.end`, empty flag file
+- `nonIG.txt`, read-oriented stats for both primary and alternate assembly at non-IG locus
+
+#### The final output files will be in the `errorPlots/` directory and should include the following files:
 
 - `summary.allreads.png`, summary evaluation of the general stats
 - `length.png`, locus length plot
@@ -151,6 +144,9 @@ python code/CloseRead.py --s $species_name --g $gene[IGH/IGK/IGL] --dirStat $PAT
 - `{species}.{gene}.genelevel.csv`, gene level quality assessment, if flag `--pg` given
 
 #### For more information on how to interpret the result please refer to this [document](https://docs.google.com/document/d/1QOh3Z6noqZ7x-u70QhQv4VhQOrCJJ1hz_NEmvBDaT_A/pub) 
+
+### 3. Log files
+Log files will be avaliable at `$HOME/logs/`
 
 ### Folder Structure
 
@@ -178,12 +174,12 @@ $HOME/
 ```plaintext
 CloseRead_ig-assembly-eval/
 ├── README.md          # Project documentation
-├── Snakefile          # Main workflow file
 ├── ig-assembly-eval.yml       # Conda environment file
-├── code/              # Source code and scripts
+├── closeread/              # Source code and scripts
 ├── plots/             # Directory for plots and figures
 ├── curated_IGH/       # Directory for LJA curated IGH assembly
-├── example/           # example input format
+├── example/           # Example input format
+├── test/           # Test case (TBD)
 ```
 
 ## Citing:
