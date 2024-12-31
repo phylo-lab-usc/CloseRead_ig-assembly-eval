@@ -2,16 +2,15 @@ import subprocess
 import os
 from datetime import datetime
 
-def cigar_processing(species, home, closeread):
+def cigar_processing(species, home, closeread, annotation):
     """Process CIGAR data."""
     # Define log file path
-    log_file = os.path.join(home, "logs", f"cigar_processing_{species}.log")
+    log_file = os.path.join(home, "logs", f"{species}_cigar_processing.log")
     os.makedirs(os.path.dirname(log_file), exist_ok=True)
 
     # Define paths for script and input files
     script = os.path.join(closeread, "scripts/cigar.py")
     bam = os.path.join(home, "aligned_bam", species, f"{species}_merged_sorted_primary.bam")
-    annotation = os.path.join(home, "gene_position", f"{species}.final.Ig_loci.txt")
     error_dir = os.path.join(home, "errorStats", species)
     os.makedirs(error_dir, exist_ok=True)
 
@@ -53,8 +52,9 @@ if __name__ == "__main__":
     parser.add_argument("--species", required=True, help="Species name.")
     parser.add_argument("--home", required=True, help="Path to the home directory.")
     parser.add_argument("--closeread", required=True, help="Path to the CloseRead directory.")
+    parser.add_argument("--annotation", required=True, help="Path to the annotation file.")
 
     args = parser.parse_args()
 
     # Call the function
-    cigar_processing(args.species, args.home, args.closeread)
+    cigar_processing(args.species, args.home, args.closeread, args.annotation)

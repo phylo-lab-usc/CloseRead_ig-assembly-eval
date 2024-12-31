@@ -5,7 +5,7 @@ from datetime import datetime
 def data_prep(species, home, fastqdir, haploid, closeread):
     """Run data preparation."""
     # Define log file
-    log_file = os.path.join(home, "logs", f"data_prep_{species}.log")
+    log_file = os.path.join(home, "logs", f"{species}_data_prep.log")
     os.makedirs(os.path.dirname(log_file), exist_ok=True)
 
     # Define the script path

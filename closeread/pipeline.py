@@ -9,6 +9,7 @@ from .steps.final_ig_loci import final_ig_loci
 from .steps.cigar_processing import cigar_processing
 from .steps.coverage_analysis import coverage_analysis
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 
 def run_pipeline_cli():
     parser = argparse.ArgumentParser(description="Run the CloseRead pipeline.")
@@ -17,8 +18,10 @@ def run_pipeline_cli():
     parser.add_argument("--haploid", required=True, help="Haploid status (True or False).")
     parser.add_argument("--fastqdir", required=True, help="Path to the FASTQ directory.")
     parser.add_argument("--closeread", required=True, help="Path to the CloseRead directory.")
-    parser.add_argument("--igdetective_home", required=True, help="Path to the igDetective home directory.")
-    
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument('--igdetective_home', type=str, help="Path to the IGDetective directory.")
+    group.add_argument('--customIG', type=str, help="Path to directory containing ${species_name}.customIG.txt.")
+
     args = parser.parse_args()
     run_pipeline(args)
 
@@ -36,6 +39,45 @@ def configure_logging(home):
     )
     logging.info(f"Logging initialized. Logs will be written to {os.path.join(log_dir, 'pipeline.log')}")
 
+def parallel_step_1_and_2(species, home, fastqdir, haploid, closeread, igdetective_home=None):
+    output_bam = os.path.join(home, "aligned_bam", species, f"{species}_merged_sorted.bam")
+    output_index = f"{output_bam}.csi"
+    run_flag = False
+    if not os.path.exists(output_bam) or not os.path.exists(output_index):
+        run_flag = True
+    else:
+        run_flag = False
+    def step_1():
+        if not os.path.exists(output_bam) or not os.path.exists(output_index):
+            logging.info(f"Step 1: Data Preparation for {species}")
+            data_prep(species, home, fastqdir, haploid, closeread)
+            
+        else:
+            logging.info(f"Step 1: Output exists, skipping Data Preparation for {species} because it's already completed.")        
+
+    def step_2():
+        if igdetective_home:  # Only run Step 2 if igdetective_home is provided
+            try:
+                logging.info(f"Step 2: Loci Location for {species}")
+                loci_location(species, home, haploid, igdetective_home)
+            except Exception as e:
+                logging.error(f"Step 2 failed: {e}")
+        else:
+            logging.info(f"Skipping Step 2: No IGDetective home provided.")
+
+    # Execute steps in parallel
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        executor.submit(step_1)
+        executor.submit(step_2)
+    return run_flag
+
+def process_steps_in_parallel(species, home, closeread, annotation):
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        # Submit Step 5 and Step 6 as tasks to the thread pool
+        executor.submit(coverage_analysis, species, home, closeread, annotation)
+        executor.submit(cigar_processing, species, home, closeread, annotation)
+
+
 def run_pipeline(args):
     """Run the pipeline with command-line parameters."""
 
@@ -45,7 +87,13 @@ def run_pipeline(args):
     haploid = args.haploid
     fastqdir = args.fastqdir
     closeread = args.closeread
-    igdetective_home = args.igdetective_home
+    if args.igdetective_home:
+        igdetective_home = args.igdetective_home
+        customIG = None  # Set customIG to None because igdetective_home is provided
+    else:
+        igdetective_home = None  # Set igdetective_home to None because customIG is provided
+        customIG = args.customIG
+
     configure_logging(home)
 
     # Validate input directories
@@ -53,7 +101,6 @@ def run_pipeline(args):
         (home, "Home directory"),
         (f"{home}/{fastqdir}", "FASTQ directory"),
         (closeread, "CloseRead directory"),
-        (igdetective_home, "IGDetective directory"),
     ]:
         if not os.path.exists(dir_path):
             logging.error(f"{dir_name} not found: {dir_path}")
@@ -64,29 +111,32 @@ def run_pipeline(args):
     for species in species_list:
         logging.info(f"Processing species: {species}")
         try:
-            # Step 1: Data Preparation
-            logging.info(f"Step 1: Data Preparation for {species}")
-            data_prep(species, home, fastqdir, haploid, closeread)
+            # Step 1 and 2: Data Preparation and Loci Location
+            logging.info(f"Step 1 and Step 2: Running in parallel for {species}")
+            run_flag = parallel_step_1_and_2(species, home, fastqdir, haploid, closeread, igdetective_home)
 
-            # Step 2: Convert Primary BAM
-            logging.info(f"Step 2: Convert Primary BAM for {species}")
-            convert_primary_bam(species, home)
-
-            # Step 3: Loci Location
-            logging.info(f"Step 3: Loci Location for {species}")
-            loci_location(species, home, haploid, igdetective_home)
+            # Step 3: Convert Primary BAM
+            output_primary_bam = os.path.join(home, "aligned_bam", species, f"{species}_merged_sorted_primary.bam")
+            output_primary_index = f"{output_primary_bam}.csi"
+            if not os.path.exists(output_primary_bam) or not os.path.exists(output_primary_index) or run_flag:
+                logging.info(f"Step 3: Convert Primary BAM for {species}")
+                convert_primary_bam(species, home)
+            else:
+                logging.info(f"Step 3: Output exists, skipping Convert Primary BAM for {species} bc already completed")
 
             # Step 4: Final IG Loci
-            logging.info(f"Step 4: Final IG Loci for {species}")
-            final_ig_loci(species, home, closeread)
+            if args.igdetective_home:
+                logging.info(f"Step 4: Final IG Loci for {species}")
+                final_ig_loci(species, home, closeread)
 
-            # Step 5: Coverage Analysis
-            logging.info(f"Step 5: Coverage Analysis for {species}")
-            coverage_analysis(species, home, closeread)
+            # Step 5 + 6: Coverage Analysis and CIGAR Processing
+            logging.info(f"Step 5 and Step 6: Running in parallel for {species}")
+            if args.igdetective_home:
+                annotation = os.path.join(home, "gene_position", f"{species}.final.Ig_loci.txt")
+            else:
+                annotation = os.path.join(customIG, f"{species}.customIG.txt")
 
-            # Step 6: CIGAR Processing
-            logging.info(f"Step 6: CIGAR Processing for {species}")
-            cigar_processing(species, home, closeread)
+            process_steps_in_parallel(species, home, closeread, annotation)
 
             logging.info(f"Species {species} processed successfully!")
 
@@ -108,7 +158,9 @@ if __name__ == "__main__":
     parser.add_argument("--haploid", required=True, help="Haploid status (True/False).")
     parser.add_argument("--fastqdir", required=True, help="Path to the FASTQ directory.")
     parser.add_argument("--closeread", required=True, help="Path to the CloseRead directory.")
-    parser.add_argument("--igdetective_home", required=True, help="Path to the IGDetective directory.")
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument('--igdetective_home', type=str, help="Path to the IGDetective directory.")
+    group.add_argument('--customIG', type=str, help="Path to directory containing ${species_name}.customIG.txt.")
 
     args = parser.parse_args()
 

@@ -2,17 +2,16 @@ import subprocess
 import os
 from datetime import datetime
 
-def coverage_analysis(species, home, closeread):
+def coverage_analysis(species, home, closeread, annotation):
     """Run coverage analysis."""
     # Define the log file path
-    log_file = os.path.join(home, "logs", f"coverage_analysis_{species}.log")
+    log_file = os.path.join(home, "logs", f"{species}_coverage_analysis.log")
     os.makedirs(os.path.dirname(log_file), exist_ok=True)
 
     # Define input paths and directories
     script = os.path.join(closeread, "scripts/coverage.sh")
     assembly = os.path.join(home, "assemblies", f"{species}.merged.fasta")
     bam = os.path.join(home, "aligned_bam", species, f"{species}_merged_sorted_primary.bam")
-    annotation = os.path.join(home, "gene_position", f"{species}.final.Ig_loci.txt")
     error_dir = os.path.join(home, "errorStats", species)
     os.makedirs(error_dir, exist_ok=True)
 
@@ -48,8 +47,9 @@ if __name__ == "__main__":
     parser.add_argument("--species", required=True, help="Species name.")
     parser.add_argument("--home", required=True, help="Path to the home directory.")
     parser.add_argument("--closeread", required=True, help="Path to the CloseRead directory.")
+    parser.add_argument("--annotation", required=True, help="Path to the annotation file.")
 
     args = parser.parse_args()
 
     # Call the function
-    coverage_analysis(args.species, args.home, args.closeread)
+    coverage_analysis(args.species, args.home, args.closeread, args.annotation)

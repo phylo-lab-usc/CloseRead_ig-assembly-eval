@@ -48,7 +48,7 @@ pip install -e .
 - Primary/Haplotype1/Maternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.pri.fasta`
 - Alternate/Haplotype2/Paternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.alt.fasta`
 - Above assembly files' index file `.fai`
-- (Optional, if want to skip IgDetective) Loci Annotation file in `${species_name}.customIG.txt`, file format see example
+- (Optional, if loci position already known and want to skip IgDetective) Loci Annotation file in `${species_name}.customIG.txt`, file format see example
 
 #### Optional input file:
 - `species_metainfo.csv` containing meta information of the species of interest, format see example
@@ -57,15 +57,25 @@ pip install -e .
 ## Running
 #### Run read-to-assembly pipeline
 ```bash
-closeread-pipeline --species species1,species2 \
-                   --home /path/to/home \
-                   --haploid True \
-                   --fastqdir /path/to/fastqdir \
-                   --closeread /path/to/closeread \
-                   --igdetective_home /path/to/igdetective_home
+closeread-pipeline [OPTIONS]
+usage: closeread-pipeline [-h] --species SPECIES --home HOME --haploid HAPLOID --fastqdir FASTQDIR --closeread CLOSEREAD
+                          (--igdetective_home IGDETECTIVE_HOME | --customIG CUSTOMIG)
+
+options:
+  -h, --help            show this help message and exit
+  --species SPECIES     Comma-separated list of species (e.g., species1,species2).
+  --home HOME           Path to the home directory.
+  --haploid HAPLOID     Haploid status (True or False).
+  --fastqdir FASTQDIR   Path to the FASTQ directory.
+  --closeread CLOSEREAD
+                        Path to the CloseRead directory.
+  --igdetective_home IGDETECTIVE_HOME
+                        Path to the IGDetective directory.
+  --customIG CUSTOMIG   Path to directory containing ${species_name}.customIG.txt.
 ```
 #### Run evalutaion and plotting pipeline
 To note, you will need to run each loci separatly for plotting.
+Gene level assessment will also need to be ran separatly with `--pg` parameter provided.
 ```bash
 closeread-plot [OPTIONS]
 usage: closeread-plot [-h] (--s species | --sf species_file) --g gene --home home --dirStat errorStatsDir --dirPlot errorPlotsDir [--cov lowCov_threshold]

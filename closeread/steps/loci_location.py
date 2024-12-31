@@ -5,7 +5,7 @@ from datetime import datetime
 def loci_location(species, home, haploid, igdetective_home):
     """Run loci location detection for primary and alternate genomes."""
     # Define log file
-    log_file = os.path.join(home, "logs", f"loci_location_{species}.log")
+    log_file = os.path.join(home, "logs", f"{species}_loci_location.log")
     os.makedirs(os.path.dirname(log_file), exist_ok=True)
 
     # Define input and output paths

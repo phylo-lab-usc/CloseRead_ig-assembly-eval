@@ -42,16 +42,9 @@ def configure_logging(home):
 def run_plot(args):
     """Run the plotting functionality."""
     home = args.home
-    species = args.species
-    gene = args.gene
-
     configure_logging(home)
-    logging.info(f"Generating plots for species: {species} - {gene}")
 
     try:
-        logging.info(f"Running with the following parameters:")
-        logging.info(f"Gene: {gene}")
-        
         # Determine if single species or species file is provided
         if args.sf:
             species_list = read_species_from_file(args.sf)
@@ -67,6 +60,8 @@ def run_plot(args):
 
         # Iterate through each species
         for species in species_list:
+            logging.info(f"Generating plots for species: {species} - {gene}")
+
             haploid = False
             dirOut = f"{args.dirPlot}/{species}"
             dirStat = f"{args.dirStat}/{species}"

@@ -5,7 +5,7 @@ from datetime import datetime
 def final_ig_loci(species, home, closeread):
     """Process loci into final IG loci."""
     # Define the log file path
-    log_file = os.path.join(home, "logs", f"final_ig_loci_{species}.log")
+    log_file = os.path.join(home, "logs", f"{species}_final_ig_loci.log")
     os.makedirs(os.path.dirname(log_file), exist_ok=True)
 
     # Define script and output paths

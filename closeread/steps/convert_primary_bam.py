@@ -5,7 +5,7 @@ from datetime import datetime
 def convert_primary_bam(species, home):
     """Convert merged BAM to primary BAM."""
     # Define the log file path
-    log_file = os.path.join(home, "logs", f"convert_primary_bam_{species}.log")
+    log_file = os.path.join(home, "logs", f"{species}_convert_primary_bam.log")
     os.makedirs(os.path.dirname(log_file), exist_ok=True)
 
     # Define input and output file paths
@@ -29,12 +29,12 @@ def convert_primary_bam(species, home):
             log.flush()
             # Run samtools view
             subprocess.run(
-                ["samtools", "view", "-b", "-F", "0x800", "-F", "0x100", bam, "-o", output_bam],
+                ["samtools", "view", "-b", "-F", "0x800", "-F", "0x100", "-@", "30", bam, "-o", output_bam],
                 stdout=log,
                 stderr=log,
                 check=True,
             )
-            log.write("{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - samtools view completed successfully.\n")
+            log.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - samtools view completed successfully.\n")
             log.flush()
             # Run samtools index
             subprocess.run(
@@ -43,7 +43,7 @@ def convert_primary_bam(species, home):
                 stderr=log,
                 check=True,
             )
-            log.write("{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - samtools index completed successfully.\n")
+            log.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - samtools index completed successfully.\n")
 
         except subprocess.CalledProcessError as e:
             log.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Error during BAM conversion: {e}\n")
