@@ -2,7 +2,7 @@ import os
 import subprocess
 from datetime import datetime
 
-def data_prep(species, home, fastqdir, haploid, closeread):
+def data_prep(species, home, fastqdir, haploid, closeread, threads):
     """Run data preparation."""
     # Define log file
     log_file = os.path.join(home, "logs", f"{species}_data_prep.log")
@@ -10,7 +10,7 @@ def data_prep(species, home, fastqdir, haploid, closeread):
 
     # Define the script path
     script = os.path.join(closeread, "scripts/dataPrepAutomated.sh")
-
+    print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Running data preparation...")
     # Build the command
     cmd = [
         script,
@@ -18,6 +18,7 @@ def data_prep(species, home, fastqdir, haploid, closeread):
         "-w", fastqdir,
         "-h", haploid,
         "-d", home,
+        "-t", threads
     ]
 
     # Open log file for writing
@@ -40,6 +41,7 @@ if __name__ == "__main__":
     parser.add_argument("--fastqdir", required=True, help="Path to the FASTQ directory.")
     parser.add_argument("--haploid", required=True, help="Haploid status (True or False).")
     parser.add_argument("--closeread", required=True, help="Path to the CloseRead directory.")
+    parser.add_argument("--t", required=False, type=int, default=32, help="# of threads to use (default: 32).")
 
     args = parser.parse_args()
 

@@ -7,6 +7,8 @@ def final_ig_loci(species, home, closeread):
     # Define the log file path
     log_file = os.path.join(home, "logs", f"{species}_final_ig_loci.log")
     os.makedirs(os.path.dirname(log_file), exist_ok=True)
+    output_dir = os.path.join(home, "gene_position")
+    os.makedirs(output_dir, exist_ok=True)
 
     # Define script and output paths
     script = os.path.join(closeread, "scripts/finalGene.py")

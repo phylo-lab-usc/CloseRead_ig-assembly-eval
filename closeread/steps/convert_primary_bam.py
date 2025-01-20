@@ -2,7 +2,7 @@ import subprocess
 import os
 from datetime import datetime
 
-def convert_primary_bam(species, home):
+def convert_primary_bam(species, home, threads):
     """Convert merged BAM to primary BAM."""
     # Define the log file path
     log_file = os.path.join(home, "logs", f"{species}_convert_primary_bam.log")
@@ -29,7 +29,7 @@ def convert_primary_bam(species, home):
             log.flush()
             # Run samtools view
             subprocess.run(
-                ["samtools", "view", "-b", "-F", "0x800", "-F", "0x100", "-@", "30", bam, "-o", output_bam],
+                ["samtools", "view", "-b", "-F", "0x800", "-F", "0x100", "-@", str(threads), bam, "-o", output_bam],
                 stdout=log,
                 stderr=log,
                 check=True,
@@ -57,6 +57,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Convert merged BAM to primary BAM.")
     parser.add_argument("--species", required=True, help="Species name.")
     parser.add_argument("--home", required=True, help="Path to the home directory.")
+    parser.add_argument("--t", required=False, type=int, default=32, help="# of threads to use (default: 32).")
 
     args = parser.parse_args()
 

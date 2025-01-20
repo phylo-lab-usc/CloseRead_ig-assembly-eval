@@ -18,6 +18,7 @@ def run_pipeline_cli():
     parser.add_argument("--haploid", required=True, help="Haploid status (True or False).")
     parser.add_argument("--fastqdir", required=True, help="Path to the FASTQ directory.")
     parser.add_argument("--closeread", required=True, help="Path to the CloseRead directory.")
+    parser.add_argument("--t", required=False, default=32, help="# of threads to use (default: 32).")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument('--igdetective_home', type=str, help="Path to the IGDetective directory.")
     group.add_argument('--customIG', type=str, help="Path to directory containing ${species_name}.customIG.txt.")
@@ -39,7 +40,7 @@ def configure_logging(home):
     )
     logging.info(f"Logging initialized. Logs will be written to {os.path.join(log_dir, 'pipeline.log')}")
 
-def parallel_step_1_and_2(species, home, fastqdir, haploid, closeread, igdetective_home=None):
+def parallel_step_1_and_2(species, home, fastqdir, haploid, closeread, threads, igdetective_home=None):
     output_bam = os.path.join(home, "aligned_bam", species, f"{species}_merged_sorted.bam")
     output_index = f"{output_bam}.csi"
     run_flag = False
@@ -47,11 +48,14 @@ def parallel_step_1_and_2(species, home, fastqdir, haploid, closeread, igdetecti
         run_flag = True
     else:
         run_flag = False
+
     def step_1():
         if not os.path.exists(output_bam) or not os.path.exists(output_index):
-            logging.info(f"Step 1: Data Preparation for {species}")
-            data_prep(species, home, fastqdir, haploid, closeread)
-            
+            try:
+                logging.info(f"Step 1: Data Preparation for {species}")
+                data_prep(species, home, fastqdir, haploid, closeread, str(threads))
+            except Exception as e:
+                logging.error(f"Step 1 failed: {e}")
         else:
             logging.info(f"Step 1: Output exists, skipping Data Preparation for {species} because it's already completed.")        
 
@@ -87,6 +91,7 @@ def run_pipeline(args):
     haploid = args.haploid
     fastqdir = args.fastqdir
     closeread = args.closeread
+    threads = args.t
     if args.igdetective_home:
         igdetective_home = args.igdetective_home
         customIG = None  # Set customIG to None because igdetective_home is provided
@@ -113,14 +118,14 @@ def run_pipeline(args):
         try:
             # Step 1 and 2: Data Preparation and Loci Location
             logging.info(f"Step 1 and Step 2: Running in parallel for {species}")
-            run_flag = parallel_step_1_and_2(species, home, fastqdir, haploid, closeread, igdetective_home)
+            run_flag = parallel_step_1_and_2(species, home, fastqdir, haploid, closeread, threads, igdetective_home)
 
             # Step 3: Convert Primary BAM
             output_primary_bam = os.path.join(home, "aligned_bam", species, f"{species}_merged_sorted_primary.bam")
             output_primary_index = f"{output_primary_bam}.csi"
             if not os.path.exists(output_primary_bam) or not os.path.exists(output_primary_index) or run_flag:
                 logging.info(f"Step 3: Convert Primary BAM for {species}")
-                convert_primary_bam(species, home)
+                convert_primary_bam(species, home, threads)
             else:
                 logging.info(f"Step 3: Output exists, skipping Convert Primary BAM for {species} bc already completed")
 
@@ -161,6 +166,7 @@ if __name__ == "__main__":
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument('--igdetective_home', type=str, help="Path to the IGDetective directory.")
     group.add_argument('--customIG', type=str, help="Path to directory containing ${species_name}.customIG.txt.")
+    parser.add_argument("--t", required=False, type=int, default=32, help="# of threads to use (default: 32).")
 
     args = parser.parse_args()
 

@@ -1,11 +1,12 @@
 #!/bin/bash
-while getopts s:w:h:d:c:e: flag
+while getopts s:w:h:d:t: flag
 do
     case "${flag}" in
         s) species=${OPTARG};;
         w) source=${OPTARG};;
         h) haploid=${OPTARG};;
         d) HOME=${OPTARG};;
+        t) threads=${OPTARG};;
     esac
 done
 
@@ -22,7 +23,7 @@ then
         echo $f;
         echo $name;
         pbindex $f;
-        bam2fastq -o $name -j 32 $f ;
+        bam2fastq -o $name -j $threads $f ;
     )&
     done ; wait
     echo "bam to fastq conversion done"
@@ -62,13 +63,13 @@ fastq=${HOME}/${source}/${species}/${species}_merged.fastq
 
 #map the merged fastq file to the coresponding assembly
 echo "mapping fastq to assembly"
-minimap2 -t 32 -ax map-hifi $ref $fastq > ${HOME}/aligned_sam/${outdir}/${species}_merged.sam
+minimap2 -t $threads -ax map-hifi $ref $fastq > ${HOME}/aligned_sam/${outdir}/${species}_merged.sam
 #convert the SAM result to sorted BAM format
 echo "converting SAM to sorted BAM"
-samtools sort -@ 32 ${HOME}/aligned_sam/${outdir}/${species}_merged.sam -o ${HOME}/aligned_bam/${outdir}/${species}_merged_sorted.bam
+samtools sort -@ $threads ${HOME}/aligned_sam/${outdir}/${species}_merged.sam -o ${HOME}/aligned_bam/${outdir}/${species}_merged_sorted.bam
 #index the sorted BAM file
 echo "indexing sorted BAM"
-samtools index -c -@ 32 ${HOME}/aligned_bam/${outdir}/${species}_merged_sorted.bam
+samtools index -c -@ $threads ${HOME}/aligned_bam/${outdir}/${species}_merged_sorted.bam
 #rm -rf ${HOME}/aligned_sam/${outdir}/${species}_merged.sam
 
 

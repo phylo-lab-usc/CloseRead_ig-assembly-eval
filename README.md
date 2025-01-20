@@ -9,6 +9,7 @@
 - [Installation](#installation)
 - [Input](#input)
 - [Running](#running)
+- [Test Case](#test-case)
 - [Output and Intermediate files](#output)
 - [Folder Structure](#folder-structure)
 - [Project Structure](#project-structure)
@@ -58,7 +59,7 @@ pip install -e .
 #### Run read-to-assembly pipeline
 ```bash
 closeread-pipeline [OPTIONS]
-usage: closeread-pipeline [-h] --species SPECIES --home HOME --haploid HAPLOID --fastqdir FASTQDIR --closeread CLOSEREAD
+usage: closeread-pipeline [-h] --species SPECIES --home HOME --haploid HAPLOID --fastqdir FASTQDIR --closeread CLOSEREAD [--t T]
                           (--igdetective_home IGDETECTIVE_HOME | --customIG CUSTOMIG)
 
 options:
@@ -69,6 +70,7 @@ options:
   --fastqdir FASTQDIR   Path to the FASTQ directory.
   --closeread CLOSEREAD
                         Path to the CloseRead directory.
+  --t T                 # of threads to use (default: 32).
   --igdetective_home IGDETECTIVE_HOME
                         Path to the IGDetective directory.
   --customIG CUSTOMIG   Path to directory containing ${species_name}.customIG.txt.
@@ -145,6 +147,16 @@ options:
 #### Log files
 Log files will be avaliable at `$HOME/logs/`
 
+## Test Case
+To check if CloseRead was correctly intalled, we suggest running the following test case prior to any of your analysis. Run:
+```
+closeread-pipeline --species test --home {PATH to Closeread}/test/ --haploid True --fastqdir hifi_fastq --closeread /{PATH to Closeread}/closeread --igdetective_home {PATH to IgDetective}
+closeread-plot --s test --g IGH --home {PATH to Closeread}/test/ --dirStat {PATH to Closeread}/test/errorStats --dirPlot {PATH to Closeread}/test/errorPlots/ 
+```
+If using 32 cores, the entire process should be finished within 5 minutes. 
+The output can be found in `{PATH to Closeread}/test/`, we also provide the expected output here [link](https://figshare.com/s/9b8db110af1511871669). Please compare the figures and any outputs to make sure they are the same.
+For more information on how to interpret the result please refer to this [document](https://docs.google.com/document/d/1QOh3Z6noqZ7x-u70QhQv4VhQOrCJJ1hz_NEmvBDaT_A/pub)
+
 ## Folder Structure
 
 A brief example overview of the working directorie's structure:
@@ -176,7 +188,7 @@ CloseRead_ig-assembly-eval/
 ├── plots/             # Directory for plots and figures
 ├── curated_IGH/       # Directory for LJA curated IGH assembly
 ├── example/           # Example input format
-├── test/           # Test case (TBD)
+├── test/           # Test case
 ```
 
 ## Citing:
