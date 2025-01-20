@@ -1,20 +1,20 @@
 # Contributing to CloseRead
 
-First off, thank you for taking the time to contribute! 🎉
+First off, thank you for taking the time to contribute/provide feedback! 🎉
 
-The following is a set of guidelines for contributing to this project. 
+The following is a set of guidelines for helping to improve CloseRead. 
 
 ---
 
 ## Table of Contents
 
-1. [How Can I Contribute?](#how-can-i-contribute)
+1. [How Can I Help?](#how-can-i-help)
     - [Reporting Bugs](#reporting-bugs)
     - [Suggesting Enhancements](#suggesting-enhancements)
 
 ---
 
-## How Can I Contribute?
+## How Can I Help?
 
 ### Reporting Bugs
 
@@ -43,4 +43,4 @@ If you have an idea for improving the project, please:
 
 ---
 
-Thank you for contributing! 🚀
+Thank you for your suggestions and contributions! 🚀
