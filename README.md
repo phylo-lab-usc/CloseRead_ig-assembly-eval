@@ -72,7 +72,7 @@ For more information on how to interpret the result please refer to this [docume
 ```bash
 closeread-pipeline [OPTIONS]
 usage: closeread-pipeline [-h] --species SPECIES --home HOME --haploid HAPLOID --fastqdir FASTQDIR --closeread CLOSEREAD
-                          (--igdetective_home IGDETECTIVE_HOME | --customIG CUSTOMIG)
+                          (--igdetective_home IGDETECTIVE_HOME | --customIG CUSTOMIG) [--t T]
 
 options:
   -h, --help            show this help message and exit
@@ -84,6 +84,7 @@ options:
                         Path to the CloseRead directory.
   --igdetective_home IGDETECTIVE_HOME
                         Path to the IGDetective directory.
+  --t T                 # of threads to use (default: 32).
   --customIG CUSTOMIG   Path to DIRECTORY containing ${species_name}.customIG.txt (not path directly to the file), you could put it in the gene_position folder
 ```
 #### Run evalutaion and plotting pipeline
@@ -210,7 +211,7 @@ CloseRead_ig-assembly-eval/
 ├── plots/             # Directory for plots and figures
 ├── curated_IGH/       # Directory for LJA curated IGH assembly
 ├── example/           # Example input format
-├── test/           # Test case (TBD)
+├── test/           # Test case
 ```
 
 ## Citing:
