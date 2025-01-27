@@ -1,0 +1,7 @@
+# remove this line when forming your customIG.txt. Make sure the 1st column is EXACTLY your species ID and 2nd column has EXACTLY either "primary" or "alternate" 
+Emax primary IGH CM064826.1 49695077 55022373
+Emax alternate IGH CM064798.1 49264568 54922194
+Emax primary IGK CM064820.1 40865426 52733783
+Emax alternate IGK CM064792.1 40633482 43679869
+Emax primary IGL CM064825.1 21988230 34749936
+Emax alternate IGL CM064797.1 21998879 35138355

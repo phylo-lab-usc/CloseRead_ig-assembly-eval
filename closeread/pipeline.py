@@ -78,8 +78,29 @@ def parallel_step_1_and_2(species, home, fastqdir, haploid, closeread, threads, 
 def process_steps_in_parallel(species, home, closeread, annotation):
     with ThreadPoolExecutor(max_workers=2) as executor:
         # Submit Step 5 and Step 6 as tasks to the thread pool
-        executor.submit(coverage_analysis, species, home, closeread, annotation)
-        executor.submit(cigar_processing, species, home, closeread, annotation)
+        try:
+            # Submit Step 5 as a task to the thread pool
+            future_coverage = executor.submit(coverage_analysis, species, home, closeread, annotation)
+        except Exception as e:
+            logging.error(f"Step 5 (coverage analysis) submission failed: {e}")
+        
+        try:
+            # Submit Step 6 as a task to the thread pool
+            future_cigar = executor.submit(cigar_processing, species, home, closeread, annotation)
+        except Exception as e:
+            logging.error(f"Step 6 (CIGAR processing) submission failed: {e}")
+        
+        try:
+            # Wait for Step 5 to complete and handle any errors
+            future_coverage.result()
+        except Exception as e:
+            logging.error(f"Step 5 (coverage analysis) execution failed: {e}")
+        
+        try:
+            # Wait for Step 6 to complete and handle any errors
+            future_cigar.result()
+        except Exception as e:
+            logging.error(f"Step 6 (CIGAR processing) execution failed: {e}")
 
 
 def run_pipeline(args):
@@ -149,7 +170,7 @@ def run_pipeline(args):
             logging.error(f"Error processing species {species}: {e}", exc_info=True)
             sys.exit(1)  # Exit with error code
 
-    logging.info("Pipeline completed successfully!")
+    logging.info("Pipeline completed!")
 
 
 

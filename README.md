@@ -7,9 +7,9 @@
 ## Table of Contents
 
 - [Installation](#installation)
+- [Test Case](#test-case)
 - [Input](#input)
 - [Running](#running)
-- [Test Case](#test-case)
 - [Output and Intermediate files](#output)
 - [Folder Structure](#folder-structure)
 - [Project Structure](#project-structure)
@@ -39,8 +39,19 @@ pip install -e .
 ### Other Requirements
 
 - [IgDetective](https://github.com/Immunotools/IgDetective.git) is required for the following analysis. Please make sure all the relative path is changed to absolute path in IgDetective source code, otherwise error will occur. Also make sure you are running IgDetective with the python in the above conda enviroment. 
-- `samtools` is required for the following analysis.
+- `samtools` is required for the following analysis
 - `python=3.10` is used, should be installed by default in the above conda enviroments. Again make sure whenever running python, you are using the python installed in the above conda enviroment. You can check by runnning `which python`
+
+## Test Case
+To check if CloseRead was correctly intalled, we suggest running the following test case prior to any of your analysis. Run:
+```
+closeread-pipeline --species test --home {PATH to Closeread}/test/ --haploid True --fastqdir hifi_fastq --closeread /{PATH to Closeread}/closeread --igdetective_home {PATH to IgDetective}
+closeread-plot --s test --g IGH --home {PATH to Closeread}/test/ --dirStat {PATH to Closeread}/test/errorStats --dirPlot {PATH to Closeread}/test/errorPlots/ 
+```
+If using 32 cores, the entire process should be finished within 5 minutes. 
+The output can be found in `{PATH to Closeread}/test/`, we also provide the expected output here [link](https://figshare.com/s/9b8db110af1511871669). Please compare the figures and any outputs to make sure they are the same.
+For more information on how to interpret the result please refer to this [document](https://docs.google.com/document/d/1QOh3Z6noqZ7x-u70QhQv4VhQOrCJJ1hz_NEmvBDaT_A/pub)
+
 
 ## Input
 #### Required input files:
@@ -50,11 +61,11 @@ pip install -e .
 - Primary/Haplotype1/Maternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.pri.fasta`
 - Alternate/Haplotype2/Paternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.alt.fasta`
 - Above assembly files' index file `.fai`
-- (Optional, if loci position already known and want to skip IgDetective) Loci Annotation file in `${species_name}.customIG.txt`, file format see example
+- (Optional, if loci position already known and want to skip IgDetective) Loci Annotation file in `${species_name}.customIG.txt`, **file format see example/Emax.customIG.txt**
 
 #### Optional input file:
 - `species_metainfo.csv` containing meta information of the species of interest, format see example
-- Gene level annotation file in either IgDetective generated format OR in [Gene, Chromosome, Strand, Start, End] csv format
+- `Gene level annotation file` in either IgDetective generated format **OR** in [Gene, Chromosome, Strand, Start, End] csv format
 
 ## Running
 #### Run read-to-assembly pipeline
@@ -73,7 +84,7 @@ options:
                         Path to the CloseRead directory.
   --igdetective_home IGDETECTIVE_HOME
                         Path to the IGDetective directory.
-  --customIG CUSTOMIG   Path to directory containing ${species_name}.customIG.txt, you could put it in the gene_position folder
+  --customIG CUSTOMIG   Path to DIRECTORY containing ${species_name}.customIG.txt (not path directly to the file), you could put it in the gene_position folder
 ```
 #### Run evalutaion and plotting pipeline
 To note, you will need to run each loci separatly for plotting.
@@ -133,7 +144,7 @@ options:
 - `{HOME}/aligned_bam/{species}/` will contain the aligned bam file and the filtered (only primary alignment) bam file, could be used for IGV visualizations
 - `{HOME}/aligned_sam/{species}/` will contain the aligned sam file
 - `{HOME}/igGene/{species}.{pri/alt}.igdetective/` will contain the IgDetective output, gene position information can be found here
-- `{HOME}/gene_position/{species}.final.Ig_loci.txt/` will contain the formated IG loci positions found by IgDetective. If custom IG loci used, for simplicity, custom IG loci files can also be put here and you just need to provide `--customIG {HOME}/gene_position/`
+- `{HOME}/gene_position/{species}.final.Ig_loci.txt` will contain the formated IG loci positions found by IgDetective. If custom IG loci used, for simplicity, custom IG loci files can also be put here and you just need to provide `--customIG {HOME}/gene_position/`
 
 #### `closeread-plot` will use above files as input and generate the final output files in the `{HOME}/errorPlots/` directory and should include the following files:
 
@@ -146,23 +157,13 @@ options:
 - `base.exactmismatch.csv` containing detailed basepair-view mismatch information for every basepair with < bc (80% default) base support
 - `base.avgmismatch.csv` containing averaged basepair-view mismatch information, grouping consecutive basepairs (< 1000bps spaced), best for identifying regions with lots of single base mismatches
 - `finalMismatch.csv` containing positions marked highly mismatched from both basepair-view and read-view, for both haplotype if diploid
-- `result.pdf`, single pdf with all figures and meta information. 
+- `result.pdf`, single pdf with all figures and meta information, if meta info given
 - `{species}.{gene}.genelevel.csv`, gene level quality assessment, if flag `--pg` given
 
 #### For more information on how to interpret the result please refer to this [document](https://docs.google.com/document/d/1QOh3Z6noqZ7x-u70QhQv4VhQOrCJJ1hz_NEmvBDaT_A/pub) 
 
 #### Log files
 Log files will be avaliable at `$HOME/logs/`
-
-## Test Case
-To check if CloseRead was correctly intalled, we suggest running the following test case prior to any of your analysis. Run:
-```
-closeread-pipeline --species test --home {PATH to Closeread}/test/ --haploid True --fastqdir hifi_fastq --closeread /{PATH to Closeread}/closeread --igdetective_home {PATH to IgDetective}
-closeread-plot --s test --g IGH --home {PATH to Closeread}/test/ --dirStat {PATH to Closeread}/test/errorStats --dirPlot {PATH to Closeread}/test/errorPlots/ 
-```
-If using 32 cores, the entire process should be finished within 5 minutes. 
-The output can be found in `{PATH to Closeread}/test/`, we also provide the expected output here [link](https://figshare.com/s/9b8db110af1511871669). Please compare the figures and any outputs to make sure they are the same.
-For more information on how to interpret the result please refer to this [document](https://docs.google.com/document/d/1QOh3Z6noqZ7x-u70QhQv4VhQOrCJJ1hz_NEmvBDaT_A/pub)
 
 
 ## Folder Structure

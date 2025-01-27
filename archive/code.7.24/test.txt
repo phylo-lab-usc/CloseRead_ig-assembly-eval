@@ -1,4 +1,0 @@
->x
-atcg
->y
-gggg
