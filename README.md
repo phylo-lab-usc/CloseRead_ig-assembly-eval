@@ -59,7 +59,7 @@ For more information on how to interpret the result please refer to this [docume
 - HiFi fastq/BAM files that generated the assembly of the species of interest at `$HOME/$fastqdir/$species_name/`
 - Merged diploid assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.merged.fasta`, use the ENTIRE assembly even if you are only looking at specific loci
 - Primary/Haplotype1/Maternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.pri.fasta`
-- Alternate/Haplotype2/Paternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.alt.fasta`
+- Alternate/Haplotype2/Paternal assembly fasta file of species of interest at `$HOME/assemblies/${species_name}.alt.fasta`, ignore if you only have a consensus assembly
 - Above assembly files' index file `.fai`
 - (Optional, if loci position already known and want to skip IgDetective) Loci Annotation file in `${species_name}.customIG.txt`, **file format see example/Emax.customIG.txt**
 
@@ -78,7 +78,7 @@ options:
   -h, --help            show this help message and exit
   --species SPECIES     Comma-separated list of species (e.g., species1,species2).
   --home HOME           Path to the home directory.
-  --haploid HAPLOID     Haploid status (True or False).
+  --haploid HAPLOID     Haploid status (True or False). True if you have a consensus assembly, False if you have a phased assembly
   --fastqdir FASTQDIR   Path to the FASTQ directory.
   --closeread CLOSEREAD
                         Path to the CloseRead directory.
