@@ -65,7 +65,7 @@ For more information on how to interpret the result please refer to this [docume
 
 #### Optional input file:
 - `species_metainfo.csv` containing meta information of the species of interest, format see example
-- `Gene level annotation file` in either IgDetective generated format **OR** in [Gene, Chromosome, Strand, Start, End] csv format
+- `Gene level annotation file` in either IgDetective generated format **OR** in [Gene, Chromosome, Strand, Start, End] csv format, see `example` folder for sample file format. Make sure you include the header.
 
 ## Running
 #### Run read-to-assembly pipeline
