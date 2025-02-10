@@ -32,7 +32,7 @@ If you want to bypass the IgDetective step by providing known IG loci positions,
   ```
 
 - **Expected Format:**  
-  The file should be either **tab-delimited** or **comma-separated**. The following format must be followed:
+  The file should be **tab-delimited**. The following format must be followed:
 
 | Species | Haplotype         | Locus | Start  | End    |
 |---------|-------------------|-------|--------|--------|
@@ -49,7 +49,7 @@ If you want to bypass the IgDetective step by providing known IG loci positions,
 
 - **Notes:**  
   - **DO NOT** include a header row in the actual file (the table above is for explanation purposes only).
-  - Ensure consistent use of **commas** as delimiters.
+  - Ensure consistent use of **tabs** as delimiters.
 
 ---
 
@@ -62,9 +62,10 @@ This optional CSV file provides additional metadata about the species and assemb
   
 - **Example Format:**
 
-  ```csv
+```csv
 IndividualID,LatinName,CommonName,Source,SourceLink,Haplotype Resolved
-rAllMis2,Alligator mississippiensis,American alligator,VGP,https://42basepairs.com/browse/s3/genomeark/species/Alligator_mississippiensis/rAllMis2,Yes```
+rAllMis2,Alligator mississippiensis,American alligator,VGP,https://42basepairs.com/browse/s3/genomeark/species/Alligator_mississippiensis/rAllMis2,Yes
+```
 
 - **Notes:**  
   - The file must include a header row.
