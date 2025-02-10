@@ -35,7 +35,7 @@ conda env create -f ig-assembly-eval.yml
 conda activate ig-assembly-eval
 
 # Install closeread
-pip install -e .
+pip install .
 
 ```
 > **Tip:** Optionally, update your system PATH if needed.
