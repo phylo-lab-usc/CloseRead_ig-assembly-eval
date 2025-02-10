@@ -235,30 +235,35 @@ def run_plot(args):
 
     logging.info("Plot generation completed successfully!")
 
+
+def resolve_path(path):
+    return os.path.abspath(os.path.expanduser(path))
+
+
 def run_plot_cli():
     """Command-line interface for the plotting script."""
     parser = argparse.ArgumentParser(description="Run CloseRead Final Evalutation and Plotting.")
 
     # Add mutually exclusive group for either species or species file input
     group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('--s', type=str, metavar="species", help="Single species identifier (use this if you are providing one species)")
-    group.add_argument('--sf', type=str, metavar="species_file", help="Path to file containing a list of species (use this if you are providing multiple species)")
+    group.add_argument('--s', type=str, metavar="species", help="Single species identifier (use this if providing one species)")
+    group.add_argument('--sf', type=resolve_path, metavar="species_file", help="Path to file containing a list of species (use this if providing multiple species)")
 
-    # Other required arguments
-    parser.add_argument('--g', type=str, required=True, metavar="gene", help="Gene identifier(IGH/IGK/IGL)")
-    parser.add_argument('--home', type=str, required=True, metavar="home", help="Path to the home directory")
-    parser.add_argument('--dirStat', type=str, required=True, metavar="errorStatsDir", help="Path to the previous errorStats directory containing mpileup file")
-    parser.add_argument('--dirPlot', type=str, required=True, metavar="errorPlotsDir", help="Path to the output errorPlots directory")
+    # Required arguments
+    parser.add_argument('--g', type=str, required=True, metavar="gene", help="Gene identifier (IGH/IGK/IGL)")
+    parser.add_argument('--home', type=resolve_path, required=True, metavar="home", help="Path to the home directory")
+    parser.add_argument('--dirStat', type=resolve_path, required=True, metavar="errorStatsDir", help="Path to the previous errorStats directory containing mpileup file")
+    parser.add_argument('--dirPlot', type=resolve_path, required=True, metavar="errorPlotsDir", help="Path to the output errorPlots directory")
 
-    # Add optional argument
+    # Optional arguments
     parser.add_argument('--cov', type=int, default=2, metavar="lowCov_threshold", help="Threshold for low coverage (default: 2)")
     parser.add_argument('--p', type=int, default=2000, metavar="padding", help="Padding around low coverage regions (default: 2000bps)")
-    parser.add_argument('--re', type=float, default=0.01, metavar="single_read_error", help="Threshold for a single read to consider as high mismatch (default: 0.01)")
-    parser.add_argument('--rc', type=int, default=5, metavar="readview_correct_threshold", help="Number of high mismatch reads needed to cover a position for it to be considered as high mismatch rate position from read-view (default: 5)")
-    parser.add_argument('--bc', type=int, default=5, metavar="baseview_correct_threshold", help="Threshold for the percent of reads with exact match at a position for it to be considered as well-supported, used in heatmap (default: 80 percent)")
-    parser.add_argument('--m', type=str, metavar="meta", help="Absolute path to the meta information .csv file, used for generating pdf.")
-    parser.add_argument('--so', type=bool, default=False, metavar="stats_only", help="output .txt and .csv files only, skip visualization.")
-    parser.add_argument('--pg', type=str, metavar="gene_level assessment", help="Absolute path for gene level annotation file, Generate gene level read support information.")
+    parser.add_argument('--re', type=float, default=0.01, metavar="single_read_error", help="Threshold for high mismatch consideration (default: 0.01)")
+    parser.add_argument('--rc', type=int, default=5, metavar="readview_correct_threshold", help="Number of high mismatch reads needed to consider a position as high mismatch (default: 5)")
+    parser.add_argument('--bc', type=int, default=5, metavar="baseview_correct_threshold", help="Threshold for exact match percent at a position for heatmap (default: 80 percent)")
+    parser.add_argument('--m', type=resolve_path, metavar="meta", help="Path to the meta information .csv file, used for generating PDF.")
+    parser.add_argument('--so', action='store_true', metavar="stats_only", help="Output .txt and .csv files only, skip visualization.")
+    parser.add_argument('--pg', type=resolve_path, metavar="gene_level assessment", help="Path for gene level annotation file, to generate gene-level read support information.")
 
     args = parser.parse_args()
     if not args.s and not args.sf:

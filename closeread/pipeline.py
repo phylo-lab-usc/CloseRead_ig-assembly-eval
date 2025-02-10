@@ -11,17 +11,21 @@ from .steps.coverage_analysis import coverage_analysis
 import argparse
 from concurrent.futures import ThreadPoolExecutor
 
+def resolve_path(path):
+    return os.path.abspath(os.path.expanduser(path))
+
 def run_pipeline_cli():
     parser = argparse.ArgumentParser(description="Run the CloseRead pipeline.")
     parser.add_argument("--species", required=True, help="Comma-separated list of species (e.g., species1,species2).")
-    parser.add_argument("--home", required=True, help="Path to the home directory.")
+    parser.add_argument("--home", required=True, type=resolve_path, help="Path to the home directory.")
     parser.add_argument("--haploid", required=True, help="Haploid status (True or False).")
-    parser.add_argument("--fastqdir", required=True, help="Path to the FASTQ directory.")
-    parser.add_argument("--closeread", required=True, help="Path to the CloseRead directory.")
-    parser.add_argument("--t", required=False, default=32, help="# of threads to use (default: 32).")
+    parser.add_argument("--fastqdir", required=True, type=resolve_path, help="Path to the FASTQ directory.")
+    parser.add_argument("--closeread", required=True, type=resolve_path, help="Path to the CloseRead directory.")
+    parser.add_argument("--t", required=False, default=32, type=int, help="# of threads to use (default: 32).")
+
     group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('--igdetective_home', type=str, help="Path to the IGDetective directory.")
-    group.add_argument('--customIG', type=str, help="Path to directory containing ${species_name}.customIG.txt.")
+    group.add_argument('--igdetective_home', type=resolve_path, help="Path to the IGDetective directory.")
+    group.add_argument('--customIG', type=resolve_path, help="Path to directory containing ${species_name}.customIG.txt.")
 
     args = parser.parse_args()
     run_pipeline(args)
