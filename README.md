@@ -96,16 +96,16 @@ Place the following files in the specified directories (replace placeholders wit
 - **Assembly Index Files:**  
   Ensure that each assembly FASTA file has a corresponding `.fai` index file.
 
-> **Optional:** If IG loci positions are already known (allowing you to skip running IgDetective), include the custom annotation file named `${species_name}.customIG.txt`. (See the example file in `example/Emax.customIG.txt`. And more on file format see `docs/format.md`.)
+> **Optional:** If IG loci positions are already known (allowing you to skip running IgDetective), include the custom annotation file named `${species_name}.customIG.txt`. (See the example file in `example/Emax.customIG.txt`. And more on file format see [`docs/format.md`](docs/format.md).)
 
 
 #### Optional Files
 
 - **Species Meta-information:**  
-   This is for the final pdf generation only, if individual png file is preferred, this can be skipped. This is a CSV file (`species_metainfo.csv`) containing meta-information about your species. See the `example` folder for a sample file. And more on file format see `docs/format.md`. 
+   This is for the final pdf generation only, if individual png file is preferred, this can be skipped. This is a CSV file (`species_metainfo.csv`) containing meta-information about your species. See the `example` folder for a sample file. And more on file format see [`docs/format.md`](docs/format.md). 
 
 - **Gene-level Annotation:**  
-  This can be either in the IgDetective-generated format **or** as a CSV with the columns: `Gene, Chromosome, Strand, Start, End` (include a header). See the `example` folder for a sample file. And more on file format see `docs/format.md`.
+  This can be either in the IgDetective-generated format **or** as a CSV with the columns: `Gene, Chromosome, Strand, Start, End` (include a header). See the `example` folder for a sample file. And more on file format see [`docs/format.md`](docs/format.md).
 
 ---
 
