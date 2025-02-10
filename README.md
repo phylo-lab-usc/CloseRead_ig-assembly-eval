@@ -13,7 +13,6 @@
 - [Usage](#usage)
 - [Outputs](#outputs)
 - [Directory Structure](#directory-structure)
-- [Project Structure](#project-structure)
 - [Citation](#citation)
 - [License](#license)
 - [Contributing](#contributing)
@@ -242,21 +241,6 @@ $HOME/
 ├── errorPlots/          # Final visualizations
 │   └── mEubGla1/
 └── logs/                # Log files
-```
-
----
-
-## Project Structure
-
-```plaintext
-CloseRead_ig-assembly-eval/
-├── README.md                # Project documentation
-├── ig-assembly-eval.yml     # Conda environment file
-├── closeread/               # Source code and scripts
-├── plots/                   # Plot templates and figures
-├── curated_IGH/             # LJA curated IGH assembly data
-├── example/                 # Example input formats and files
-└── test/                    # Test case files
 ```
 
 ---

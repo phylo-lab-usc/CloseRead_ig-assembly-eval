@@ -61,7 +61,7 @@ def analyze_chromosome_occurrences(chrom_data):
 
 # Main processing function
 def process_ig_genes(species, home):
-    gene_types = ['IGH', 'IGK', 'IGL']
+    gene_types = ['IGH', 'IGK', 'IGL', 'TRB', 'TRA', 'TRG']
     assembly_types = {'pri': 'primary', 'alt': 'alternate'}
     base_dir = f'{home}/igGene'
     output_dir = f'{home}/gene_position'
@@ -89,23 +89,6 @@ def process_ig_genes(species, home):
                     if chrom_info[1] > 2:
                         with open(f"{output_dir}/{species}.final.Ig_loci.txt", 'a') as f:
                             f.write(f"{species} {assembly_name} {gene} {chrom_info[0]} {chrom_info[2]} {chrom_info[3]}\n")
-                        # with open(f'{home}/haplotype.txt', 'a') as hfile:
-                        #     hfile.write(f"{species} {assembly_name} {gene} True\n")
-                # else:
-                #     with open(f'{home}/haplotype.txt', 'a') as hfile:
-                #         hfile.write(f"{species} {assembly_name} {gene} False\n")
-                # counting IGH primary haplotype VDJ genes
-                # if gene == 'IGH' and assembly_code == 'pri':
-                #     counts = count_gene_types(file_path)
-                #     with open(f'{home}/VgeneCount.txt', 'a') as vfile:
-                #         vfile.write(f"{species} {assembly_name} {counts['V']}\n")
-                #     with open(f'{home}/DgeneCount.txt', 'a') as dfile:
-                #         dfile.write(f"{species} {assembly_name} {counts['D']}\n")
-                #     with open(f'{home}/JgeneCount.txt', 'a') as jfile:
-                #         jfile.write(f"{species} {assembly_name} {counts['J']}\n")
-            # else:
-            #     with open(f'{home}/haplotype.txt', 'a') as hfile:
-            #         hfile.write(f"{species} {assembly_name} {gene} False\n")
 
 # Usage
 def main():

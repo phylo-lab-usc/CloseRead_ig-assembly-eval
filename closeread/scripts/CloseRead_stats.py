@@ -387,7 +387,7 @@ def process_gene_data(gene_file, merged_pileup, read):
     """
 
     # Load the gene file
-    genes = pd.read_csv(gene_file)
+    genes = pd.read_csv(gene_file, sep='\t')
 
     # Check if the input file is precomputed format (Gene, Chromosome, Strand, Start, End)
     if 'Start' in genes.columns and 'End' in genes.columns:

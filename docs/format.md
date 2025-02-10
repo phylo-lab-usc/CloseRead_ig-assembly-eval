@@ -85,17 +85,16 @@ This optional file is used to provide gene-level annotation information. It can 
 ### B. Custom CSV Format
 
 - **Expected Format:**  
-  A CSV file with the following columns:
+  The file should be **tab-delimited**. The following format must be followed:
   
-  ```csv
-  Gene,Chromosome,Strand,Start,End
-  IGH,chr14,.,105000,107000
-  IGK,chr2,.,89000,91000
-  IGL,chr22,.,140000,142000
-  ```
+| Gene | Chromosome | Strand | Start  | End    |
+|------|------------|--------|--------|--------|
+| IGH  | chr14      | .      | 105000 | 107000 |
+| IGK  | chr2       | .      | 89000  | 91000  |
+| IGL  | chr22      | .      | 140000 | 142000 |
 
 - **Notes:**  
-  - Ensure the CSV file includes a header row with the same column names
+  - Ensure the CSV file includes a header row with the SAME column names
   - The fields must be formatted correctly to enable proper parsing.
   - The Strand column can be empty.
 
