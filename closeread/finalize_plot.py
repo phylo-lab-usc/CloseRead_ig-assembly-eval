@@ -63,8 +63,8 @@ def run_plot(args):
             logging.info(f"Generating plots for species: {species} - {gene}")
 
             haploid = False
-            dirOut = f"{args.dirPlot}/{species}"
-            dirStat = f"{args.dirStat}/{species}"
+            dirOut = f"{args.home}/errorPlots/{species}"
+            dirStat = f"{args.home}/errorStats/{species}"
             create_directories(species, dirStat, dirOut)
 
             #process basepair-view mpileup file
@@ -252,8 +252,6 @@ def run_plot_cli():
     # Required arguments
     parser.add_argument('--g', type=str, required=True, metavar="gene", help="Gene identifier (IGH/IGK/IGL)")
     parser.add_argument('--home', type=resolve_path, required=True, metavar="home", help="Path to the home directory")
-    parser.add_argument('--dirStat', type=resolve_path, required=True, metavar="errorStatsDir", help="Path to the previous errorStats directory containing mpileup file")
-    parser.add_argument('--dirPlot', type=resolve_path, required=True, metavar="errorPlotsDir", help="Path to the output errorPlots directory")
 
     # Optional arguments
     parser.add_argument('--cov', type=int, default=2, metavar="lowCov_threshold", help="Threshold for low coverage (default: 2)")
@@ -262,7 +260,7 @@ def run_plot_cli():
     parser.add_argument('--rc', type=int, default=5, metavar="readview_correct_threshold", help="Number of high mismatch reads needed to consider a position as high mismatch (default: 5)")
     parser.add_argument('--bc', type=int, default=5, metavar="baseview_correct_threshold", help="Threshold for exact match percent at a position for heatmap (default: 80 percent)")
     parser.add_argument('--m', type=resolve_path, metavar="meta", help="Path to the meta information .csv file, used for generating PDF.")
-    parser.add_argument('--so', action='store_true', metavar="stats_only", help="Output .txt and .csv files only, skip visualization.")
+    parser.add_argument('--so', action='store_true', help="Output .txt and .csv files only, skip visualization.")
     parser.add_argument('--pg', type=resolve_path, metavar="gene_level assessment", help="Path for gene level annotation file, to generate gene-level read support information.")
 
     args = parser.parse_args()

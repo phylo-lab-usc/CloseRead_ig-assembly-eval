@@ -2,7 +2,7 @@ import subprocess
 import os
 from datetime import datetime
 
-def final_ig_loci(species, home, closeread):
+def final_ig_loci(species, home):
     """Process loci into final IG loci."""
     # Define the log file path
     log_file = os.path.join(home, "logs", f"{species}_final_ig_loci.log")
@@ -11,7 +11,9 @@ def final_ig_loci(species, home, closeread):
     os.makedirs(output_dir, exist_ok=True)
 
     # Define script and output paths
-    script = os.path.join(closeread, "scripts/finalGene.py")
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    parent_dir = os.path.dirname(current_dir)
+    script = os.path.join(parent_dir, "scripts/finalGene.py")
     output = os.path.join(home, "gene_position", f"{species}.final.Ig_loci.txt")
 
     with open(log_file, "w") as log:
@@ -44,9 +46,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process loci into final IG loci.")
     parser.add_argument("--species", required=True, help="Species name.")
     parser.add_argument("--home", required=True, help="Path to the home directory.")
-    parser.add_argument("--closeread", required=True, help="Path to the CloseRead directory.")
 
     args = parser.parse_args()
 
     # Call the function
-    final_ig_loci(args.species, args.home, args.closeread)
+    final_ig_loci(args.species, args.home)

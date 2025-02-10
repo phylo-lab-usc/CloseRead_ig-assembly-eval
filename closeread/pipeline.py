@@ -19,8 +19,7 @@ def run_pipeline_cli():
     parser.add_argument("--species", required=True, help="Comma-separated list of species (e.g., species1,species2).")
     parser.add_argument("--home", required=True, type=resolve_path, help="Path to the home directory.")
     parser.add_argument("--haploid", required=True, help="Haploid status (True or False).")
-    parser.add_argument("--fastqdir", required=True, type=resolve_path, help="Path to the FASTQ directory.")
-    parser.add_argument("--closeread", required=True, type=resolve_path, help="Path to the CloseRead directory.")
+    parser.add_argument("--fastqdir", required=True, type=str, help="Path to the FASTQ directory.")
     parser.add_argument("--t", required=False, default=32, type=int, help="# of threads to use (default: 32).")
 
     group = parser.add_mutually_exclusive_group(required=True)
@@ -44,7 +43,7 @@ def configure_logging(home):
     )
     logging.info(f"Logging initialized. Logs will be written to {os.path.join(log_dir, 'pipeline.log')}")
 
-def parallel_step_1_and_2(species, home, fastqdir, haploid, closeread, threads, igdetective_home=None):
+def parallel_step_1_and_2(species, home, fastqdir, haploid, threads, igdetective_home=None):
     output_bam = os.path.join(home, "aligned_bam", species, f"{species}_merged_sorted.bam")
     output_index = f"{output_bam}.csi"
     run_flag = False
@@ -57,7 +56,7 @@ def parallel_step_1_and_2(species, home, fastqdir, haploid, closeread, threads, 
         if not os.path.exists(output_bam) or not os.path.exists(output_index):
             try:
                 logging.info(f"Step 1: Data Preparation for {species}")
-                data_prep(species, home, fastqdir, haploid, closeread, str(threads))
+                data_prep(species, home, fastqdir, haploid, str(threads))
             except Exception as e:
                 logging.error(f"Step 1 failed: {e}")
         else:
@@ -79,18 +78,18 @@ def parallel_step_1_and_2(species, home, fastqdir, haploid, closeread, threads, 
         executor.submit(step_2)
     return run_flag
 
-def process_steps_in_parallel(species, home, closeread, annotation):
+def process_steps_in_parallel(species, home, annotation):
     with ThreadPoolExecutor(max_workers=2) as executor:
         # Submit Step 5 and Step 6 as tasks to the thread pool
         try:
             # Submit Step 5 as a task to the thread pool
-            future_coverage = executor.submit(coverage_analysis, species, home, closeread, annotation)
+            future_coverage = executor.submit(coverage_analysis, species, home, annotation)
         except Exception as e:
             logging.error(f"Step 5 (coverage analysis) submission failed: {e}")
         
         try:
             # Submit Step 6 as a task to the thread pool
-            future_cigar = executor.submit(cigar_processing, species, home, closeread, annotation)
+            future_cigar = executor.submit(cigar_processing, species, home, annotation)
         except Exception as e:
             logging.error(f"Step 6 (CIGAR processing) submission failed: {e}")
         
@@ -115,7 +114,6 @@ def run_pipeline(args):
     home = args.home
     haploid = args.haploid
     fastqdir = args.fastqdir
-    closeread = args.closeread
     threads = args.t
     if args.igdetective_home:
         igdetective_home = args.igdetective_home
@@ -130,7 +128,6 @@ def run_pipeline(args):
     for dir_path, dir_name in [
         (home, "Home directory"),
         (f"{home}/{fastqdir}", "FASTQ directory"),
-        (closeread, "CloseRead directory"),
     ]:
         if not os.path.exists(dir_path):
             logging.error(f"{dir_name} not found: {dir_path}")
@@ -143,7 +140,7 @@ def run_pipeline(args):
         try:
             # Step 1 and 2: Data Preparation and Loci Location
             logging.info(f"Step 1 and Step 2: Running in parallel for {species}")
-            run_flag = parallel_step_1_and_2(species, home, fastqdir, haploid, closeread, threads, igdetective_home)
+            run_flag = parallel_step_1_and_2(species, home, fastqdir, haploid, threads, igdetective_home)
 
             # Step 3: Convert Primary BAM
             output_primary_bam = os.path.join(home, "aligned_bam", species, f"{species}_merged_sorted_primary.bam")
@@ -157,7 +154,7 @@ def run_pipeline(args):
             # Step 4: Final IG Loci
             if args.igdetective_home:
                 logging.info(f"Step 4: Final IG Loci for {species}")
-                final_ig_loci(species, home, closeread)
+                final_ig_loci(species, home)
 
             # Step 5 + 6: Coverage Analysis and CIGAR Processing
             logging.info(f"Step 5 and Step 6: Running in parallel for {species}")
@@ -166,7 +163,7 @@ def run_pipeline(args):
             else:
                 annotation = os.path.join(customIG, f"{species}.customIG.txt")
 
-            process_steps_in_parallel(species, home, closeread, annotation)
+            process_steps_in_parallel(species, home, annotation)
 
             logging.info(f"Species {species} processed successfully!")
 
@@ -187,7 +184,6 @@ if __name__ == "__main__":
     parser.add_argument("--home", required=True, help="Path to the home directory.")
     parser.add_argument("--haploid", required=True, help="Haploid status (True/False).")
     parser.add_argument("--fastqdir", required=True, help="Path to the FASTQ directory.")
-    parser.add_argument("--closeread", required=True, help="Path to the CloseRead directory.")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument('--igdetective_home', type=str, help="Path to the IGDetective directory.")
     group.add_argument('--customIG', type=str, help="Path to directory containing ${species_name}.customIG.txt.")

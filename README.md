@@ -56,10 +56,11 @@ Before running CloseRead, ensure the following tools are installed and configure
 
 
 ## Test Case
-Before analyzing your own data, run the test case to verify that CloseRead is installed correctly. Replace the placeholders (`{PATH_to_CloseRead}` and `{PATH_to_IgDetective}`) with your actual paths:
+Before analyzing your own data, run the test case to verify that CloseRead is installed correctly. Replace the placeholders (`{PATH_to_IgDetective}`) with your actual paths:
 ```
-closeread-pipeline --species test --home {PATH to Closeread}/test/ --haploid True --fastqdir hifi_fastq --closeread /{PATH to Closeread}/closeread --igdetective_home {PATH to IgDetective}
-closeread-plot --s test --g IGH --home {PATH to Closeread}/test/ --dirStat {PATH to Closeread}/test/errorStats --dirPlot {PATH to Closeread}/test/errorPlots/ 
+cd CloseRead_ig-assembly-eval
+closeread-pipeline --species test --home test/ --haploid True --fastqdir hifi_fastq --igdetective_home {PATH to IgDetective}
+closeread-plot --s test --g IGH --home test/ --pg test/igGene/test.pri.igdetective/combined_genes_IGH.txt
 ```
 > **Note:** On a 32-core system, the entire process should finish in about 5 minutes. Compare your outputs with the expected results available [here](https://figshare.com/s/9b8db110af1511871669). For guidance on interpreting the results, refer to [this document](https://docs.google.com/document/d/1QOh3Z6noqZ7x-u70QhQv4VhQOrCJJ1hz_NEmvBDaT_A/pub).
 
@@ -115,7 +116,7 @@ Place the following files in the specified directories (replace placeholders wit
 Use the `closeread-pipeline` command to perform the initial read-to-assembly evaluation. Below is the basic usage:
 ```bash
 closeread-pipeline [OPTIONS]
-usage: closeread-pipeline [-h] --species SPECIES --home HOME --haploid HAPLOID --fastqdir FASTQDIR --closeread CLOSEREAD
+usage: closeread-pipeline [-h] --species SPECIES --home HOME --haploid HAPLOID --fastqdir FASTQDIR
                           (--igdetective_home IGDETECTIVE_HOME | --customIG CUSTOMIG) [--t T]
 ```
 
@@ -123,8 +124,7 @@ usage: closeread-pipeline [-h] --species SPECIES --home HOME --haploid HAPLOID -
 - `--species`: Comma-separated list of species (e.g., `species1,species2`).
 - `--home`: Path to the home directory.
 - `--haploid`: `True` for consensus assembly or `False` for phased assembly.
-- `--fastqdir`: Path to the FASTQ directory.
-- `--closeread`: Path to the CloseRead directory.
+- `--fastqdir`: Name of FASTQ directory.
 - Either:
   - `--igdetective_home`: Path to the IgDetective directory, **or**
   - `--customIG`: Path to the DIRECTORY containing `${species_name}.customIG.txt` (NOT path directly to the file).
@@ -135,7 +135,7 @@ After running the evaluation pipeline, generate visualizations with `closeread-p
 
 ```bash
 closeread-plot [OPTIONS]
-usage: closeread-plot [-h] (--s species | --sf species_file) --g gene --home home --dirStat errorStatsDir --dirPlot errorPlotsDir [--cov lowCov_threshold]
+usage: closeread-plot [-h] (--s species | --sf species_file) --g gene --home home [--cov lowCov_threshold]
                       [--p padding] [--re single_read_error] [--rc readview_correct_threshold] [--bc baseview_correct_threshold] [--m meta]
                       [--so stats_only] [--pg gene_level assessment]
 ```
@@ -143,17 +143,15 @@ usage: closeread-plot [-h] (--s species | --sf species_file) --g gene --home hom
 - `--s`: Single species identifier (use this if providing one species) or `--sf` for a file containing a list of species.
 - `--g`: Gene identifier (e.g., IGH, IGK, IGL).
 - `--home`: Path to the home directory.
-- `--dirStat`: Directory containing the error statistics (e.g., mpileup files).
-- `--dirPlot`: Output directory for the generated plots.
 - Additional optional parameters:
   - `--cov`: Low coverage threshold (default: 2)
   - `--p`: Purple bar padding around low coverage regions (default: 2000 bp)
   - `--re`: Single-read mismatch threshold (default: 0.01)
   - `--rc`: Number of high-mismatch reads required to flag a position from the read-view (default: 5)
   - `--bc`: Base-view threshold (default: 80% exact match)
-  - `--m`: Absolute path to the meta-information CSV file (for generating a PDF report)
+  - `--m`: Path to the meta-information CSV file (for generating a PDF report)
   - `--so`: Generate statistics only (skip visualization)
-  - `--pg`: Absolute path for a gene-level annotation file (to produce gene-level assessments)
+  - `--pg`: Path for a gene-level annotation file (to produce gene-level assessments)
 
 
 ## Outputs
